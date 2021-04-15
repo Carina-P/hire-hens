@@ -1,0 +1,1 @@
+web: gunicorn hire-hens.wsgi:application
