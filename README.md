@@ -25,7 +25,39 @@ Do you dream about fetching fresch eggs, from your own hens! To hire hens, is th
 - Easy and intuitive way to hire hens.
 - Easy to find more information about the rental process and how to take care of a hen.
 
- 
+### Scope Plane
+#### User stories
+(this is not in priority order)
+- US_001: As a user I want to be able to sign up to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.
+
+- US_002: As a user, I want to be able to login to the site.
+
+- US_003: As a user, I want to be able to log out.
+
+- US_004: As a user, I want to be able to look at the site anonymously, without logging in.
+
+- US_005: As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer.
+
+- US_006: As a user, I want to add my rental package to a cart.
+
+- US_007: As a user, I want to look at my cart.
+
+- US_008: As a user, I want to checkout my cart.
+
+- US_009: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
+
+- US_010: As a user, I want to be able to buy things even if I am not logged in.
+
+- US_011: As a user, I want to find information about how to hire hens and how to take care of hens.
+
+- US_0012: As an administrator of the site, I want to login with the authority to add, change and delete information on the site.
+
+- US_0013: As an administrator of the site, I want to be able to add, change and delete the type of hens that can be hired.
+
+- US_0014: As an administrator of the site, I want to be able to add, change and delete "hen accessories" as coop, feeder and waterer.
+
+- US_0015: As an administrator of the site, I want to be able to add, change and delete information of renting process and how to take care of the hens.
+
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
 In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
