@@ -65,6 +65,26 @@ In particular, as part of this section we recommend that you provide a list of U
 
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
+### Structure Plane
+- A "homepage" with a picture of hens in a backyard.
+- Navbar with:
+    - Brand-image that leads to homepage.
+    - Link to page where user can put together rental package.
+    - Link to page with FAQ
+    - Link to cart
+    - Sign up and Login In, or Log Out
+    - Profile page
+- Rental package-page:
+    - Start with choosing type of hen and number of hens.
+    - Then possibility to add coop and/or feeder and waterer.
+    - Bottom of the page information of what package consists of and possibility to add package to cart.
+- FAQ-page:
+    - Questions and answeres to frequently asked questions.
+- Cart page:
+    - Information what the cart consists of and possibility to change it.
+    - Link to checkout page.
+
+
 ## Features
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
