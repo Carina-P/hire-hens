@@ -78,12 +78,31 @@ This section is also where you would share links to any wireframes, mockups, dia
     - Start with choosing type of hen and number of hens.
     - Then possibility to add coop and/or feeder and waterer.
     - Bottom of the page information of what package consists of and possibility to add package to cart.
+    - User with administrator authority can add, change or delete type of hens.
+    - User with administrator authority can add, change or delete accessories as eg coop, feeder...
 - FAQ-page:
     - Questions and answeres to frequently asked questions.
+    - User with administrator authority can add, change or delete questions and answeres.
 - Cart page:
     - Information what the cart consists of and possibility to change it.
     - Link to checkout page.
+- Checkout page:
+    - Possibility to pay with card.
+    - If user is logged in,  personal information is given.
+    - If anonymous user, user has to fill in information necessary to pay.
+- Profile page:
+    - Page where user can add and change personal information.
 
+### Skeleton Plane
+- The user browses via the navigation system.
+- To hire hens, the user is led through the process:
+    - first choosing hens (which is mandatory)
+    - then accessories
+    - add the package to a cart
+    - and finally pay for the content of the cart.
+- Interactive design that works on Mobile, Tablet as well as Desktop.
+
+#### Wireframes
 
 ## Features
 
