@@ -70,16 +70,21 @@ This section is also where you would share links to any wireframes, mockups, dia
 - Navbar with:
     - Brand-image that leads to homepage.
     - Link to page where user can put together rental package.
+    - Link to page where user can buy eg. food and beding
     - Link to page with FAQ
     - Link to cart
     - Sign up and Login In, or Log Out
     - Profile page
-- Rental package-page:
+- Rental package-pages:
     - Start with choosing type of hen and number of hens.
     - Then possibility to add coop and/or feeder and waterer.
-    - Bottom of the page information of what package consists of and possibility to add package to cart.
+    - Information of what package consists of and possibility to add package to cart.
     - User with administrator authority can add, change or delete type of hens.
     - User with administrator authority can add, change or delete accessories as eg coop, feeder...
+- Buy-page:
+    - User can buy food, beding and other consumeables.
+    - Possibility to add consumeables to cart.
+    - User with administrator authority can add, change or delete consumable.
 - FAQ-page:
     - Questions and answeres to frequently asked questions.
     - User with administrator authority can add, change or delete questions and answeres.
@@ -103,6 +108,9 @@ This section is also where you would share links to any wireframes, mockups, dia
 - Interactive design that works on Mobile, Tablet as well as Desktop.
 
 #### Wireframes
+- [Mobile](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile.pdf)
+- [Tablet](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet.pdf)
+- [Desktop](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_desktop.pdf)
 
 ## Features
 
