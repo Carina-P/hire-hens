@@ -108,10 +108,28 @@ This section is also where you would share links to any wireframes, mockups, dia
 - Interactive design that works on Mobile, Tablet as well as Desktop.
 
 #### Wireframes
-- [Mobile](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile.pdf)
-- [Tablet](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet.pdf)
-- [Desktop](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_desktop.pdf)
+- [Mobile](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile.png)
+- [Tablet](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet.png)
+- [Desktop](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_desktop.png)
 
+##### Major changes compared to wireframes
+
+#### Information Architecture
+##### Database Choice
+- Development phase: SQLight which is installed with Django
+- Production phase (deployed): PostgreSQL, provided as an add-on by Heroku
+
+##### Data modell
+
+
+#### Design Choices
+##### Fonts
+For this project, the Google Font **Poppins** is chosen. Poppins is a newcomer in
+the geometric sans serif typefaces tradition. It is a rounded and modern fontawesome
+that I think feels friendly and fits on this site.
+As alternative Google Font Roboto is chosen.
+
+##### Colours
 ## Features
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
@@ -121,6 +139,26 @@ In this section, you should go over the different parts of your project, and des
 - ...
 
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+
+### Responsive
+The site is designed to fit devices with screen width from **300px** and larger.
+The following features are designed differently for different devices:
+- **Navbar**: On screen widths **smaller** than 992px the navbar **collapses**
+into "hamburger" menu.
+- In **carousel on home page**: On devices with a width **larger than 768px** book information
+is shown beside the image of the book cover and average grade is represented by stars. On smaller 
+devices, the information is shown below the book cover and the average grade is only shown as a number.
+- When content is shown in **"card deck formation"**, the number of **columns** changes 
+**depending on viewport size**, the larger screen width the more columns. This applies to:
+    - Best in category buttons (with coloured background) on home page.
+    - Information about books resulting from search to add book on home page.
+    - Information about books resulting from search for books in "this database" and searching
+    for books that are best in specific category. The result is shown in "Search result page".
+    - The different category groups shown in "Category groups page".
+- **"Instruction"** in the beginning of the home page is **wider on smaller viewports**. That also
+applies to the width of the **carousel** on the home page.
+- On **very small devices** (width less than 400px) the **font size is 14px**.
+
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
