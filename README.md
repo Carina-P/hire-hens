@@ -78,7 +78,7 @@ This section is also where you would share links to any wireframes, mockups, dia
 - Rental package-pages:
     - Start with choosing type of hen and number of hens.
     - Then possibility to add coop and/or feeder and waterer.
-    - Information of what package consists of and possibility to add package to cart.
+    - Information of what package consists of and possibility to start subscription.
     - User with administrator authority can add, change or delete type of hens.
     - User with administrator authority can add, change or delete accessories as eg coop, feeder...
 - Buy-page:
@@ -118,6 +118,8 @@ This section is also where you would share links to any wireframes, mockups, dia
 ##### Database Choice
 - Development phase: SQLight which is installed with Django
 - Production phase (deployed): PostgreSQL, provided as an add-on by Heroku
+- Here is a visual:
+![Data Model](https://github.com/Carina-P/hire_hens/blob/master/wireframes/data_model.png?raw=true)
 
 ##### Data modell
 
