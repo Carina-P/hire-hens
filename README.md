@@ -158,6 +158,17 @@ In this section, you should go over the different parts of your project, and des
     - To manage logic and information on server side
 
 ### Frameworks, Libraries and other tools
+- [Django](https://www.djangoproject.com/)
+    - Used as the main framework, to increase productivity.
+- [GitPod](https://gitpod.io/)
+    - Used for version control by utilizing the GitPod terminal to
+    commit to Git and push to GitHub and Heroku.
+- [Heroku](https://www.heroku.com/home)
+    - To host the web app
+- [GitHub](https://github.com)
+    - GitHub is used to store the code.
+- [Balsamiq Wireframes](https://balsamiq.com/)
+    - For designing the wireframes
 - [DrawSQL](https://drawsql.app/)
     - To draw database diagrams
 - [Google Fonts](https://fonts.google.com/)
