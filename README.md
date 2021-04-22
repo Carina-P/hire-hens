@@ -1,6 +1,6 @@
-# Hire Hens
+# ![An egg](media/favicon.ico)   Hire Hens
 
-Do you dream about fetching fresch eggs, from your own hens! To hire hens, is the easy way to find out how wounderful the feeling is, having your own hens in the backyard. 
+Do you dream about fetching fresch eggs, from your own hens! **Hire Hens**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need.
  
 ## UX
 ### Strategy Plane
@@ -136,41 +136,15 @@ As the fallback font in case Inter isn't being imported into the site correctly,
 Black and white are used to get a modern apperance and to get a good contrast. 
 Honey Yellow is taken from a photo of a brown hen and this colour is used on the site to draw attention.
 
-##### Icons
 ## Features
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
  
 ### Existing Features
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
-
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
 ### Responsive
-The site is designed to fit devices with screen width from **300px** and larger.
-The following features are designed differently for different devices:
-- **Navbar**: On screen widths **smaller** than 992px the navbar **collapses**
-into "hamburger" menu.
-- In **carousel on home page**: On devices with a width **larger than 768px** book information
-is shown beside the image of the book cover and average grade is represented by stars. On smaller 
-devices, the information is shown below the book cover and the average grade is only shown as a number.
-- When content is shown in **"card deck formation"**, the number of **columns** changes 
-**depending on viewport size**, the larger screen width the more columns. This applies to:
-    - Best in category buttons (with coloured background) on home page.
-    - Information about books resulting from search to add book on home page.
-    - Information about books resulting from search for books in "this database" and searching
-    for books that are best in specific category. The result is shown in "Search result page".
-    - The different category groups shown in "Category groups page".
-- **"Instruction"** in the beginning of the home page is **wider on smaller viewports**. That also
-applies to the width of the **carousel** on the home page.
-- On **very small devices** (width less than 400px) the **font size is 14px**.
-
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 ### Features Left to Implement
-- Another feature idea
+
 
 ## Technologies Used
 ### Languages
@@ -188,7 +162,12 @@ In addition, you may also use this section to discuss plans for additional featu
     - To draw database diagrams
 - [Google Fonts](https://fonts.google.com/)
     - Fonts are fetched from this site.
+- [Favicon](https://favicon.io/)
+    - to generate Favicon
 
+
+DONE THIS FAR!
+----------------------------------------------------------------------------
 
 ## Testing
 
