@@ -118,11 +118,9 @@ This section is also where you would share links to any wireframes, mockups, dia
 ##### Database Choice
 - Development phase: SQLight which is installed with Django
 - Production phase (deployed): PostgreSQL, provided as an add-on by Heroku
-- Here is a visual:
-![Data Model](https://github.com/Carina-P/hire_hens/blob/master/wireframes/data_model.png?raw=true)
 
 ##### Data modell
-
+![Data Model](wireframes/data_model.png)
 
 #### Design Choices
 ##### Fonts
