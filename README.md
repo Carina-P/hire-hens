@@ -125,10 +125,8 @@ The data modell was visualised with [DrawSQL](https://drawsql.app/):
 
 #### Design Choices
 ##### Fonts
-For this project, the Google Font **Poppins** is chosen. Poppins is a newcomer in
-the geometric sans serif typefaces tradition. It is a rounded and modern fontawesome
-that I think feels friendly and fits on this site.
-As alternative Google Font Roboto is chosen.
+For this project, **Inter** is chosen and picked from [Google Fonts](https://fonts.google.com/). Inter is crafted and designed for computer screens. I think it is a modern and roboust and fits the site. 
+As the fallback font in case Inter isn't being imported into the site correctly, **Roboto** is chosen.
 
 ##### Colours
 ![Colours](wireframes/hire_hens_colours.png)
@@ -188,6 +186,8 @@ In addition, you may also use this section to discuss plans for additional featu
 ### Frameworks, Libraries and other tools
 - [DrawSQL](https://drawsql.app/)
     - To draw database diagrams
+- [Google Fonts](https://fonts.google.com/)
+    - Fonts are fetched from this site.
 
 
 ## Testing
