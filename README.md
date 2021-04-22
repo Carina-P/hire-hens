@@ -120,6 +120,7 @@ This section is also where you would share links to any wireframes, mockups, dia
 - Production phase (deployed): PostgreSQL, provided as an add-on by Heroku
 
 ##### Data modell
+The data modell was visualised with [DrawSQL](https://drawsql.app/):
 ![Data Model](wireframes/data_model.png)
 
 #### Design Choices
@@ -130,6 +131,14 @@ that I think feels friendly and fits on this site.
 As alternative Google Font Roboto is chosen.
 
 ##### Colours
+![Colours](wireframes/hire_hens_colours.png)
+- Black: #000000
+- White: #FFFFFF
+- Honey Yellow: #F9B236
+Black and white are used to get a modern apperance and to get a good contrast. 
+Honey Yellow is taken from a photo of a brown hen and this colour is used on the site to draw attention.
+
+##### Icons
 ## Features
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
@@ -166,11 +175,19 @@ In addition, you may also use this section to discuss plans for additional featu
 - Another feature idea
 
 ## Technologies Used
+### Languages
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) 
+    - To structure the web content
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) 
+    - To describe the web page's appearance/presentation
+- [JavaScript](https://www.javascript.com/)
+    - Bringing interactivity and logic to the site.
+- [Python](https://www.python.org)
+    - To manage logic and information on server side
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-
-- [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
+### Frameworks, Libraries and other tools
+- [DrawSQL](https://drawsql.app/)
+    - To draw database diagrams
 
 
 ## Testing
