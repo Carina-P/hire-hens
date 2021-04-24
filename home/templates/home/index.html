@@ -1,6 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block page_header %}
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
-<h1 class="display-4 text-success">It works!</h1>
+<div class="container h-100">
+    <div class="row h-100 justify-content-between">
+        <div class="col-5 my-auto">
+            <h1>Hire Hens</h1>
+            <p>Start a subscription of hens on a montly basis including the equipment and consumables you want.</p>
+            <div class="my-5">
+                <a hrefs="" class="btn btn-lg btn-dark">Start Subscription</a>
+            </div>
+        </div>
+        <div class="col-4 my-auto">
+            <div>
+                <a href="" class="btn btn-lg btn-dark">Register</a>
+                <hr>
+                <a href="" class="btn btn-lg btn-dark">Log In</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
