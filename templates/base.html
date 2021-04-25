@@ -1,4 +1,5 @@
 {% load static %}
+
 <!doctype html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
   {% block meta %}
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% endblock %}
 
   {% block extra_meta %}
@@ -37,13 +38,13 @@
 
 <body>
   <header class="container-fluid fixed-top">
-    <div id="top-nav" class="row bg-green pt-lg-2 d-none d-lg-flex">
+    <div id="topnav" class="row bg-green justify-content-between pt-lg-2 d-none d-lg-flex">
       <div class="col12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
         <a href="{% url 'home' %}" class="navbar-brand">
-          <img src="/media/egg.png" alt="logo" width="25">Hire Hens
+          <img src="/media/egg.png" alt="logo" width="25"> Hire Hens
         </a>
       </div>
-      <div class="col12 col-lg-4 my-auto py-1 py-lg-0 text-right">
+      <div class="col12 col-lg-4 my-auto py-1 py-lg-0 text-end">
         <ul class="list-inline list-unstyled text-center my-0">
           <li class="list-inline-item dropdown">
             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
