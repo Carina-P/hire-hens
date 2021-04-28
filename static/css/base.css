@@ -12,7 +12,7 @@ body {
     color: #000000;
     background-color: #3b7f00;
     font-size: 1rem;
-    height: calc(100vh - 164px);
+    height: calc(100vh - 128px);
     background: url('/media/chicken-alt3.jpg') no-repeat center center fixed;
     background-size: cover;
 }
@@ -42,8 +42,13 @@ body {
     color: #ffffff;
 }
 
-.bg-beige {
+.bg-blue {
     background-color: #afc1d5;
+    color: #000000;
+}
+
+.bg-beige {
+    background-color: #edca96;
     color: #000000;
 }
 
@@ -83,26 +88,15 @@ a {
     color: #ffffff;
 }
 
+.header-container {
+    padding-top: 128px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
-    }
-}
-
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-
-    .header-container {
-        padding-top: 164px;
     }
 }
