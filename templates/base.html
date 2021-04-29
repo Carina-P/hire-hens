@@ -37,63 +37,77 @@
 </head>
 
 <body>
-  <header class="container-fluid fixed-top">
-    <div id="topnav" class="row bg-black justify-content-between pt-lg-2 d-none d-md-flex">
-      <div class="col12 col-md-4 my-auto py-1 py-md-0 text-center text-md-left">
-        <a href="{% url 'home' %}" class="navbar-brand">
-          <img src="/media/egg.png" alt="logo" width="25"> HENS for HIRE
-        </a>
-      </div>
-      <div class="col12 col-md-4 my-auto py-1 py-md-0 text-end">
-        <ul class="list-inline list-unstyled text-center my-0">
-          <li class="list-inline-item dropdown">
-            <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              <div class="text-center">
-                <div><i class="fas fa-user fa-lg"></i></div>
-                <p class="my-0">My Account</p>
+  <header class="container-fluid fixed-top p-0">
+    <!-- Inspired from Bootstrap -->
+    <nav class="navbar navbar-expand-md bg-black">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars fa-2x bg-black"></i>
+      </button>
+      {% include 'includes/mobile-header.html' %}
+      <div class="collapse navbar-collapse" id="navigation">
+        <div class="col-12 col-md-4 d-none d-md-block my-auto py-1 py-md-0 text-center">
+          <a href="{% url 'home' %}" class="navbar-brand">
+            <img src="/media/egg.png" alt="logo" width="25"> HENS for HIRE
+          </a>
+        </div>
+        <div class="col-12 col-md-4 ps-3">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-md-none">
+              <a class="nav-link" href="#">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">HIRE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">BUY</a>
+            </li>
+            <li class="nav-item">
+              <a class=" nav-link" href="#">FAQ</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 d-none d-md-block my-auto py-1 py-md-0 text-end">
+          <ul class="list-inline list-unstyled text-center my-0">
+            <li class="list-inline-item dropdown">
+              <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <div class="text-center">
+                  <div><i class="fas fa-user fa-lg"></i></div>
+                  <p class="my-0">My Account</p>
+                </div>
+              </a>
+              <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <a href="" class="dropdown-item">Administration</a>
+                {% endif %}
+                <a href="" class="dropdown-item">My Profile</a>
+                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                {% else %}
+                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                {% endif %}
               </div>
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="user-options">
-              {% if request.user.is_authenticated %}
-              {% if request.user.is_superuser %}
-              <a href="" class="dropdown-item">Administration</a>
-              {% endif %}
-              <a href="" class="dropdown-item">My Profile</a>
-              <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-              {% else %}
-              <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-              <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-              {% endif %}
-            </div>
-          </li>
-          <li class="list-inline-item">
-            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
-              <div class="text-center">
-                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                <p class="my-0">
-                  {% if grand_total %}
-                  ${{ grand_total|floatformat:2 }}
-                  {% else %}
-                  $0.00
-                  {% endif %}
-                </p>
-              </div>
-            </a>
-          </li>
-        </ul>
+            </li>
+            <li class="list-inline-item">
+              <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                <div class="text-center">
+                  <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                  <p class="my-0">
+                    {% if grand_total %}
+                    ${{ grand_total|floatformat:2 }}
+                    {% else %}
+                    $0.00
+                    {% endif %}
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="row bg-black">
-      <nav class="navbar navbar-expand-md w-100">
-        <button class="navbar-toggler bg-black" type="button" data-toggle="collapse" data-target="#navigation"
-          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars fa-2x"></i>
-        </button>
-        {% include 'includes/mobile-header.html' %}
-        {% include 'includes/navigation.html' %}
-      </nav>
-    </div>
+    </nav>
   </header>
 
   {% if messages %}
