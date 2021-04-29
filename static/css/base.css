@@ -92,6 +92,11 @@ a {
     padding-top: 80px;
 }
 
+.center-nav-items {
+    display: flex !important;
+    justify-content: space-around;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
