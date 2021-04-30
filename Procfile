@@ -1,1 +1,1 @@
-web: gunicorn hire-hens.wsgi:application
+web: gunicorn hire_hens.wsgi:application
