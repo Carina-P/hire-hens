@@ -117,7 +117,7 @@ a {
         background-color: #3b7f00;
         font-size: 1rem;
         height: calc(100vh - 80px - 148px);
-        background: url('/media/chicken-alt3.jpg') no-repeat center center fixed;
+        background: url('/media/homepage_chickens.jpg') no-repeat center center fixed;
         background-size: cover;
     }
 }
