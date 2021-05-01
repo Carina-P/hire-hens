@@ -13,7 +13,7 @@ body {
     background-color: #3b7f00;
     font-size: 1rem;
     height: calc(100vh - 80px - 116px);
-    background: url('/media/chicken-alt3.jpg') no-repeat center center fixed;
+    background: url('homepage_chickens.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
