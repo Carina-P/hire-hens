@@ -220,7 +220,14 @@ In addition, if it is not obvious, you should also describe how to run your code
 ### Media
 - The photos used in this site were obtained from:
     - Egg in logo: [pixabay](https://pixabay.com/sv/vectors/%C3%A4gg-oval-mat-omg%C3%A5ngen-157224/)
-    - Hen on home page: [pixabay](https://pixabay.com/sv/photos/kyckling-tupp-h%C3%B6na-kycklingar-p%C3%A5sk-4849979/) by [Danganhfoto](https://pixabay.com/sv/users/danganhfoto-14195971/)
+    - Chickens on home page: [pixabay](https://pixabay.com/sv/photos/kyckling-tupp-h%C3%B6na-kycklingar-p%C3%A5sk-4849979/) by [Danganhfoto](https://pixabay.com/sv/users/danganhfoto-14195971/
+    - Brahma hen: [pixabay](https://pixabay.com/sv/photos/brahma-h%C3%B6na-h%C3%B6na-brahma-g%C3%A5rd-4046755/) by [Emma_Ted](https://pixabay.com/sv/users/emma_ted-1979297/)
+    - Guinea fowl hen: [pixabay](https://pixabay.com/sv/photos/p%C3%A4rlh%C3%B6ns-arter-1165114/) by [Pixel-mixer](https://pixabay.com/sv/users/pixel-mixer-1197643/)
+    - Bantam hen: [pixabay](https://pixabay.com/sv/photos/kyckling-bantam-inhemsk-kyckling-5500417/) by [Jeannette1980](https://pixabay.com/sv/users/jeannette1980-15621666/)
+    - Coop: [pixabay](https://pixabay.com/sv/photos/slaktkycklingar-h%C3%B6ns-staket-5223315/) by [makarova89ms](https://pixabay.com/sv/users/makarova89ms-16749681/)
+    - Feederer: [pixabay](https://pixabay.com/sv/photos/tupp-h%C3%B6nshuset-h%C3%B6na-kyckling-5272635/) by [ArtisticOperations](https://pixabay.com/sv/users/artisticoperations-4161274/)
+    - Hay: [pixabay](https://pixabay.com/sv/vectors/h%C3%B6-balar-h%C3%B6stack-halm-g%C3%A5rden-576266/) by [OpenClipart-Vectors](https://pixabay.com/sv/users/openclipart-vectors-30363/)
+    
 
 ### Acknowledgements
 

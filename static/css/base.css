@@ -10,7 +10,7 @@ html {
 body {
     font-family: "IBM Plex Serif", "Roboto", "Open Sans";
     color: #000000;
-    background-color: #3b7f00;
+    background-color: #afc1d5;
     font-size: 1rem;
     height: calc(100vh - 80px - 116px);
     background: url('/media/homepage_chickens.jpg') no-repeat center center fixed;
@@ -24,6 +24,16 @@ body {
     justify-content: center;
     height: 1.5rem;
     width: 1.5rem;
+}
+
+.overlay {
+    min-height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: #afc1d5;
+    z-index: -1;
 }
 
 .btn:hover,
@@ -99,6 +109,48 @@ a {
 
 .no-bullets {
     list-style-type: none;
+}
+
+/* -------- FAQ --*/
+
+.accordion {
+    background-color: #f2f5f8;
+    color: #000000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+    background-color: #d7e0ea;
+}
+
+/* Inspired from w3 schools */
+.accordion:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #afc1d5;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 
 /* -------------------------------- Media Queries */
