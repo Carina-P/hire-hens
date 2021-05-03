@@ -20,11 +20,26 @@
             <hr>
         </div>
     </div>
-    <div class="container">
+    <div class="text-center mb-3 mt-3">
+        <a hrefs="" class="btn btn-lg btn-black">
+            Add FAQ
+        </a>
+    </div>
+    <div class="row justify-content-center">
         {% for faq in faqs %}
-        <button class="accordion">{{ faq.question }}</button>
-        <div class="panel">
-            <p class="ps-4">{{ faq.answer }}</p>
+        <div class="col-11 col-md-8 col-lg-10">
+            <button class="accordion">{{ faq.question }}</button>
+            <div class="panel">
+                <p class="ps-4">{{ faq.answer }}</p>
+            </div>
+        </div>
+        <div class="col-8 col-md-3 col-lg-2 text-center mb-3">
+            <a hrefs="" class="btn btn-black">
+                Edit
+            </a>
+            <a hrefs="" class="btn btn-black">
+                Remove
+            </a>
         </div>
         {% endfor %}
     </div>
