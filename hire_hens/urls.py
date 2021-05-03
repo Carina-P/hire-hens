@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from faq.views import get_faq
+from faq.views import get_faq, add_faq
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
-    path('faq', get_faq, name='get_faq')
+    path('faq/', get_faq, name='get_faq'),
+    path('faq/add_faq/', add_faq, name='add_faq'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
