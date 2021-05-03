@@ -41,3 +41,9 @@ def edit_faq(request, faq_id):
         'form': form
     }
     return render(request, 'faq/edit_faq.html', context)
+
+
+def delete_faq(request, faq_id):
+    faq = get_object_or_404(Faq, id=faq_id)
+    faq.delete()
+    return redirect('get_faq')
