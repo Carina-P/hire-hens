@@ -153,6 +153,10 @@ a {
     transition: max-height 0.2s ease-out;
 }
 
+.h-min-100 {
+    min-height: 100%;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
