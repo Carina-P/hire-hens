@@ -168,12 +168,6 @@ a {
 
 @media (max-width: 720px) {
     body {
-        font-family: "IBM Plex Serif", "Roboto", "Open Sans";
-        color: #000000;
-        background-color: #afc1d5;
-        font-size: 1rem;
         height: calc(100vh - 80px - 148px);
-        background: url('/media/homepage_chickens.jpg') no-repeat center center fixed;
-        background-size: cover;
     }
 }
