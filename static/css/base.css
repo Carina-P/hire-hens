@@ -77,6 +77,10 @@ body {
     color: #ffffff;
 }
 
+.text-white {
+    color: #ffffff;
+}
+
 .opacity-10 {
     opacity: 10%;
 }
@@ -151,10 +155,6 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-}
-
-.h-min-100 {
-    min-height: 100%;
 }
 
 /* -------------------------------- Media Queries */
