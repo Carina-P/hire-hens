@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="text-center mb-3 mt-3">
-        <a hrefs="{% url 'add_faq' %}" class="btn btn-lg btn-black">
+        <a href="{% url 'add_faq' %}" class="btn btn-lg btn-black">
             Add FAQ
         </a>
     </div>
@@ -34,10 +34,10 @@
             </div>
         </div>
         <div class="col-8 col-md-3 col-lg-3 col-xl-2 text-center mt-2 mb-4">
-            <a hrefs="/edit/{{ faq.id }}" class="btn btn-black">
+            <a href="{% url 'edit_faq' faq.id %}" class="btn btn-black">
                 Edit
             </a>
-            <a hrefs="/delete/{{ faq.id }}" class="btn btn-black">
+            <a href="{% url 'delete_faq' faq.id %}" class="btn btn-black">
                 Remove
             </a>
         </div>

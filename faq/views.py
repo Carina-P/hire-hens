@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Faq
 from .forms import FaqForm
 
@@ -14,11 +14,17 @@ def get_faq(request):
 
 
 def add_faq(request):
+    if not request.user.is_superuser:
+        # messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = FaqForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('get_faq')
+            return redirect('faq')
+        else:
+            # messages.error(request, 'Failed to add faq. Please ensure the form is valid.')
 
     form = FaqForm
     context = {
@@ -28,14 +34,20 @@ def add_faq(request):
 
 
 def edit_faq(request, faq_id):
+    if not request.user.is_superuser:
+        # messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     faq = get_object_or_404(Faq, id=faq_id)
 
     if request.method == 'POST':
         form = FaqForm(request.POST, instance=faq)
         if form.is_valid():
             form.save()
-            return redirect('get_faq')
-    
+            return redirect('faq')
+        else:
+            # messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+
     form = FaqForm(instance=faq)
     context = {
         'form': form
@@ -44,6 +56,11 @@ def edit_faq(request, faq_id):
 
 
 def delete_faq(request, faq_id):
+     if not request.user.is_superuser:
+        # messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+    
     faq = get_object_or_404(Faq, id=faq_id)
     faq.delete()
-    return redirect('get_faq')
+
+    return redirect('faq')

@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="container">
-        <form method="POST" action="add" class="text-center">
+        <form method="POST" class="text-center">
             {% csrf_token %}
             {{ form.as_p }}
             <div>

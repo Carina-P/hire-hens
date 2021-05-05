@@ -58,10 +58,10 @@
         </div>
         <div class="col-6 col-md-4 center-nav-items">
           <div class="navbar-nav">
-            <a class="nav-link px-3 d-block d-md-none" href="#">HOME</a>
-            <a class="nav-link px-3" href="#">HIRE</a>
-            <a class="nav-link px-3" href="#">BUY</a>
-            <a class=" nav-link px-3" href="#">FAQ</a>
+            <a href="#" class="nav-link px-3 d-block d-md-none">HOME</a>
+            <a href="#" class="nav-link px-3">HIRE</a>
+            <a href="#" class="nav-link px-3">BUY</a>
+            <a href="{% url 'faq' %}" class="nav-link px-3">FAQ</a>
             {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
             <div class="nav-item dropdown">
@@ -72,7 +72,7 @@
               <div class="dropdown-menu bg-black ps-4 border-0" aria-labelledby="adm-link">
                 <a href="#" class="dropdown-item text-white">Products</a>
                 <a href="#" class="dropdown-item text-white">Orders</a>
-                <a href="#" class="dropdown-item text-white">FAQ</a>
+                <a href="{% url 'faq' %}" class="dropdown-item text-white">FAQ</a>
               </div>
             </div>
             {% endif %}
