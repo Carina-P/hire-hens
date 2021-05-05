@@ -25,6 +25,7 @@ def add_faq(request):
             return redirect('faq')
         else:
             # messages.error(request, 'Failed to add faq. Please ensure the form is valid.')
+            print("error")
 
     form = FaqForm
     context = {
@@ -36,6 +37,7 @@ def add_faq(request):
 def edit_faq(request, faq_id):
     if not request.user.is_superuser:
         # messages.error(request, 'Sorry, only store owners can do that.')
+        print("error")
         return redirect(reverse('home'))
 
     faq = get_object_or_404(Faq, id=faq_id)
@@ -47,6 +49,7 @@ def edit_faq(request, faq_id):
             return redirect('faq')
         else:
             # messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            print("error")
 
     form = FaqForm(instance=faq)
     context = {
@@ -56,10 +59,11 @@ def edit_faq(request, faq_id):
 
 
 def delete_faq(request, faq_id):
-     if not request.user.is_superuser:
+    if not request.user.is_superuser:
         # messages.error(request, 'Sorry, only store owners can do that.')
+        print("error")
         return redirect(reverse('home'))
-    
+
     faq = get_object_or_404(Faq, id=faq_id)
     faq.delete()
 

@@ -26,7 +26,10 @@
             {{ form.as_p }}
             <div>
                 <p>
-                    <button type="submit">Add</button>
+                    <button type="submit" class="btn btn-black">Add</button>
+                    <a href="{% url 'faq'%}" class="btn btn-black">
+                        Cancel
+                    </a>
                 </p>
             </div>
         </form>
