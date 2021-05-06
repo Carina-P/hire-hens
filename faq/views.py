@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.contrib import messages
 from .models import Faq
 from .forms import FaqForm
 
@@ -10,6 +11,7 @@ def get_faq(request):
     context = {
         'faqs': faqs
     }
+    messages.success(request, "Hämtade alla faqs")
     return render(request, 'faq/faq.html', context)
 
 

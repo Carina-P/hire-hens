@@ -119,6 +119,20 @@ body {
     list-style-type: none;
 }
 
+/*---- Toasts ----*/
+
+.toast-container {
+    z-index: 9999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
 /* -------- FAQ --*/
 
 .accordion {
