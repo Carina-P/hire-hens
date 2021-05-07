@@ -11,23 +11,24 @@ def get_faq(request):
     context = {
         'faqs': faqs
     }
-    messages.success(request, "Hämtade alla faqs")
     return render(request, 'faq/faq.html', context)
 
 
 def add_faq(request):
     if not request.user.is_superuser:
-        # messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('faq')
 
     if request.method == 'POST':
         form = FaqForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'FAQ successfully added')
             return redirect('faq')
         else:
-            # messages.error(request, 'Failed to add faq. Please ensure the form is valid.')
-            print("error")
+            messages.error(
+                request, 'Failed to add faq. Please ensure the form is valid.'
+                )
 
     form = FaqForm
     context = {
@@ -38,9 +39,8 @@ def add_faq(request):
 
 def edit_faq(request, faq_id):
     if not request.user.is_superuser:
-        # messages.error(request, 'Sorry, only store owners can do that.')
-        print("error")
-        return redirect(reverse('home'))
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('faq')
 
     faq = get_object_or_404(Faq, id=faq_id)
 
@@ -48,10 +48,13 @@ def edit_faq(request, faq_id):
         form = FaqForm(request.POST, instance=faq)
         if form.is_valid():
             form.save()
+            messages.success(request, 'FAQ was succesfully changed.')
             return redirect('faq')
         else:
-            # messages.error(request, 'Failed to update product. Please ensure the form is valid.')
-            print("error")
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.'
+                )
 
     form = FaqForm(instance=faq)
     context = {
@@ -62,11 +65,11 @@ def edit_faq(request, faq_id):
 
 def delete_faq(request, faq_id):
     if not request.user.is_superuser:
-        # messages.error(request, 'Sorry, only store owners can do that.')
-        print("error")
-        return redirect(reverse('home'))
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('faq')
 
     faq = get_object_or_404(Faq, id=faq_id)
     faq.delete()
+    messages.success(request, "FAQ succesfully removed")
 
     return redirect('faq')
