@@ -1,0 +1,21 @@
+{% extends "base_faq.html" %}
+{% load static %}
+
+{% block faq_header%}
+{{ heading}}
+{% endblock faq_header %}
+
+{% block faq_content %}
+<div class="container">
+    <form method="POST" class="text-center">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <p>
+                {% include 'includes/black_button.html' with btn_type='submit' button_text=button_text %}
+                {% include 'includes/black_button.html' with url_to='faq' button_text='Cancel' %}
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock faq_content %}

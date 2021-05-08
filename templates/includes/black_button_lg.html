@@ -1,0 +1,13 @@
+{% if btn_type %}
+<button type={{ btn_type }} class="btn btn-lg btn-black">
+    {{ button_text }}
+</button>
+{% else %}
+{% if param %}
+<a href="{% url url_to param %}" class="btn btn-lg btn-black">
+    {% else %}
+    <a href="{% url url_to %}" class="btn btn-lg btn-black">
+        {% endif %}
+        {{ button_text }}
+    </a>
+    {% endif %}

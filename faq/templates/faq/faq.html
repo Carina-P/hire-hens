@@ -1,50 +1,29 @@
-{% extends "base.html" %}
+{% extends "base_faq.html" %}
 {% load static %}
 
+{% block faq_header%}
+Frequently Asked Questions
+{% endblock faq_header %}
 
-{% block page_header %}
-<div class="container header-container"></div>
-<div class="row">
-    <div class="col"></div>
+{% block faq_content %}
+<div class="text-center mb-3 mt-3">
+    {% include 'includes/black_button_lg.html' with url_to='add_faq' button_text='Add FAQ' %}
 </div>
-</div>
-{% endblock %}
-
-{% block content %}
-<div class="overlay"></div>
-<div class="container overflow-auto h-100">
-    <div class="row">
-        <div class="col text-center">
-            <hr>
-            <h2 class="logo-font mb-4">Frequently Asked Questions</h2>
-            <hr>
+<div class="row justify-content-center">
+    {% for faq in faqs %}
+    <div class="col-11 col-md-8 col-lg-9">
+        <button class="accordion">{{ faq.question }}</button>
+        <div class="panel">
+            <p class="ps-4">{{ faq.answer }}</p>
         </div>
     </div>
-    <div class="text-center mb-3 mt-3">
-        <a href="{% url 'add_faq' %}" class="btn btn-lg btn-black">
-            Add FAQ
-        </a>
+    <div class="col-8 col-md-3 col-lg-3 col-xl-2 text-center mt-2 mb-4">
+        {% include 'includes/black_button.html' with url_to='edit_faq' param=faq.id button_text='Edit' %}
+        {% include 'includes/black_button.html' with url_to='delete_faq' param=faq.id button_text='Remove' %}
     </div>
-    <div class="row justify-content-center">
-        {% for faq in faqs %}
-        <div class="col-11 col-md-8 col-lg-9">
-            <button class="accordion">{{ faq.question }}</button>
-            <div class="panel">
-                <p class="ps-4">{{ faq.answer }}</p>
-            </div>
-        </div>
-        <div class="col-8 col-md-3 col-lg-3 col-xl-2 text-center mt-2 mb-4">
-            <a href="{% url 'edit_faq' faq.id %}" class="btn btn-black">
-                Edit
-            </a>
-            <a href="{% url 'delete_faq' faq.id %}" class="btn btn-black">
-                Remove
-            </a>
-        </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
 </div>
-{% endblock %}
+{% endblock faq_content %}
 
 {% block postloadjs %}
 {{ block.super }}

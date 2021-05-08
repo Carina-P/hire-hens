@@ -32,9 +32,11 @@ def add_faq(request):
 
     form = FaqForm
     context = {
-        'form': form
+        'form': form,
+        'heading': 'Add FAQ',
+        'button_text': 'Add'
     }
-    return render(request, 'faq/add_faq.html', context)
+    return render(request, 'faq/faq_input.html', context)
 
 
 def edit_faq(request, faq_id):
@@ -58,9 +60,11 @@ def edit_faq(request, faq_id):
 
     form = FaqForm(instance=faq)
     context = {
-        'form': form
+        'form': form,
+        'heading': 'Edit FAQ',
+        'button_text': 'Edit'
     }
-    return render(request, 'faq/edit_faq.html', context)
+    return render(request, 'faq/faq_input.html', context)
 
 
 def delete_faq(request, faq_id):
