@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container header-container"></div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container overflow-auto h-100">
+    {% if rental %}
+    <div class="row">
+        <div class="col text-center">
+            <hr>
+            <h2 class="mb-4">RENTAL PACKAGE</h2>
+            {% include 'includes/breadcrumb.html' with active=category %}
+            <hr>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col text-center">
+            <hr>
+            <h3 class="mb-4">{% block products_header %}{% endblock products_header %}</h3>
+            <hr>
+        </div>
+    </div>
+    {% block products_content %}
+    {% endblock products_content %}
+</div>
+{% endblock %}
