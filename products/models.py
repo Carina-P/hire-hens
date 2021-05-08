@@ -4,6 +4,10 @@ from django.db import models
 
 
 class Category(models.Model):
+    
+    class Meta:
+        verbose_category_plural = "Categories"
+
     category = models.CharField(max_length=20)
     buyable = models.BooleanField()
     rentable = models.BooleanField()
