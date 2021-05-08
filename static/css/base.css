@@ -139,6 +139,11 @@ body {
     height: 4px;
 }
 
+/* -----Products -*/
+.breadcrumb-divider {
+    --bs-breadcrumb-divider: '>';
+}
+
 /* -------- FAQ --*/
 
 .accordion {

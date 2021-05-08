@@ -1,0 +1,19 @@
+<nav class="breadcrumb-divider" aria-label="breadcrumb">
+    <ol class="breadcrumb justify-content-center">
+        {% if active == 'hens' %}
+        <li class="breadcrumb-item active" aria-current="page">Hens</li>
+        {% else %}
+        <li class="breadcrumb-item"><a href="{% url 'category_hens' %}">Hens</a></li>
+        {% endif %}
+        {% if active == 'coops' %}
+        <li class="breadcrumb-item active" aria-current="page">Coop</li>
+        {% else %}
+        <li class="breadcrumb-item"><a href="#">Coop</a></li>
+        {% endif %}
+        {% if active == 'equip' %}
+        <li class="breadcrumb-item active" aria-current="page">Equipment</li>
+        {% else %}
+        <li class="breadcrumb-item"><a href="#">Equipment</a></li>
+        {% endif %}
+    </ol>
+</nav>
