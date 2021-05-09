@@ -148,6 +148,10 @@ body {
     --bs-breadcrumb-divider: '>';
 }
 
+.border-black {
+    border-color: #000000;
+}
+
 /* -------- FAQ --*/
 
 .accordion {

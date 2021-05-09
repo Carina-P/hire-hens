@@ -59,8 +59,21 @@
         <div class="col-6 col-md-4 center-nav-items">
           <div class="navbar-nav">
             <a href="#" class="nav-link px-3 d-block d-md-none">HOME</a>
-            <a href="#" class="nav-link px-3">HIRE</a>
-            <a href="#" class="nav-link px-3">BUY</a>
+            <a href="{% url 'get_products_by_category' 'Hens' 'rent' %}" class="nav-link px-3">HIRE</a>
+            <div class="nav-item dropdown">
+              <a class="nav-link px-3" href="#" id="adm-link" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                BUY
+              </a>
+              <div class="dropdown-menu bg-black ps-4 border-0" aria-labelledby="adm-link">
+                <a href="{% url 'get_products_by_category' 'Hens' 'buy' %}" class="dropdown-item text-white">Hens</a>
+                <a href="{% url 'get_products_by_category' 'Coops' 'buy' %}" class="dropdown-item text-white">Coops</a>
+                <a href="{% url 'get_products_by_category' 'Equipment' 'buy' %}"
+                  class="dropdown-item text-white">Equipment</a>
+                <a href="{% url 'get_products_by_category' 'Consumables' 'buy' %}"
+                  class="dropdown-item text-white">Consumables</a>
+              </div>
+            </div>
             <a href="{% url 'faq' %}" class="nav-link px-3">FAQ</a>
             {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
