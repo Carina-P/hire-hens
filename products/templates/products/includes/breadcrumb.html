@@ -1,19 +1,12 @@
 <nav class="breadcrumb-divider" aria-label="breadcrumb">
     <ol class="breadcrumb justify-content-center">
-        {% if active == 'hens' %}
-        <li class="breadcrumb-item active" aria-current="page">Hens</li>
+        {% for category in rental_categories %}
+        {% if category.category == this_category %}
+        <li class="breadcrumb-item" aria-current="page">{{ this_category }}</li>
         {% else %}
-        <li class="breadcrumb-item"><a href="{% url 'category_hens' %}">Hens</a></li>
+        <li class="breadcrumb-item"><a
+                href="{% url 'get_products_by_category' category.category 'rent' %}">{{ category.category }}</a></li>
         {% endif %}
-        {% if active == 'coops' %}
-        <li class="breadcrumb-item active" aria-current="page">Coop</li>
-        {% else %}
-        <li class="breadcrumb-item"><a href="#">Coop</a></li>
-        {% endif %}
-        {% if active == 'equip' %}
-        <li class="breadcrumb-item active" aria-current="page">Equipment</li>
-        {% else %}
-        <li class="breadcrumb-item"><a href="#">Equipment</a></li>
-        {% endif %}
+        {% endfor %}
     </ol>
 </nav>

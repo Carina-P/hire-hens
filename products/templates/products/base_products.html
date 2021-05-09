@@ -9,22 +9,25 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container overflow-auto h-100">
-    {% if rental %}
+    {{ rent }}
+    {% if rent %}
     <div class="row">
         <div class="col text-center">
             <hr>
             <h2 class="mb-4">RENTAL PACKAGE</h2>
-            Choose: {% include 'includes/breadcrumb.html' with active=category %}
+            <h3>Choose: {% include 'includes/breadcrumb.html' %} </h3>
+            <hr>
         </div>
     </div>
-    {% endif %}
+    {% else %}
     <div class="row">
         <div class="col text-center">
             <hr>
-            <h3 class="mb-4">{% block products_header %}{% endblock products_header %}</h3>
+            <h2 class="mb-4">{% block products_header %}{% endblock products_header %}</h2>
             <hr>
         </div>
     </div>
+    {% endif %}
     {% block products_content %}
     {% endblock products_content %}
 </div>
