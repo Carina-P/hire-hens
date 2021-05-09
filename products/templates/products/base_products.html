@@ -9,7 +9,6 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container overflow-auto h-100">
-    {{ rent }}
     {% if rent %}
     <div class="row">
         <div class="col text-center">
@@ -28,7 +27,8 @@
         </div>
     </div>
     {% endif %}
+
     {% block products_content %}
     {% endblock products_content %}
-</div>
-{% endblock %}
+
+    {% endblock %}
