@@ -7,4 +7,9 @@ urlpatterns = [
         views.get_products_by_category,
         name='get_products_by_category'
         ),
+    path(
+        'product_detail/<product_id>/<rent_or_buy>',
+        views.get_product,
+        name='product_detail'
+        ),
 ]

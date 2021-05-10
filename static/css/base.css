@@ -150,6 +150,7 @@ body {
 }
 
 .border-black {
+    border-style: solid;
     border-color: #000000;
 }
 
