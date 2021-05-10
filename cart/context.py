@@ -13,11 +13,13 @@ def cart_contents(request):
         product = get_object_or_404(Product, id=item_id)
         total += quantity * product.buying_price
         product_count += quantity
-        cart_items.append({
+        cart_items.append(
+            {
             'item_id': item_id,
             'quantity': quantity,
             'product': product
-        })
+        }
+        )
 
     context = {
         'cart_items': cart_items,

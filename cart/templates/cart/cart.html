@@ -10,7 +10,53 @@ Shopping cart
     <div class="col">
         {% if cart_items %}
         <div class="table-responsive rounded">
-            {{ cart_items }}
+            <table class="table table-sm table-borderless">
+                <thead class="text-black">
+                    <tr>
+                        <th scope="col">Product Info</th>
+                        <th scope="col"></th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                {% for item in cart_items %}
+                <tr>
+                    <td class="p-3 w-25">
+                        <img class="img-fluid" src="{{ item.product.image.url }}">
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">{{ item.product.name }}</p>
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">{{ item.product.buying_price }} SEK</p>
+                    </td>
+                    <td class="py-3 w-25">
+                        <p class="my-0">{{ item.quantity }}</p>
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">{{ item.product.buying_price }} SEK</p>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="5" class="pt-5 text-end">
+                        <h4><strong>Cart Total: {{ total|floatformat:2 }} SEK</strong></h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <a href="#" class="btn btn-black btn-lg m-4">
+                            <span>SECURE CHECKOUT</span>
+                            <span class="icon">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+
+            </table>
         </div>
         {% else %}
         <p class="lead mb-5 text-center">Your cart is empty.</p>
