@@ -9,37 +9,7 @@
 <div class="row p-3">
     {% for product in products %}
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="card h-100 border-black">
-            {% if product.image %}
-            <a href="#">
-                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-            </a>
-            {% else %}
-            <a href="#">
-                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }}">
-            </a>
-            {% endif %}
-            <div class="card-body pb-0">
-                <p class="mb-0">{{ product.name }}</p>
-            </div>
-            <div class="card-footer bg-white pt-0 border-0 text-left">
-                <div class="row">
-                    <div class="col">
-                        {% if rent == True %}
-                        <p class="lead mb-0 text-left font-weight-bold">{{ product.rental_price }} SEK/month</p>
-                        {% else %}
-                        <p class="lead mb-0 text-left font-weight-bold">{{ product.buying_price }} SEK</p>
-                        {% endif %}
-                        {% if request.user.is_superuser %}
-                        <small class="ml-3">
-                            <a href="#">Edit</a> |
-                            <a class="text-danger" href="#">Delete</a>
-                        </small>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include 'includes/card.html' %}
     </div>
     {% if forloop.counter|divisibleby:1 %}
     <div class="col-12 d-sm-none mb-2">
