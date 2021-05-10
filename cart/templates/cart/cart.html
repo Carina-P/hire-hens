@@ -8,9 +8,9 @@ Shopping cart
 {% block cart_content %}
 <div class="row">
     <div class="col">
-        {% if cart.items %}
+        {% if cart_items %}
         <div class="table-responsive rounded">
-
+            {{ cart_items }}
         </div>
         {% else %}
         <p class="lead mb-5 text-center">Your cart is empty.</p>
