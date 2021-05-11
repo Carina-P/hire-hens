@@ -5,11 +5,13 @@ from products.models import Product, Category
 def rental_package_contents(request):
 
     package_items = []
+    package_total = 0
     package = request.session.get('package', {})
 
     for item_id, quantity in package.items():
         product = get_object_or_404(Product, id=item_id)
         category = get_object_or_404(Category, id=product.category.id)
+        package_total += quantity * product.buying_price
 
         package_items.append(
             {
@@ -22,6 +24,7 @@ def rental_package_contents(request):
 
     context = {
         'package_items': package_items,
+        'package_total': package_total,
     }
 
     return context
