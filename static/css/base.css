@@ -154,6 +154,13 @@ body {
     border-color: #000000;
 }
 
+
+/* ----Cart ---*/
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
 /* -------- FAQ --*/
 
 .accordion {
