@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Product
 
 # Create your views here.
@@ -44,7 +44,6 @@ def add_to_package(request, item_id):
     """ Add a quantity of the product to the rental package """
 
     quantity = int(request.POST.get('quantity'))
-    redirect_url = request.POST.get('redirect_url')
     package = request.session.get('package', {})
 
     if item_id in list(package.keys()):
@@ -53,5 +52,11 @@ def add_to_package(request, item_id):
         package[item_id] = quantity
 
     request.session['package'] = package
+    product = get_object_or_404(Product, id=item_id)
+    category = product.category
 
-    return redirect(redirect_url)
+    return redirect(
+        'get_products_by_category',
+        category=category,
+        rent_or_buy='rent'
+        )
