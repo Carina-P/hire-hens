@@ -11,7 +11,7 @@ def rental_package_contents(request):
     for item_id, quantity in package.items():
         product = get_object_or_404(Product, id=item_id)
         category = get_object_or_404(Category, id=product.category.id)
-        package_total += quantity * product.buying_price
+        package_total += quantity * product.rental_price
 
         package_items.append(
             {

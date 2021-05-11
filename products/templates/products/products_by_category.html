@@ -1,5 +1,6 @@
 {% extends "base_products.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block products_header %}
 {{ this_category }}
@@ -95,7 +96,7 @@
                         <a class="remove-item text-danger" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                     </td>
                     <td class="py-3">
-                        <p class="my-0">{{ item.product.rental_price }} SEK</p>
+                        <p class="my-0">{{ item.product.rental_price | calc_subtotal:item.quantity }} SEK</p>
                     </td>
                 </tr>
                 {% endfor %}
