@@ -12,4 +12,5 @@ urlpatterns = [
         views.get_product,
         name='product_detail'
         ),
+    path('add/<item_id>/', views.add_to_package, name='add_to_package'),
 ]

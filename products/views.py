@@ -38,3 +38,20 @@ def get_product(request, product_id, rent_or_buy):
         "rent": rent
     }
     return render(request, 'products/product_detail.html', context)
+
+
+def add_to_package(request, item_id):
+    """ Add a quantity of the product to the rental package """
+
+    quantity = int(request.POST.get('quantity'))
+    redirect_url = request.POST.get('redirect_url')
+    package = request.session.get('package', {})
+
+    if item_id in list(package.keys()):
+        package[item_id] += quantity
+    else:
+        package[item_id] = quantity
+
+    request.session['package'] = package
+
+    return redirect(redirect_url)

@@ -8,17 +8,19 @@ Shopping cart
 
 {% block cart_content %}
 <div class="row mb-3">
-    <div class="col bg-white">
+    <div class="col bg-white pt-4">
         {% if cart_items %}
         <div class="table-responsive rounded">
-            <table class="table table-sm">
+            <table class="table table-sm text-center">
                 <thead class="text-black">
                     <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Subtotal</th>
+                        <h4>
+                            <th scope="col">Product</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Subtotal</th>
+                        </h4>
                     </tr>
                 </thead>
                 {% for item in cart_items %}
