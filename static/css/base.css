@@ -157,7 +157,9 @@ body {
 
 /* ----Cart ---*/
 .update-link,
-.remove-item {
+.remove-item,
+.update-package-link,
+.remove-package-item {
     cursor: pointer;
 }
 

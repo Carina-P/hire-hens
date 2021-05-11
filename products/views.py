@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import Category, Product
 
 # Create your views here.
@@ -60,3 +60,38 @@ def add_to_package(request, item_id):
         category=category,
         rent_or_buy='rent'
         )
+
+
+def adjust_package(request, item_id):
+    """ In rental package adjust the quantity of the specified product to new amount """
+
+    quantity = int(request.POST.get('quantity'))
+    print(quantity)
+    package = request.session.get('package', {})
+
+    product = get_object_or_404(Product, id=item_id)
+    category = product.category
+    if quantity > 0:
+        package[item_id] = quantity
+    else:
+        package.pop(item_id)
+
+    request.session['package'] = package
+    return redirect(
+        'get_products_by_category',
+        category=category,
+        rent_or_buy='rent'
+        )
+
+
+def remove_from_package(request, item_id):
+    """ Remove item from cart """
+    try:
+        package = request.session.get('package', {})
+        package.pop(item_id)
+
+        request.session['package'] = package
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
