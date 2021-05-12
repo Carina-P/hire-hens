@@ -66,7 +66,6 @@ def adjust_package(request, item_id):
     """ In rental package adjust the quantity of the specified product to new amount """
 
     quantity = int(request.POST.get('quantity'))
-    print(quantity)
     package = request.session.get('package', {})
 
     product = get_object_or_404(Product, id=item_id)
