@@ -10,6 +10,7 @@ Shopping cart
 <div class="row mb-3">
     <div class="col bg-white border-black pt-4">
         {% if cart_items %}
+        <h4 class="text-center mb-2">Items I buy</h4>
         <div class="table-responsive rounded">
             <table class="table table-sm text-center">
                 <thead class="text-black">
@@ -70,23 +71,11 @@ Shopping cart
                     </td>
                 </tr>
                 {% endfor %}
-
                 <tr>
-                    <td colspan="5" class="pt-5 text-end">
+                    <td colspan="5" class="pt-5 text-center">
                         <h4><strong>Buy Total: {{ total|floatformat:2 }} SEK</strong></h4>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="5" class="text-center">
-                        <a href="#" class="btn btn-black btn-lg m-4">
-                            <span>SECURE CHECKOUT</span>
-                            <span class="icon">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </a>
-                    </td>
-                </tr>
-
             </table>
         </div>
         {% else %}
@@ -97,6 +86,7 @@ Shopping cart
 <div class="row">
     <div class="col bg-white border-black pt-4">
         {% if cart_rental_items %}
+        <h4 class="text-center mb-2">Items I Rent</h4>
         <div class="table-responsive rounded">
             <table class="table table-sm text-center">
                 <thead class="text-black">
@@ -111,7 +101,7 @@ Shopping cart
                         </h4>
                     </tr>
                 </thead>
-                {% for item in cart_items %}
+                {% for item in cart_rental_items %}
                 <tr>
                     <td class="py-3">
                         <p class="my-0">{{ item.months }}</p>
@@ -126,27 +116,17 @@ Shopping cart
                         <p class="my-0">{{ item.product.rental_price }} SEK</p>
                     </td>
                     <td class="py-3 w-25">
-                        <p class="my-0">{{ item.quantity }} SEK</p>
+                        <p class="my-0">{{ item.quantity }}</p>
                     </td>
                     <td class="py-3">
-                        <p class="my-0">{{ item.product.buying_price | calc_subtotal:item.quantity }} SEK</p>
+                        <p class="my-0">{% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK
+                        </p>
                     </td>
                 </tr>
                 {% endfor %}
-
                 <tr>
-                    <td colspan="6" class="pt-5 text-end">
+                    <td colspan="6" class="pt-5 text-center">
                         <h4><strong>Rent Total: {{ total_rental|floatformat:2 }} SEK</strong></h4>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6" class="text-center">
-                        <a href="#" class="btn btn-black btn-lg m-4">
-                            <span>SECURE CHECKOUT</span>
-                            <span class="icon">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </a>
                     </td>
                 </tr>
 
@@ -155,6 +135,19 @@ Shopping cart
         {% else %}
         <p class="lead my-5 text-center">No items to rent in your cart.</p>
         {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center mt-5">
+        <h4><strong>Grand Total: {{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</strong></h4>
+    </div>
+    <div class="col-12 text-center">
+        <a href="#" class="btn btn-black btn-lg m-4">
+            <span>SECURE CHECKOUT</span>
+            <span class="icon">
+                <i class="fas fa-lock"></i>
+            </span>
+        </a>
     </div>
 </div>
 {% endblock cart_content %}
