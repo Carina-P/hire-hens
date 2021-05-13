@@ -125,16 +125,18 @@ The data modell was visualised with [DrawSQL](https://drawsql.app/):
 
 #### Design Choices
 ##### Fonts
-For this project, **Inter** is chosen and picked from [Google Fonts](https://fonts.google.com/). Inter is crafted and designed for computer screens. I think it is a modern and roboust and fits the site. 
-As the fallback font in case Inter isn't being imported into the site correctly, **Roboto** is chosen.
+For this project, **IBM Plex Serif** is chosen to give a rural experience. The font is picked from [Google Fonts](https://fonts.google.com/). It is a friendly style which fits both web and mobile interfaces, and even in print.
+As the fallback font in case IBM Plex Serif isn't being imported into the site correctly, **Roboto** and **Open Sans** are chosen.
 
 ##### Colours
 ![Colours](wireframes/hire_hens_colours.png)
 - Black: #000000
 - White: #FFFFFF
-- Honey Yellow: #F9B236
+- Different shades of blue: #AFC1D5, #D7E0DA, #F2F5F8
+- Green: #A3C284
 Black and white are used to get a modern apperance and to get a good contrast. 
-Honey Yellow is taken from a photo of a brown hen and this colour is used on the site to draw attention.
+Blue and green was choosen as the hens are able to be outside under the blue sky and on the green grass. 
+
 
 ## Features
 
