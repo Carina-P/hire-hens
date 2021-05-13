@@ -142,7 +142,7 @@ Shopping cart
         <h4><strong>Grand Total: {{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</strong></h4>
     </div>
     <div class="col-12 text-center">
-        <a href="#" class="btn btn-black btn-lg m-4">
+        <a href="{% url 'checkout' %}" class="btn btn-black btn-lg m-4">
             <span>SECURE CHECKOUT</span>
             <span class="icon">
                 <i class="fas fa-lock"></i>

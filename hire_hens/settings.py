@@ -80,6 +80,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'faq', 'templates', 'faq'),
             os.path.join(BASE_DIR, 'products', 'templates', 'products'),
             os.path.join(BASE_DIR, 'cart', 'templates', 'cart'),
+            os.path.join(BASE_DIR, 'checkout', 'templates', 'checkout'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -88,6 +89,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'cart.context.cart_contents',
                 'cart.context.cart_rental_contents',
                 'products.context.rental_package_contents',

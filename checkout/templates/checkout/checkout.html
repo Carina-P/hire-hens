@@ -13,17 +13,17 @@ Checkout
 {% block checkout_content %}
 <div class="row">
     <div class="col-12 col-lg-6 order-lg-last mb-5">
-        <p class="text-muted">Order Summary ({{ product_count }})</p>
+        <p>Buy Order Summary ({{ product_count }})</p>
         <div class="row">
-            <div class="col-7 offset-2">
-                <p class="mb-1 mt-0 small text-muted">Item to Buy</p>
+            <div class="col-6 offset-2">
+                <p class="mb-1 mt-0 small">Item to Buy</p>
             </div>
-            <div class="col-3 text-right">
-                <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+            <div class="col-4 text-right">
+                <p class="mb-1 mt-0 small">Subtotal</p>
             </div>
         </div>
         {% for item in cart_items %}
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-2 mb-1">
                 <a href="{% url 'product_detail' item.product.id 'buy' %}">
                     {% if item.product.image %}
@@ -33,25 +33,35 @@ Checkout
                     {% endif %}
                 </a>
             </div>
-            <div class="col-7">
+            <div class="col-6">
                 <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                <p class="my-0 small">Qty: {{ item.quantity }}</p>
             </div>
-            <div class="col-3 text-right">
-                <p class="my-0 small text-muted">{{ item.product.buying_price | calc_subtotal:item.quantity }} SEK</p>
+            <div class="col-4 text-right">
+                <p class="my-0 small">{{ item.product.buying_price | calc_subtotal:item.quantity }} SEK</p>
             </div>
         </div>
         {% endfor %}
-        <div class="row">
+        <div class="row text-black text-right">
             <div class="col-7 offset-2">
-                <p class="mb-1 mt-0 small text-muted">Item to Hire</p>
+                <p class="my-0">Buy Total:</p>
             </div>
-            <div class="col-3 text-right">
-                <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+            <div class="col-3">
+                <p class="my-0"><strong>{{ total | floatformat:2 }} SEK</strong></p>
+            </div>
+        </div>
+        <hr>
+        <p>Rental Order Summary ({{ product_rental_count }})</p>
+        <div class="row">
+            <div class="col-6 offset-2">
+                <p class="mb-1 mt-0 small">Item to Hire</p>
+            </div>
+            <div class="col-4 text-right">
+                <p class="mb-1 mt-0 small">Subtotal</p>
             </div>
         </div>
         {% for item in cart_rental_items %}
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-2 mb-1">
                 <a href="{% url 'product_detail' item.product.id 'rent' %}">
                     {% if item.product.image %}
@@ -61,24 +71,32 @@ Checkout
                     {% endif %}
                 </a>
             </div>
-            <div class="col-7">
+            <div class="col-6">
                 <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                <p class="my-0 small text-muted">Months: {{ item.months }}</p>
+                <p class="my-0 small">Qty: {{ item.quantity }}</p>
+                <p class="my-0 small">Months: {{ item.months }}</p>
             </div>
-            <div class="col-3 text-right">
-                <p class="my-0 small text-muted">
-                    {% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK/month</p>
+            <div class="col-4 text-right">
+                <p class="my-0 small">
+                    {% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK</p>
             </div>
         </div>
         {% endfor %}
-        <hr class="my-0">
         <div class="row text-black text-right">
+            <div class="col-7 offset-2">
+                <p class="my-0">Rent Total:</p>
+            </div>
+            <div class="col-3">
+                <p class="my-0"><strong>{{ total_rental| floatformat:2 }} SEK</strong></p>
+            </div>
+        </div>
+        <hr class="my-0">
+        <div class="row text-black text-right mt-3">
             <div class="col-7 offset-2">
                 <p class="my-0">Grand Total:</p>
             </div>
             <div class="col-3">
-                <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
+                <p class="my-0"><strong>{{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</strong></p>
             </div>
         </div>
     </div>
@@ -123,7 +141,7 @@ Checkout
             </fieldset>
 
             <div class="submit-button text-right mt-5 mb-2">
-                <a href="{% url 'view_bag' %}" class="btn btn-outline-black rounded-0">
+                <a href="{% url 'cart' %}" class="btn btn-outline-black rounded-0">
                     <span class="icon">
                         <i class="fas fa-chevron-left"></i>
                     </span>
@@ -139,7 +157,8 @@ Checkout
                     <span class="icon">
                         <i class="fas fa-exclamation-circle"></i>
                     </span>
-                    <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                    <span>Your card will be charged
+                        <strong>{{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</strong></span>
                 </p>
             </div>
         </form>
