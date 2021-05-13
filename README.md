@@ -1,29 +1,34 @@
 # ![An egg](media/favicon.ico)   Hire Hens
 
-Do you dream about fetching fresch eggs, from your own hens! **Hire Hens**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need.
+Do you dream about fetching fresch eggs, from your own hens! **Hire Hens**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need. If you later on, or immediately, decides to buy hens instead - we can help you!
  
 ## UX
 ### Strategy Plane
 #### Site owner's goal
-- Sell renting packages including hens and accessories.
+- Sell rental packages including hens and accessories.
+- Sell hens, coops, equipment and consumables fitted for hens.
 - Being able to update the information of the page.
+- Being able to administrate orders
 
 #### External user's goal
-- Hire hens and accessories, as coop and dishes.
+- Hire hens and accessories, as coop, feeders and waterers.
 - Find information:
     - How to hire hens.
     - What a package consists of.
     - How to take care of the hens.
     - How long it is possible to hire and what happens after the hire.
+- Buy hens, coops, equipment and consumables.
 
 **Site owners need**
-- That it is easy for a user to hire hens.
+- That it is easy for a user to hire hens and accessories.
+- That is easy for a user to buy hens, equipment and consumables.
 - That it is easy and intuitive to update information on the page.
 - Authority to manage information on the page.
 
 **Users** needs:
-- Easy and intuitive way to hire hens.
+- Easy and intuitive way to hire hens, coops and equipment.
 - Easy to find more information about the rental process and how to take care of a hen.
+- Easy to buy hens and accessories.
 
 ### Scope Plane
 #### User stories
@@ -38,25 +43,32 @@ Do you dream about fetching fresch eggs, from your own hens! **Hire Hens**, is t
 
 - US_005: As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer.
 
-- US_006: As a user, I want to add my rental package to a cart.
+- US_006: As a user, I want to buy hens, coop/s, equipment/s and consumables for hens.
 
-- US_007: As a user, I want to look at my cart.
+- US_007: As a user, I want to add my rental package to a cart.
 
-- US_008: As a user, I want to checkout my cart.
+- US_008: As a user, I want to add my hens, coop/s, equipment/s and consumable/s, that I want to buy, to a cart.
 
-- US_009: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
+- US_009: As a user, I want to look at my cart.
 
-- US_010: As a user, I want to be able to buy things even if I am not logged in.
+- US_010: As a user, I want to checkout my cart.
 
-- US_011: As a user, I want to find information about how to hire hens and how to take care of hens.
+- US_011: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
 
-- US_0012: As an administrator of the site, I want to login with the authority to add, change and delete information on the site.
+- US_012: As a user, I want to be able to buy things even if I am not logged in.
 
-- US_0013: As an administrator of the site, I want to be able to add, change and delete the type of hens that can be hired.
+- US_013: As a user, I want to find information about how to hire hens and how to take care of hens.
 
-- US_0014: As an administrator of the site, I want to be able to add, change and delete "hen accessories" as coop, feeder and waterer.
+- US_0014: As an administrator of the site, I want to login with the authority to add, change and delete information on the site.
 
-- US_0015: As an administrator of the site, I want to be able to add, change and delete information of renting process and how to take care of the hens.
+- US_0015: As an administrator of the site, I want to be able to add, change and delete the type of hens, coops, equipment that can be hired or bought. And add, change and delete consumables that can be bought.
+
+- US_0016: As an administrator of the site, I want to be able to add, change and delete information of renting process and how to take care of the hens.
+
+- US_0017: As an administrator I want to be able to look at the orders and filter to see:
+    - which orders have not been delivered yet or when they where delivered.
+    - which orders includes with rentals that still is not returned.
+    - whick orders includes rental that should be returned within a month.
 
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
