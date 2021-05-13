@@ -78,7 +78,7 @@ In particular, as part of this section we recommend that you provide a list of U
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
 ### Structure Plane
-- A "homepage" with a picture of hens in a backyard.
+- A "homepage" with a picture of hens.
 - Navbar with:
     - Brand-image that leads to homepage.
     - Link to page where user can put together rental package.
@@ -114,9 +114,11 @@ This section is also where you would share links to any wireframes, mockups, dia
 - The user browses via the navigation system.
 - To hire hens, the user is led through the process:
     - first choosing hens (which is mandatory)
-    - then accessories
+    - then coop
+    - and then equipment as feeder and waterer
     - add the package to a cart
     - and finally pay for the content of the cart.
+- User can go to cart and see its content. User can change and delete content in cart.
 - Interactive design that works on Mobile, Tablet as well as Desktop.
 
 #### Wireframes
