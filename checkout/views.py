@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.conf import settings
 
 from .forms import OrderForm
+from cart.context import cart_contents, cart_rental_contents
+
+import stripe
 
 # Create your views here.
 
@@ -13,6 +17,13 @@ def checkout(request):
     if not cart and not cart_rental:
         messages.error(request, "There is nothing in your cart at the moment")
         return redirect('home')
+
+    current_cart = cart_contents(request)
+    total = current_cart["total"]
+    current_rental_cart = cart_rental_contents(request)
+    total_rental = current_rental_cart["total_rental"]
+    # Stripe only accepts integer as amount to charge
+    stripe_total = round((total + total_rental) * 100)
 
     context = {
         'order_form': OrderForm(),
