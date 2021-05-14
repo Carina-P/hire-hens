@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
-from .models import OrderBuyItem, OrderRentalItem
+from .models import Order, OrderBuyItem, OrderRentalItem
 from products.models import Product
 from cart.context import cart_contents, cart_rental_contents
 
@@ -57,7 +57,7 @@ def checkout(request):
                         order_rental_item = OrderRentalItem(
                             order=order,
                             product=product,
-                            quantity=item_data,
+                            quantity=quantity,
                             months=months,
                         )
                         order_rental_item.save()
@@ -98,7 +98,7 @@ def checkout(request):
   
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
-            To the devloper: must be set in the environment.')
+            To the developer: must be set in the environment.')
 
     context = {
         'order_form': order_form,
@@ -107,3 +107,27 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
+
+
+def checkout_success(request, order_number):
+    """
+    Handle sucessful checkouts
+    """
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order.number}. A confirmation \
+            email will be sent to {order.email}.')
+
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    if 'cart_rental' in request.session:
+        del request.session['cart_rental']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
+
+    return render(request, template, context)
