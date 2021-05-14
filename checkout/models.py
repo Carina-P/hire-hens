@@ -36,11 +36,11 @@ class Order(models.Model):
         """
         buy_total = self.buyitems.aggregate(
             Sum('buyitem_total')
-            )['buyitem_total__sum']
+            )['buyitem_total__sum'] or 0
 
-        rent_total = self.rentitems.aggregate(
-            Sum('rentitem_total')
-            )['rentitem_total__sum']
+        rent_total = self.rentalitems.aggregate(
+            Sum('rentalitem_total')
+            )['rentalitem_total__sum'] or 0
 
         self.grand_total = buy_total + rent_total
         self.save()
@@ -83,7 +83,7 @@ class OrderBuyItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.product
+        return self.product.name
 
 
 class OrderRentalItem(models.Model):
@@ -113,4 +113,4 @@ class OrderRentalItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.product
+        return self.product.name

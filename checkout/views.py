@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from django.conf import settings
 
@@ -16,7 +16,7 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    if request.metod == 'POST':
+    if request.method == 'POST':
         cart = request.session.get('cart', {})
         cart_rental = request.session.get('cart_rental', {})
 
@@ -70,7 +70,9 @@ def checkout(request):
                         return redirect('cart')
 
             request.session['save_info'] = 'save_info' in request.POST
-            return redirect('checkout_success', args=[order.order_number])
+            return redirect(
+                reverse('checkout_success', args=[order.order_number])
+                )
         else:
             messages.error(request, 'There was an error with your form\
                 Please double check your information')
@@ -79,7 +81,9 @@ def checkout(request):
         cart_rental = request.session.get('cart_rental', {})
 
         if not cart and not cart_rental:
-            messages.error(request, "There is nothing in your cart at the moment")
+            messages.error(
+                request, "There is nothing in your cart at the moment"
+                )
             return redirect('home')
 
         current_cart = cart_contents(request)
@@ -95,7 +99,7 @@ def checkout(request):
         )
 
         order_form = OrderForm()
-  
+
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             To the developer: must be set in the environment.')
@@ -116,7 +120,7 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order successfully processed! \
-        Your order number is {order.number}. A confirmation \
+        Your order number is {order_number}. A confirmation \
             email will be sent to {order.email}.')
 
     if 'cart' in request.session:
