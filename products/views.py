@@ -63,7 +63,10 @@ def add_to_package(request, item_id):
 
 
 def adjust_package(request, item_id):
-    """ In rental package adjust the quantity of the specified product to new amount """
+    """ 
+    In rental package adjust the quantity of the specified product to new
+    amount 
+    """
 
     quantity = int(request.POST.get('quantity'))
     package = request.session.get('package', {})
