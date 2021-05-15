@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse, HttpResponse
+from django.shortcuts import (
+    render, redirect, get_object_or_404, reverse, HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -52,7 +54,13 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            order.original_cart_rental = json.dumps(cart_rental)
+            order.save()
+
             for item_id, item_data in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -108,8 +116,8 @@ def checkout(request):
 
         current_cart = cart_contents(request)
         total = current_cart["total"]
-        current_rental_cart = cart_rental_contents(request)
-        total_rental = current_rental_cart["total_rental"]
+        current_cart_rental = cart_rental_contents(request)
+        total_rental = current_cart_rental["total_rental"]
         # Stripe only accepts integer as amount to charge
         stripe_total = round((total + total_rental) * 100)
         stripe.api_key = stripe_secret_key
