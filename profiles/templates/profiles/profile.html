@@ -1,0 +1,21 @@
+{% extends "base_profile.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock extra_css %}
+
+{% block profile_header %}
+My Profile
+{% endblock profile_header %}
+
+{% block profile_content %}
+
+{% endblock profile_content %}
+
+{% block postloadjs %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{% endblock postloadjs%}

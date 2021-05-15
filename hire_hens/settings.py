@@ -82,6 +82,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'products', 'templates', 'products'),
             os.path.join(BASE_DIR, 'cart', 'templates', 'cart'),
             os.path.join(BASE_DIR, 'checkout', 'templates', 'checkout'),
+            os.path.join(BASE_DIR, 'profiles', 'templates', 'profiles'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
