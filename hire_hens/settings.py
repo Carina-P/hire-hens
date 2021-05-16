@@ -17,7 +17,7 @@ from os import path
 
 # import config variables from env.py if in local environment
 if path.exists("env.py"):
-    import env 
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
