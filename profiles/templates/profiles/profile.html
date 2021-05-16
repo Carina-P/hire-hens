@@ -42,20 +42,26 @@ My Profile
                         </td>
                         <td>{{ order.order_date }}</td>
                         <td>
+                            {% if order.buyitems.all %}
                             <ul class="list-unstyled">
+                                <p class="text-muted mb-0">Buy (x Qty)</p>
                                 {% for item in order.buyitems.all %}
                                 <li class="small">
-                                    {{ item.product.name }} x{{ item.quantity }}
+                                    {{ item.product.name }} x {{ item.quantity }}
                                 </li>
                                 {% endfor %}
                             </ul>
+                            {% endif %}
+                            {% if order.rentalitems.all %}
                             <ul class="list-unstyled">
+                                <p class="text-muted mb-0">Hire (x Qty x Months)</p>
                                 {% for item in order.rentalitems.all %}
                                 <li class="small">
-                                    {{ item.product.name }} x{{ item.quantity }} x{{ item.months }}
+                                    {{ item.product.name }} x {{ item.quantity }} x {{ item.months }}
                                 </li>
                                 {% endfor %}
                             </ul>
+                            {% endif %}
                         </td>
                         <td>{{ order.grand_total }} SEK</td>
                     </tr>
