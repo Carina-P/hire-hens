@@ -3,12 +3,12 @@ from . import views
 
 urlpatterns = [
     path(
-        '<category>/<rent_or_buy>',
+        '<category>/<rent_or_buy>/',
         views.get_products_by_category,
         name='get_products_by_category'
         ),
     path(
-        'product_detail/<product_id>/<rent_or_buy>',
+        'product_detail/<int:product_id>/<rent_or_buy>/',
         views.get_product,
         name='product_detail'
         ),
@@ -18,5 +18,10 @@ urlpatterns = [
         'remove_from_package/<item_id>/',
         views.remove_from_package,
         name='remove_from_package'
+        ),
+    path(
+        'add_product/',
+        views.add_product,
+        name='add_product'
         ),
 ]

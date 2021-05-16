@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import Category, Product
+from .forms import ProductForm
 
 # Create your views here.
 
@@ -65,7 +66,7 @@ def add_to_package(request, item_id):
 def adjust_package(request, item_id):
     """ 
     In rental package adjust the quantity of the specified product to new
-    amount 
+    amount
     """
 
     quantity = int(request.POST.get('quantity'))
@@ -97,3 +98,14 @@ def remove_from_package(request, item_id):
 
     except Exception as e:
         return HttpResponse(status=500)
+
+
+def add_product(request):
+    """ Add a product. """
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
