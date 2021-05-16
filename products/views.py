@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
+from django.contrib import messages
 from .models import Category, Product
 from .forms import ProductForm
 
@@ -102,7 +103,19 @@ def remove_from_package(request, item_id):
 
 def add_product(request):
     """ Add a product. """
-    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect('add_product')
+        else:
+            messages.error(
+                request, 'Failed to add product. Please ensure the form is valid.'
+                )
+    else:
+        form = ProductForm()
+
     template = 'products/add_product.html'
     context = {
         'form': form,
