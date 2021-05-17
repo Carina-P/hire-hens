@@ -205,21 +205,6 @@ body {
     transition: max-height 0.2s ease-out;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 80%;
-    }
-}
-
-@media (max-width: 720px) {
-    body {
-        height: calc(100vh - 80px - 148px);
-    }
-}
-
 /* Allauth form formatting */
 
 .allauth-form-inner-content p {
@@ -303,4 +288,19 @@ body {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 720px) {
+    body {
+        height: calc(100vh - 80px - 148px);
+    }
 }
