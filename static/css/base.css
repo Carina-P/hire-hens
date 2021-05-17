@@ -159,8 +159,17 @@ body {
 .update-link,
 .remove-item,
 .update-package-link,
-.remove-package-item {
+.remove-package-item,
+.btt-link {
     cursor: pointer;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
 }
 
 /* -------- FAQ --*/
