@@ -3,10 +3,20 @@
 {% load cart_tools %}
 
 {% block products_header %}
+{% if this_category == 'all' %}
+Product Management
+{% else %}
 {{ this_category }}
+{% endif %}
 {% endblock products_header %}
 
 {% block products_content %}
+{% if request.user.is_superuser %}
+<div class="text-center">
+    <a class="btn btn-lg btn-black rounded-0" href="{% url 'add_product' %}">Add product</a>
+</div>
+{% endif %}
+
 <div class="row p-3">
     {% for product in products %}
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
