@@ -121,8 +121,8 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id, 'buy']))
+            messages.success(request, f'Successfully add product: {product.name}!')
+            return redirect('get_products_by_category', category='all', rent_or_buy='buy')
         else:
             messages.error(
                 request, 'Failed to add product. \
@@ -131,9 +131,10 @@ def add_product(request):
     else:
         form = ProductForm()
 
-    template = 'products/add_product.html'
+    template = 'products/manage_product.html'
     context = {
         'form': form,
+        'add': True,
     }
 
     return render(request, template, context)
@@ -152,8 +153,8 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_detail', args=[product.id, 'buy']))
+            messages.success(request, f'Successfully updated product: {product.name}!')
+            return redirect('get_products_by_category', category='all', rent_or_buy='buy')
         else:
             messages.error(
                 request,
@@ -163,10 +164,11 @@ def edit_product(request, product_id):
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
 
-    template = 'products/edit_product.html'
+    template = 'products/manage_product.html'
     context = {
         'form': form,
         'product': product,
+        'add': False,
     }
 
     return render(request, template, context)
@@ -184,6 +186,6 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted!')
     return redirect(
         'get_products_by_category',
-        category='Hens',
+        category='all',
         rent_or_buy='buy'
         )

@@ -13,7 +13,7 @@ Product Management
 {% block products_content %}
 {% if request.user.is_superuser %}
 <div class="text-center">
-    <a class="btn btn-lg btn-black rounded-0" href="{% url 'add_product' %}">Add product</a>
+    <a class="btn btn-lg btn-black" href="{% url 'add_product' %}">Add product</a>
 </div>
 {% endif %}
 

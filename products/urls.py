@@ -20,7 +20,7 @@ urlpatterns = [
         name='remove_from_package'
         ),
     path(
-        'add_product/',
+        '<add_product/',
         views.add_product,
         name='add_product'
         ),
@@ -29,7 +29,7 @@ urlpatterns = [
         views.edit_product,
         name='edit_product'
         ),
-     path(
+    path(
         'delete_product/<int:product_id>/',
         views.delete_product,
         name='delete_product'
