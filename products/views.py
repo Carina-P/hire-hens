@@ -18,9 +18,14 @@ def get_products_by_category(request, category, rent_or_buy):
         rental_categories = []
         rent = False
 
-    category_id = get_object_or_404(Category, category=category)
-    products = Product.objects.filter(category=category_id.id)
-    print(products)
+    if category == "all":
+        if not request.user.is_superuser:
+            messages.error(request, 'Sorry, only store owners can do that.')
+            return redirect('home')
+        products = Product.objects.all()
+    else:
+        category_id = get_object_or_404(Category, category=category)
+        products = Product.objects.filter(category=category_id.id)
 
     context = {
         "rent": rent,
