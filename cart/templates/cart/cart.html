@@ -7,27 +7,25 @@ Shopping cart
 {% endblock cart_header %}
 
 {% block cart_content %}
+<div class="row d-block d-md-none">
+    <div class="col-12 text-center mt-5">
+        <h4><strong>Grand Total: {{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</strong></h4>
+    </div>
+    <div class="col-12 text-center">
+        <a href="{% url 'checkout' %}" class="btn btn-black btn-lg m-4">
+            <span>SECURE CHECKOUT</span>
+            <span class="icon">
+                <i class="fas fa-lock"></i>
+            </span>
+        </a>
+        <p class="text-muted mb-5">A summary of your bag contents is below</p>
+    </div>
+</div>
 <div class="row mb-3">
     <div class="col bg-white border-black pt-4">
         {% if cart_items %}
         <h4 class="text-center mb-2">Items to buy</h4>
         <div class="d-block d-md-none">
-            <div class="row">
-                <div class="col">
-                    <h4><strong>Buy Total: {{ total|floatformat:2 }} SEK</strong></h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <a href="{% url 'checkout' %}" class="btn btn-black btn-lg m-4">
-                        <span>SECURE CHECKOUT</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </a>
-                    <p class="text-muted mb-5">A summary of your cart contents is below</p>
-                </div>
-            </div>
             {% for item in cart_items %}
             <div class="row">
                 <div class="col-12 col-sm-6 mb-2">
@@ -35,10 +33,13 @@ Shopping cart
                 </div>
                 <div class="col-12 col-sm-6 order-sm-last">
                     <p class="my-0">Price Each: ${{ item.product.buying_price }}</p>
-                    <p class="my-0">{{ item.product.buying_price | calc_subtotal:item.quantity }} SEK</p>
                 </div>
                 <div class="col-12 col-sm-6">
-                    {% include 'includes/quantity_form.html' with rent_or_buy='buy'%}
+                    Qty: {% include 'includes/quantity_form.html' with rent_or_buy='buy'%}
+                </div>
+                <div class="col-12 col-sm-6 order-sm-last">
+                    <p class="my-0"><strong>Subtotal: {{ item.product.buying_price | calc_subtotal:item.quantity }}
+                            SEK</strong></p>
                 </div>
             </div>
             <div class="row">
@@ -103,36 +104,25 @@ Shopping cart
         {% if cart_rental_items %}
         <h4 class="text-center mb-2">Items To Rent</h4>
         <div class="d-block d-md-none">
-            <div class="row">
-                <div class="col">
-                    <h4><strong>Rent Total: {{ total_rental|floatformat:2 }} SEK</strong></h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <a href="{% url 'checkout' %}" class="btn btn-black btn-lg m-4">
-                        <span>SECURE CHECKOUT</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </a>
-                    <p class="text-muted mb-5">A summary of your cart contents is below</p>
-                </div>
-            </div>
             {% for item in cart_rental_items %}
             <div class="row">
                 <div class="col-12 col-sm-6 mb-2">
-                    <p class="my-0">{{ item.months }}</p>
-                </div>
-                <div class="col-12 col-sm-6 mb-2">
                     <p class="my-0">{{ item.product.name }}</p>
                 </div>
+                <div class="col-12 col-sm-6 mb-2">
+                    <p class="my-0">No of months: {{ item.months }}</p>
+                </div>
                 <div class="col-12 col-sm-6 order-sm-last">
-                    <p class="my-0">Price Each: ${{ item.product.rental_price }}</p>
-                    <p class="my-0">{% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK</p>
+                    <p class="my-0">Price Each: {{ item.product.rental_price }} SEK</p>
                 </div>
                 <div class="col-12 col-sm-6">
+                    Qty:
                     {% include 'includes/quantity_form.html' with rent_or_buy='rent'%}
+                </div>
+                <div class="col-12 col-sm-6 order-sm-last">
+                    <p class="my-0"><strong>Subtotal:
+                            {% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK</strong>
+                    </p>
                 </div>
             </div>
             <div class="row">
@@ -141,7 +131,7 @@ Shopping cart
                 </div>
             </div>
             {% endfor %}
-            <h4><strong>Rental Total: {{ total_rent|floatformat:2 }} SEK</strong></h4>
+            <h4><strong>Rent Total: {{ total_rental|floatformat:2 }} SEK</strong></h4>
             <div class="btt-button shadow-sm rounded-0 border border-black">
                 <a class="btt-link d-flex h-100">
                     <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
@@ -176,7 +166,7 @@ Shopping cart
                     <td class="py-3">
                         <p class="my-0">{{ item.product.rental_price }} SEK</p>
                     </td>
-                    <td class="py-3 w-25">
+                    <td class="py-3">
                         {% include 'includes/quantity_form.html' with rent_or_buy='rent' %}
                     </td>
                     <td class="py-3">
@@ -216,8 +206,6 @@ Shopping cart
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript" src="{% static 'js/change_qty.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/change_qty_rental.js' %}"></script>
-
 <script type="text/javascript">
     // Update quantity on click
     $('.update-link').click(function (e) {
@@ -239,6 +227,28 @@ Shopping cart
                 location.reload();
             });
     })
-</script>
 
+    // Update quantity on click
+    $('.update-link_rental').click(function (e) {
+        let form = $(this).prev('.update-rental-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item_rental').click(function (e) {
+        let csrfToken = "{{ csrf_token }}";
+        let id = $(this).attr('id').split('_');
+        let itemId = id[0];
+        let months = id[1]
+        let url = `/cart/remove_rental/${itemId}/${months}/`;
+        let data = {
+            'csrfmiddlewaretoken': csrfToken
+        };
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
 {% endblock %}

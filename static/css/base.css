@@ -158,6 +158,8 @@ body {
 /* ----Cart ---*/
 .update-link,
 .remove-item,
+.update-link_rental,
+.remove-item_rental,
 .update-package-link,
 .remove-package-item,
 .btt-link {

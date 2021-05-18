@@ -31,7 +31,7 @@
 {% else %}
 <form class="form update-rental-form" method="POST" action="{% url 'adjust_cart_rental' item.item_id item.months  %}">
     {% csrf_token %}
-    <div class=" form-group">
+    <div class=" form-group w-75">
         <div class="input-group">
             <div class="input-group-prepend">
                 <button class="decrement-qty_rental btn btn-sm btn-black" data-id="{{ item.item_id }}_{{ item.months }}"
@@ -41,7 +41,7 @@
                     </span>
                 </button>
             </div>
-            <input class="form-control form-control-sm qty_input_rental" type="number" name="quantity"
+            <input class="form-control form-control-sm qty_input_rental text-center" type="number" name="quantity"
                 value="{{ item.quantity }}" min="1" max="40" data-id="{{ item.item_id }}_{{ item.months }}"
                 id="id_qty_{{ item.item_id }}_{{ item.months }}">
             <div class="input-group-append">
@@ -55,4 +55,6 @@
         </div>
     </div>
 </form>
+<a class="update-link_rental text-info px-3"><small>Update</small></a>
+<a class="remove-item_rental text-danger" id="{{ item.item_id }}_{{ item.months }}"><small>Remove</small></a>
 {% endif %}

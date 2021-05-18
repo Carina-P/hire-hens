@@ -30,6 +30,7 @@ def add_to_cart(request, item_id):
 def adjust_cart(request, item_id):
     """ Adjust the quantity of the specified product to new amount """
 
+    print(f'item_id: {item_id}')
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
@@ -84,6 +85,7 @@ def add_to_cart_rental(request):
 def adjust_cart_rental(request, item_id, months):
     """ Adjust the quantity of the specified product to new amount """
 
+    print(f'item_id: {item_id}, months: {months}')
     quantity = int(request.POST.get('quantity'))
     cart_rental = request.session.get('cart_rental', {})
 
