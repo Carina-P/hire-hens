@@ -24,9 +24,6 @@ Buy:
     </div>
     <div class="col-12 col-md-6 col-lg-4 offset-lg-1">
         <div class="bg-white mb-5 mt-md-5 p-2">
-            {% if request.user.is_superuser %}
-            <p class="mb-0">{{ product.category }}</p>
-            {% endif %}
             <p class="mb-0">
                 <strong>
                     {% if rent %} {{product.rental_price }} SEK/month
@@ -35,15 +32,19 @@ Buy:
                 </strong>
             </p>
             <p class="mt-3">{{ product.information }}</p>
-            {% include 'includes/product_form.html' with rent=rent product=product %}
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    {% include 'includes/product_form.html' with rent=rent product=product %}
+                </div>
+                <div class="col12 col-md-6 mt-3 align-self-end">
+                    {% if rent == True %}
+                    <input type="submit" form="detail_rent_form" class="btn btn-black" value="Add to Rental Package">
+                    {% else %}
+                    <input type="submit" form="detail_buy_form" class="btn btn-black" value="Add to Cart">
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-12 mb-4 text-center">
-        {% if rent == True %}
-        <input type="submit" form="detail_rent_form" class="btn btn-black" value="Add to Rental Package">
-        {% else %}
-        <input type="submit" form="detail_buy_form" class="btn btn-black" value="Add to Cart">
-        {% endif %}
     </div>
 </div>
 {% endblock products_content %}
