@@ -17,6 +17,8 @@ from cart.context import cart_contents, cart_rental_contents
 import stripe
 import json
 from datetime import datetime as date_time
+from dateutil.relativedelta import relativedelta
+import pytz
 
 # Create your views here.
 
@@ -227,15 +229,25 @@ def adm_orders(request):
 
 
 @login_required
-def deliver_order(request, order_number):
+def deliver_order(request, order_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
-    order = get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(Order, id=order_id)
+
     try:
-        order.delivery_date = date_time.now()
+        order.delivery_date = date_time.now(pytz.utc)
         order.save()
+
+        items = OrderRentalItem.objects.filter(order=order_id)
+        for item in items:
+            item.end_of_rental = (
+                date_time.now(pytz.utc)
+                + relativedelta(months=item.months)
+                )
+            item.save()
+
         messages.success(
             request, 'Success! Order is updated with today as delivery date'
             )
