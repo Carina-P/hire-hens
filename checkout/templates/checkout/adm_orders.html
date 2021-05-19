@@ -36,11 +36,17 @@ Orders Administration
                     {% if order.delivery_date %}
                     <p class="my-0">{{ order.delivery_date }} SEK</p>
                     {% else %}
-                    <p class="my-0">not delivered</p>
+                    <form action="{% url 'deliver_order' order.order_number %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-black">Deliver</button>
+                    </form>
                     {% endif %}
                 </td>
                 <td class="py-3">
                     <p class="my-0">no rental due</p>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-black">Details</a>
                 </td>
             </tr>
             {% endfor %}

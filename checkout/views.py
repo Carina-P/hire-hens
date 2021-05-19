@@ -4,6 +4,7 @@ from django.shortcuts import (
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 from .forms import OrderForm
 from .models import Order, OrderBuyItem, OrderRentalItem
@@ -15,7 +16,7 @@ from cart.context import cart_contents, cart_rental_contents
 
 import stripe
 import json
-import datetime
+from datetime import datetime as date_time
 
 # Create your views here.
 
@@ -206,15 +207,41 @@ def checkout_success(request, order_number):
     return render(request, template, context)
 
 
+@login_required
 def adm_orders(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
     try:
         orders = Order.objects.all()
 
     except Exception as e:
         messages.error(request, 'Something went wrong, fetching orders: ', e)
-        return HttpResponse(status=500)
+        return redirect('adm_orders')
 
     context = {
         'orders': orders
     }
     return render(request, 'checkout/adm_orders.html', context)
+
+
+@login_required
+def deliver_order(request, order_number):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    order = get_object_or_404(Order, order_number=order_number)
+    try:
+        order.delivery_date = date_time.now()
+        order.save()
+        messages.success(
+            request, 'Success! Order is updated with today as delivery date'
+            )
+    except Exception as e:
+        messages.error(
+            request, 'Something went wrong, setting delivery date: ', e
+            )
+
+    return redirect('adm_orders')
