@@ -15,6 +15,7 @@ from cart.context import cart_contents, cart_rental_contents
 
 import stripe
 import json
+import datetime
 
 # Create your views here.
 
@@ -203,3 +204,17 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def adm_orders(request):
+    try:
+        orders = Order.objects.all()
+
+    except Exception as e:
+        messages.error(request, 'Something went wrong, fetching orders: ', e)
+        return HttpResponse(status=500)
+
+    context = {
+        'orders': orders
+    }
+    return render(request, 'checkout/adm_orders.html', context)

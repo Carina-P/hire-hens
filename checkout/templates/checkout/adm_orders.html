@@ -1,0 +1,51 @@
+{% extends "base_checkout.html" %}
+{% load static %}
+
+{% block checkout_header %}
+Orders Administration
+{% endblock checkout_header %}
+
+{% block checkout_content %}
+<div class="row mb-3">
+    <div class="col bg-white border-black pt-4">
+        <table class="table">
+            <thead class="text-black">
+                <tr>
+                    <h4>
+                        <th scope="col">Order no</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Grand Total</th>
+                        <th scope="col">Delivery Date</th>
+                        <th scope="col">Rental due</th>
+                        <th scope="col"></th>
+                    </h4>
+                </tr>
+            </thead>
+            {% for order in orders %}
+            <tr>
+                <td class="py-3">
+                    <p class="my-0">{{ order.order_number }}</p>
+                </td>
+                <td class="p-3">
+                    <p class="my-0">{{ order.order_date }}</p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">{{ order.grand_total}} SEK</p>
+                </td>
+                <td class="py-3">
+                    {% if order.delivery_date %}
+                    <p class="my-0">{{ order.delivery_date }} SEK</p>
+                    {% else %}
+                    <p class="my-0">not delivered</p>
+                    {% endif %}
+                </td>
+                <td class="py-3">
+                    <p class="my-0">no rental due</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock checkout_content %}
