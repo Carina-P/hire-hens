@@ -217,10 +217,23 @@ def adm_orders(request):
 
     try:
         orders = Order.objects.all()
-
+        # Hämta fram det "minsta" end_of_rental och lägg i orders
     except Exception as e:
         messages.error(request, 'Something went wrong, fetching orders: ', e)
         return redirect('adm_orders')
+
+    for order in orders:
+        # Can be different no of rental months among rental items in an order
+        earliest_due_date = None
+        if order.delivery_date:
+            due_dates = OrderRentalItem.objects.filter(
+                order=order.id, end_of_rental__isnull=False
+                )
+            if due_dates:
+                earliest_due_date = (
+                    due_dates.latest('end_of_rental').end_of_rental
+                )
+        order.earliest_due_date = earliest_due_date
 
     context = {
         'orders': orders

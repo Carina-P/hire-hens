@@ -116,7 +116,8 @@ class OrderRentalItem(models.Model):
     rentalitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False, editable=False
         )
-    end_of_rental = (models.DateTimeField(null=True, blank=True))
+    end_of_rental = models.DateTimeField(null=True, blank=True)
+    item_returned = models.BooleanField(null=True, blank=True, default=False)
 
     def save(self, *args, **kwargs):
         """

@@ -43,7 +43,13 @@ Orders Administration
                     {% endif %}
                 </td>
                 <td class="py-3">
-                    <p class="my-0">no rental due</p>
+                    <p class="my-0">
+                        {% if order.earliest_due_date %}
+                        {{ order.earliest_due_date }}
+                        {% else %}
+                        no rental due
+                        {% endif %}
+                    </p>
                 </td>
                 <td>
                     <a href="#" class="btn btn-black">Details</a>
