@@ -6,6 +6,20 @@ Orders Administration
 {% endblock checkout_header %}
 
 {% block checkout_content %}
+<div class="row text-center justify-content-center mb-3">
+    <div class="col-12 mb-4">
+        Which orders do you want to see?
+    </div>
+    <div id="all_orders" class="col-12 col-md-4 mb-2">
+        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'all' %}">All</a>
+    </div>
+    <div id="due_orders" class="col-12 col-md-4 mb-2">
+        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'due_rentals' %}">With rental due</a>
+    </div>
+    <div id="nd_orders" class="col-12 col-md-4 mb-2">
+        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'not_delivered' %}">Not delivered</a>
+    </div>
+</div>
 <div class="row mb-3">
     <div class="col bg-white border-black pt-4">
         <table class="table">
@@ -44,7 +58,7 @@ Orders Administration
                 </td>
                 <td class="py-3">
                     <p class="my-0">
-                        {% if order.earliest_due_date %}
+                        {% if order.earliest_due_date%}
                         {{ order.earliest_due_date }}
                         {% else %}
                         no rental due
@@ -52,7 +66,7 @@ Orders Administration
                     </p>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-black">Details</a>
+                    <a href="{% url 'order_detail' order.id %}" class="btn btn-black rounded-0">Details</a>
                 </td>
             </tr>
             {% endfor %}
@@ -61,3 +75,10 @@ Orders Administration
 </div>
 
 {% endblock checkout_content %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+
+</script>
+{% endblock postloadjs%}

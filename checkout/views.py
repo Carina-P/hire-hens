@@ -210,30 +210,51 @@ def checkout_success(request, order_number):
 
 
 @login_required
-def adm_orders(request):
+def adm_orders(request, scope):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
     try:
-        orders = Order.objects.all()
+        all_orders = Order.objects.all()
+
         # Hämta fram det "minsta" end_of_rental och lägg i orders
     except Exception as e:
         messages.error(request, 'Something went wrong, fetching orders: ', e)
         return redirect('adm_orders')
 
-    for order in orders:
-        # Can be different no of rental months among rental items in an order
-        earliest_due_date = None
-        if order.delivery_date:
+    orders = all_orders
+    if scope == 'not_delivered':
+        orders = all_orders.filter(delivery_date__isnull=True)
+    else:
+        due_list = []
+        for order in orders:
+            # Can be different no of rental months among rental items in an order
+            earliest_due_date = None
+            if order.delivery_date:
+                due_dates = OrderRentalItem.objects.filter(
+                    order=order.id, end_of_rental__isnull=False
+                    )
+                if due_dates:
+                    earliest_due_date = (
+                        due_dates.earliest('end_of_rental').end_of_rental
+                    )
+                    due_list.append(order.id)
+
+            order.earliest_due_date = earliest_due_date
+
+    if scope == "due_rentals":
+        orders = orders.filter(id__in=due_list)
+        for order in orders:
             due_dates = OrderRentalItem.objects.filter(
                 order=order.id, end_of_rental__isnull=False
-                )
+                    )
             if due_dates:
                 earliest_due_date = (
-                    due_dates.latest('end_of_rental').end_of_rental
+                    due_dates.earliest('end_of_rental').end_of_rental
                 )
-        order.earliest_due_date = earliest_due_date
+
+            order.earliest_due_date = earliest_due_date
 
     context = {
         'orders': orders
@@ -270,3 +291,15 @@ def deliver_order(request, order_id):
             )
 
     return redirect('adm_orders')
+
+
+@login_required
+def order_detail(request, order_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    context = {
+        "order": get_object_or_404(Order, id=order_id)
+    }
+    return render(request, checkout/order_detail, context)
