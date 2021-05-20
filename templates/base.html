@@ -86,7 +86,7 @@
               </a>
               <div class="dropdown-menu bg-black ps-4 border-0" aria-labelledby="adm-link">
                 <a href="{% url 'get_products_by_category' 'all' 'buy' %}" class="dropdown-item text-white">Products</a>
-                <a href="#" class="dropdown-item text-white">Orders</a>
+                <a href="{% url 'adm_orders' 'all' %}" class="dropdown-item text-white">Orders</a>
                 <a href="{% url 'faq' %}" class="dropdown-item text-white">FAQ</a>
               </div>
             </div>

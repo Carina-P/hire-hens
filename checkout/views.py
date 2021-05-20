@@ -294,12 +294,15 @@ def deliver_order(request, order_id):
 
 
 @login_required
-def order_detail(request, order_id):
+def order_details(request, order_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
     context = {
-        "order": get_object_or_404(Order, id=order_id)
+        "order": get_object_or_404(Order, id=order_id),
+        "buyitems": OrderBuyItem.objects.filter(order=order_id),
+        "rentalitems": OrderRentalItem.objects.filter(order=order_id)
+
     }
-    return render(request, checkout/order_detail, context)
+    return render(request, 'checkout/order_details.html', context)

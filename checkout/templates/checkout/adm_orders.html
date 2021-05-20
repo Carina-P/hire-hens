@@ -28,6 +28,7 @@ Orders Administration
                     <h4>
                         <th scope="col">Order no</th>
                         <th scope="col">Order Date</th>
+                        <th scope="col">City</th>
                         <th scope="col">Grand Total</th>
                         <th scope="col">Delivery Date</th>
                         <th scope="col">Rental due</th>
@@ -44,17 +45,19 @@ Orders Administration
                     <p class="my-0">{{ order.order_date }}</p>
                 </td>
                 <td class="py-3">
+                    <p class="my-0">{{ order.town_or_city}}</p>
+                </td>
+                <td class="py-3">
                     <p class="my-0">{{ order.grand_total}} SEK</p>
                 </td>
                 <td class="py-3">
-                    {% if order.delivery_date %}
-                    <p class="my-0">{{ order.delivery_date }}</p>
+                    <p class="my-0">
+                        {% if order.delivery_date %}
+                        {{ order.delivery_date }}</p>
                     {% else %}
-                    <form action="{% url 'deliver_order' order.id %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-black">Deliver</button>
-                    </form>
+                    not delievered
                     {% endif %}
+                    </p>
                 </td>
                 <td class="py-3">
                     <p class="my-0">
@@ -66,7 +69,7 @@ Orders Administration
                     </p>
                 </td>
                 <td>
-                    <a href="{% url 'order_detail' order.id %}" class="btn btn-black rounded-0">Details</a>
+                    <a href="{% url 'order_details' order.id %}" class="btn btn-black rounded-0">Details</a>
                 </td>
             </tr>
             {% endfor %}
@@ -75,10 +78,3 @@ Orders Administration
 </div>
 
 {% endblock checkout_content %}
-
-{% block postloadjs %}
-{{ block.super }}
-<script type="text/javascript">
-
-</script>
-{% endblock postloadjs%}

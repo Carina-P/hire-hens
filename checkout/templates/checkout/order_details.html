@@ -1,0 +1,133 @@
+{% extends "base_checkout.html" %}
+{% load static %}
+
+{% block checkout_header %}
+Orders Administration
+Order Details
+{% endblock checkout_header %}
+
+{% block checkout_content %}
+<div class="text-center">
+    <a href="{% url 'adm_orders' 'all'%}" class="btn btn-lg btn-black rounded-0 mb-5">Return to orders</a>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12 col-mb-10">
+        <p>Order number: {{ order.order_number }}</p>
+        <div class="row">
+            <div class="col-6">
+                <p>Name: <strong>{{ order.full_name }}</strong></p>
+                <p>Email: <strong>{{ order.email }} </strong> </p>
+                <p>Phone: <strong> {{ order.phone_number }}</strong> </p>
+                <p>Adress: </p>
+                <p><strong> {{ order.street_address1 }}</strong> </p>
+                {% if order.street_address2 %}<p><strong> {{ order.street_address2 }}</strong> </p>{% endif %}
+                <p><strong> {{ order.postcode }} {{ order.town_or_city }}</strong> </p>
+                <p>country: <strong> {{ order.country }}</strong> </p>
+            </div>
+            <div class="col-6">
+                <p>Order date: <strong> {{ order.order_date }}</strong> </p>
+                <p>Grand Total: <strong>{{ order.grand_total }} SEK</strong></p>
+                {% if order.delivery_date %}
+                <p>Delivery date: <strong> {{ order.delivery_date }}</strong> </p>
+                {% else %}
+                <p><strong>Not delivered</strong>:
+                    <form action="{% url 'deliver_order' order.id %}" method="POST" class="mx-3">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-black rounded-0">Deliver</button>
+                    </form>
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-md-4">
+        <h3>Buy Items</h3>
+        <table class="table">
+            <thead class="text-black">
+                <tr>
+                    <h4>
+                        <th scope="col">Product</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Total</th>
+                    </h4>
+                </tr>
+            </thead>
+            <tr>
+                {% for item in buyitems %}
+                <td class="py-3">
+                    <p class="my-0">{{ item_id.product.name }}</p>
+                </td>
+                <td class="p-3">
+                    <p class="my-0">{{ item.quantity }}</p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">{{ item.buyitem_total }} SEK</p>
+                </td>
+                {% empty %}
+                <p>No items </p>
+                {% endfor %}
+            </tr>
+        </table>
+
+    </div>
+    <div class="col-12 col-md-8">
+        <h3>Rental Items</h3>
+        <table class="table">
+            <thead class="text-black">
+                <tr>
+                    <h4>
+                        <th scope="col">Product</th>
+                        <th scope="col">Months</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">End of Rental Date</th>
+                        <th scope="col">Items to return</th>
+                    </h4>
+                </tr>
+            </thead>
+            <tr>
+                {% for item in rentalitems %}
+                <td class="py-3">
+                    <p class="my-0">product name</p>
+                </td>
+                <td class="p-3">
+                    <p class="my-0">{{ item.months }}</p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">{{ item.quantity }}</p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">{{ item.rentalitem_total }} SEK</p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">
+                        {% if item.end_of_rental %}
+                        {{ item.end_of_rental }}
+                        {% else %}
+                        no due date
+                        {% endif %}
+                    </p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">
+                        {% if item.item_returned %}
+                        No
+                        {% else %}
+                        Yes: <a href="#" class="btn btn-black rounded-0 mx-3">Finish Rental</a>
+                        {% endif %}
+                    </p>
+                </td>
+                {% empty %}
+                <p>No items </p>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="text-center">
+    <a href="{% url 'adm_orders' 'all' %}" class="btn btn-lg btn-black rounded-0 mt-5">Return to orders</a>
+</div>
+
+{% endblock checkout_content %}
