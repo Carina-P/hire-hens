@@ -263,6 +263,21 @@ def adm_orders(request, scope):
 
 
 @login_required
+def order_details(request, order_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    context = {
+        "order": get_object_or_404(Order, id=order_id),
+        "buyitems": OrderBuyItem.objects.filter(order=order_id),
+        "rentalitems": OrderRentalItem.objects.filter(order=order_id)
+
+    }
+    return render(request, 'checkout/order_details.html', context)
+
+
+@login_required
 def deliver_order(request, order_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
@@ -290,19 +305,23 @@ def deliver_order(request, order_id):
             request, 'Something went wrong, setting delivery date: ', e
             )
 
-    return redirect('adm_orders')
+    return redirect('order_details', order_id)
 
 
 @login_required
-def order_details(request, order_id):
+def finish_rental(request, order_id, item_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
-    context = {
-        "order": get_object_or_404(Order, id=order_id),
-        "buyitems": OrderBuyItem.objects.filter(order=order_id),
-        "rentalitems": OrderRentalItem.objects.filter(order=order_id)
+    item = get_object_or_404(OrderRentalItem, id=item_id)
+    try:
+        item.item_returned = True
+        item.save()
+        messages.success(request, 'Success! Rental finished.')
+    except Exception as e:
+        messages.error(
+            request, 'Error! Something went wrong, saving rental finished: ', e
+            )
 
-    }
-    return render(request, 'checkout/order_details.html', context)
+    return redirect('order_details', order_id)
