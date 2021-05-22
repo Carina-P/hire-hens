@@ -7,17 +7,15 @@ Orders Administration
 
 {% block checkout_content %}
 <div class="row text-center justify-content-center mb-3">
-    <div class="col-12 mb-4">
-        Which orders do you want to see?
-    </div>
     <div id="all_orders" class="col-12 col-md-4 mb-2">
-        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'all' %}">All</a>
-    </div>
-    <div id="due_orders" class="col-12 col-md-4 mb-2">
-        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'due_rentals' %}">With rental due</a>
+        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'all' %}">All Orders</a>
     </div>
     <div id="nd_orders" class="col-12 col-md-4 mb-2">
-        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'not_delivered' %}">Not delivered</a>
+        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'not_delivered' %}">Orders not yet
+            delivered</a>
+    </div>
+    <div id="due_orders" class="col-12 col-md-4 mb-2">
+        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'due_rentals' %}">Orders with rental due</a>
     </div>
 </div>
 <div class="row mb-3">

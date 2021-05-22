@@ -13,9 +13,6 @@ body {
     color: #000000;
     background-color: #a3c284;
     font-size: 1rem;
-    height: calc(100vh - 80px - 116px);
-    background: url('/media/homepage_chickens-bg-green.jpg') no-repeat center center fixed;
-    background-size: cover;
 }
 
 /* from code institute video who got it from Bulma */
@@ -116,10 +113,10 @@ body {
     margin-right: 0px !important;
 }
 
-/*
+
 .no-margin-left {
     margin-left: 0px !important;
-}*/
+}
 
 .header-container {
     padding-top: 80px;

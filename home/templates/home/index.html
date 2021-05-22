@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -10,15 +14,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="container no-margin-right h-100">
+<div class="container-fluid h-100">
     <div class="row h-100 justify-content-end">
-        <div class="col d-block d-md-none align-self-end">
-            <div class="row justify-content-evenly">
-                <div class="col bg-green text-center m-auto p-4">
-                    <h1 class="mb-3"><img src="{{ MEDIA_URL }}egg.png" alt="logo" width="25"> HENS for HIRE</h1>
-                    <p class="mb-3">Put together a rental package including hens, coop and equipment of your choice. Buy
-                        consumable to complete the package.</p>
-                    <a href="" class="btn btn-lg btn-black mt-5">
+        <div class="col-12 d-block d-md-none align-self-end">
+            <div class="row justify-content-evenly bg-green">
+                <div class="col-12 text-center pt-2 pb-5">
+                    <h1 class="text-center mb-2"><img src="{{ MEDIA_URL }}egg.png" alt="logo" width="25"> HENS for HIRE
+                    </h1>
+                    <a href="{% url 'get_products_by_category' 'Hens' 'rent' %}" class="btn btn-lg btn-black">
                         Explore rental altenatives
                     </a>
                 </div>
@@ -30,7 +33,7 @@
                     <h1 class="mb-3"><img src="{{ MEDIA_URL }}egg.png" alt="logo" width="25"> HENS for HIRE</h1>
                     <p class="mb-3">Put together a rental package including hens, coop and equipment of your choice. Buy
                         consumable to complete the package.</p>
-                    <a href="" class="btn btn-lg btn-black mt-5">
+                    <a href="{% url 'get_products_by_category' 'Hens' 'rent' %}" class="btn btn-lg btn-black mt-5">
                         Explore rental altenatives
                     </a>
                 </div>

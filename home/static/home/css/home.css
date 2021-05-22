@@ -1,0 +1,5 @@
+body {
+    height: calc(100vh - 80px - 116px);
+    background: url('/media/homepage_chickens-bg-green.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
