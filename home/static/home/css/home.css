@@ -3,3 +3,9 @@ body {
     background: url('/media/homepage_chickens-bg-green.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+
+@media (max-width: 720px) {
+    body {
+        height: calc(100vh - 80px - 130px);
+    }
+}

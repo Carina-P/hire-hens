@@ -3,7 +3,6 @@
 
 /* -----------------General------------------ */
 html {
-    height: 100%;
     scroll-behavior: smooth;
     font-size: 16px;
 }
@@ -13,6 +12,11 @@ body {
     color: #000000;
     background-color: #a3c284;
     font-size: 1rem;
+    height: 100%;
+}
+
+.content {
+    min-height: calc(100vh - 80px - 116px)
 }
 
 /* from code institute video who got it from Bulma */
@@ -307,8 +311,14 @@ body {
     }
 }
 
+@media screen and (max-width: 576px) {
+    html {
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 720px) {
-    body {
-        height: calc(100vh - 80px - 148px);
+    .content {
+        min-height: calc(100vh - 80px - 130px)
     }
 }
