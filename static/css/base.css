@@ -28,7 +28,7 @@ body {
     width: 1.5rem;
 }
 
-/* Background for all pages but index */
+/* Background for all pages but index
 .overlay {
     min-height: 100%;
     width: 100%;
@@ -38,6 +38,7 @@ body {
     background: #afc1d5;
     z-index: -1;
 }
+*/
 
 /* .bg-opac {
     background-color: rgba(255, 255, 255, 0.5);
@@ -89,8 +90,8 @@ body {
 }
 
 .btn-black:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #000000 !important;
+    background-color: #a3c284;
+    border-color: #000000;
 }
 
 .nav-link:hover,
@@ -102,6 +103,10 @@ body {
 
 .text-white {
     color: #ffffff;
+}
+
+.no-opacity {
+    opacity: 1;
 }
 
 /*.opacity-10 {
@@ -178,7 +183,7 @@ body {
 /* -------- FAQ --*/
 
 .accordion {
-    background-color: #f2f5f8;
+    background-color: #ffffff;
     color: #000000;
     cursor: pointer;
     padding: 18px;
@@ -191,7 +196,7 @@ body {
 
 .active,
 .accordion:hover {
-    background-color: #d7e0ea;
+    background-color: #e0ebd6;
 }
 
 /* Inspired from w3 schools */
@@ -199,7 +204,7 @@ body {
     content: '\02795';
     /* Unicode character for "plus" sign (+) */
     font-size: 13px;
-    color: #afc1d5;
+    color: #f5f8f1;
     float: right;
     margin-left: 5px;
 }
@@ -319,6 +324,10 @@ body {
 
 @media (max-width: 720px) {
     .content {
-        min-height: calc(100vh - 80px - 130px)
+        min-height: calc(100vh - 70px - 130px)
+    }
+
+    .header-container {
+        padding-top: 70px;
     }
 }

@@ -6,22 +6,28 @@ Frequently Asked Questions
 {% endblock faq_header %}
 
 {% block faq_content %}
+{% if request.user.is_superuser %}
 <div class="text-center mb-3 mt-3">
     {% include 'includes/black_button_lg.html' with url_to='add_faq' button_text='Add FAQ' %}
 </div>
-<div class="row justify-content-center">
-    {% for faq in faqs %}
-    <div class="col-11 col-md-8 col-lg-9">
-        <button class="accordion">{{ faq.question }}</button>
-        <div class="panel">
-            <p class="ps-4">{{ faq.answer }}</p>
+{% endif %}
+<div class="container bg-white border-black mt-4">
+    <div class="row justify-content-center">
+        {% for faq in faqs %}
+        <div class="col-11 col-md-8 col-lg-9">
+            <button class="accordion m-0">{{ faq.question }}</button>
+            <div class="panel">
+                <p class="ps-4">{{ faq.answer }}</p>
+            </div>
         </div>
+        {% if request.user.is_superuser %}
+        <div class="col-8 col-md-3 col-lg-3 col-xl-2 text-center mt-2 mb-4">
+            {% include 'includes/black_button.html' with url_to='edit_faq' param=faq.id button_text='Edit' %}
+            {% include 'includes/black_button.html' with url_to='delete_faq' param=faq.id button_text='Remove' %}
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
-    <div class="col-8 col-md-3 col-lg-3 col-xl-2 text-center mt-2 mb-4">
-        {% include 'includes/black_button.html' with url_to='edit_faq' param=faq.id button_text='Edit' %}
-        {% include 'includes/black_button.html' with url_to='delete_faq' param=faq.id button_text='Remove' %}
-    </div>
-    {% endfor %}
 </div>
 {% endblock faq_content %}
 
