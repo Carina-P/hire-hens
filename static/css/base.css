@@ -90,7 +90,7 @@ body {
 }
 
 .btn-black:hover {
-    background-color: #a3c284;
+    background-color: #c2d7ad;
     border-color: #000000;
 }
 
@@ -107,6 +107,10 @@ body {
 
 .no-opacity {
     opacity: 1;
+}
+
+.opacity-50 {
+    opacity: 0.8;
 }
 
 /*.opacity-10 {
@@ -183,7 +187,7 @@ body {
 /* -------- FAQ --*/
 
 .accordion {
-    background-color: #ffffff;
+    background-color: #a3c284;
     color: #000000;
     cursor: pointer;
     padding: 18px;
@@ -196,7 +200,7 @@ body {
 
 .active,
 .accordion:hover {
-    background-color: #e0ebd6;
+    background-color: #c2d7ad;
 }
 
 /* Inspired from w3 schools */
@@ -204,7 +208,7 @@ body {
     content: '\02795';
     /* Unicode character for "plus" sign (+) */
     font-size: 13px;
-    color: #f5f8f1;
+    color: #a3c284;
     float: right;
     margin-left: 5px;
 }
@@ -216,7 +220,7 @@ body {
 
 .panel {
     padding: 0 18px;
-    background-color: white;
+    background-color: #d6e4c8;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -308,13 +312,6 @@ body {
 }
 
 /* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 80%;
-    }
-}
 
 @media screen and (max-width: 576px) {
     html {

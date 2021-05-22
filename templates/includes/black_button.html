@@ -4,9 +4,9 @@
 </button>
 {% else %}
 {% if param %}
-<a href="{% url url_to param %}" class="btn btn-black rounded-0">
+<a href="{% url url_to param %}" class="btn btn-black">
     {% else %}
-    <a href="{% url url_to %}" class="btn btn-black rounded-0">
+    <a href="{% url url_to %}" class="btn btn-black">
         {% endif %}
         {{ button_text }}
     </a>
