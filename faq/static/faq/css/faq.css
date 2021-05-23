@@ -1,0 +1,48 @@
+.accordion {
+    background-color: #a3c284;
+    color: #000000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+    background-color: #c2d7ad;
+}
+
+/* Inspired from w3 schools */
+.accordion:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #a3c284;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: #ebf2e4;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.input-style {
+    background-color: #ebf2e4;
+    border: 1px solid transparent;
+}
+
+.form-group {
+    margin-top: 1rem;
+}
