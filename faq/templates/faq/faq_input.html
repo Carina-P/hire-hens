@@ -7,11 +7,12 @@
 
 {% block faq_content %}
 <div class="container">
-    <form method="POST" class="text-center">
+    <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <div>
-            <p>
+        {{ form.question | as_crispy_field }}
+        {{ form.answer | as_crispy_field  }}
+        <div class="mt-3">
+            <p class="text-center">
                 {% include 'includes/black_button.html' with btn_type='submit' button_text=button_text %}
                 {% include 'includes/black_button.html' with url_to='faq' button_text='Cancel' %}
             </p>

@@ -97,8 +97,9 @@ body {
 .nav-link:hover,
 .navbar-brand:hover,
 .dropdown-item:hover {
-    text-decoration: underline;
-    background-color: #000000;
+    background-color: #c2d7ad;
+    border-radius: .3rem;
+    color: #000000 !important;
 }
 
 .text-white {
@@ -220,10 +221,23 @@ body {
 
 .panel {
     padding: 0 18px;
-    background-color: #d6e4c8;
+    background-color: #ebf2e4;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+.input-style {
+    background-color: #ebf2e4;
+    border: 1px solid transparent;
+}
+
+.form-group {
+    margin-top: 1rem;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
 }
 
 /* Allauth form formatting */
