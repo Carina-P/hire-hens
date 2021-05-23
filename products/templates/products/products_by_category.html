@@ -11,7 +11,7 @@ Product Management
 {% endblock products_header %}
 
 {% block products_content %}
-{% if request.user.is_superuser %}
+{% if this_category == 'all' and request.user.is_superuser %}
 <div class="text-center">
     <a class="btn btn-lg btn-black" href="{% url 'add_product' %}">Add product</a>
 </div>
