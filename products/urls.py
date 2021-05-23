@@ -12,13 +12,6 @@ urlpatterns = [
         views.get_product,
         name='product_detail'
         ),
-    path('add/<item_id>/', views.add_to_package, name='add_to_package'),
-    path('adjust/<item_id>/', views.adjust_package, name='adjust_package'),
-    path(
-        'remove_from_package/<item_id>/',
-        views.remove_from_package,
-        name='remove_from_package'
-        ),
     path(
         '<add_product/',
         views.add_product,

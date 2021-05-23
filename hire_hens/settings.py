@@ -94,7 +94,6 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'cart.context.cart_contents',
                 'cart.context.cart_rental_contents',
-                'products.context.rental_package_contents',
                 'products.context.rental_months',
             ],
             'builtins': [

@@ -200,6 +200,9 @@ def checkout_success(request, order_number):
 
     if 'cart_rental' in request.session:
         del request.session['cart_rental']
+    
+    if 'months' in request.session:
+        del request.session['months']
 
     template = 'checkout/checkout_success.html'
     context = {

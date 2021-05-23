@@ -11,7 +11,14 @@ def view_cart(request):
 
 
 def add_to_cart(request, item_id):
-    """ Add a quantity of the product to the shopping cart """
+    """
+    Add quantity to the rental shopping cart specified by months and item_id.
+    Number of months and quantity is retrieved from form in page.
+    Return to url given in form in page.
+    Input:
+        request (object): The HttpRequest object
+        item_id: int, database id of the product item
+    """
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
@@ -32,7 +39,6 @@ def add_to_cart(request, item_id):
 def adjust_cart(request, item_id):
     """ Adjust the quantity of the specified product to new amount """
 
-    print(f'item_id: {item_id}')
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
@@ -69,15 +75,18 @@ def add_to_cart_rental(request, item_id):
         item_id: int, database id of the product item
     """
 
-    months = int(request.POST.get('months'))
+    months = request.POST.get('months')
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     cart_rental = request.session.get('cart_rental', {})
 
-    if (item_id in list(cart_rental[months].keys())):
-        cart_rental[months][item_id] += quantity
+    if months in list(cart_rental.keys()):
+        if item_id in list(cart_rental[months].keys()):
+            cart_rental[months][item_id] += quantity
+        else:
+            cart_rental[months][item_id] = quantity
     else:
-        cart_rental[months][item_id] = quantity
+        cart_rental[months] = {item_id: quantity}
 
     request.session['cart_rental'] = cart_rental
     request.session['months'] = months
@@ -88,7 +97,6 @@ def add_to_cart_rental(request, item_id):
 def adjust_cart_rental(request, item_id, months):
     """ Adjust the quantity of the specified product to new amount """
 
-    print(f'item_id: {item_id}, months: {months}')
     quantity = int(request.POST.get('quantity'))
     cart_rental = request.session.get('cart_rental', {})
 
