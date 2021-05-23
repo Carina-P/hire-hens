@@ -2,12 +2,7 @@
 {% load static %}
 {% load cart_tools %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
-{% endblock extra_css %}
-
 {% block products_header %}
-Product Management
 {% if add %}
 <p>Add a Product</p>
 {% else%}
@@ -17,7 +12,7 @@ Product Management
 
 {% block products_content %}
 <div class="row">
-    <div class="col-12 col-md-6">
+    <div class="col-12">
         {% if add %}
         <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
             {% else %}
@@ -32,7 +27,7 @@ Product Management
                 {{ field }}
                 {% endif %}
                 {% endfor %}
-                <div class="text-right">
+                <div class="text-center mb-4">
                     <a class="btn btn-black" href="{% url 'get_products_by_category' 'all' 'buy' %}">Cancel</a>
                     <button class="btn btn-black" type="submit">{% if add %}Add Product{% else %}Update
                         Product{% endif %}</button>

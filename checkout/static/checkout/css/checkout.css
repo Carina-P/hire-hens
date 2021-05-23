@@ -4,7 +4,7 @@
     height: 40px;
     padding: 10px 12px;
     border: 1px solid transparent;
-    border-radius: 0px;
+    border-radius: 0.3rem;
     background-color: white;
     box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
@@ -14,15 +14,15 @@
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-    box-shadow: 0 1px 3px 0 #cfd7df;
+    box-shadow: 0 1px 3px 0 #a3c284;
 }
 
 .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
+    background-color: #ebf2e4 !important;
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+    color: #ebf2e4;
 }
 
 .fieldset-label {
@@ -43,7 +43,7 @@ select option {
 
 select:invalid,
 select option[value=""] {
-    color: #aab7c4 !important;
+    color: #ebf2e4 !important;
 }
 
 #loading-overlay {

@@ -44,33 +44,12 @@ Product Management
     {% endif %}
     {% endfor %}
 </div>
+{% if rent and this_category == "Equipment"%}
+<div class="container">
+    <div class="text-center">
+        <a class="btn btn-lg btn-black" href="{% url 'get_products_by_category' 'Consumables' 'buy' %}">Go to Buy
+            Consumables</a>
+    </div>
+</div>
+{% endif %}
 {% endblock products_content %}
-
-{% block postloadjs %}
-{{ block.super }}
-<script type="text/javascript" src="{% static 'js/change_package_qty.js' %}"></script>
-
-<script type="text/javascript">
-    // Update quantity on click
-    $('.update-package-link').click(function (e) {
-        let form = $(this).prev('.update-package-form');
-        form.submit();
-    })
-
-    // Remove item and reload on click
-    $('.remove-package-item').click(function (e) {
-        let csrfToken = "{{ csrf_token }}";
-        let itemId = $(this).attr('id').split('remove-package_')[1];
-        let url = `/products/remove_from_package/${itemId}/`;
-        let data = {
-            'csrfmiddlewaretoken': csrfToken
-        };
-
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-    })
-</script>
-
-{% endblock %}
