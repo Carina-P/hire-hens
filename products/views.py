@@ -38,6 +38,16 @@ def get_products_by_category(request, category, rent_or_buy):
 
 
 def get_product(request, product_id, rent_or_buy):
+    """
+    Get information about a product with product_id from database.
+    Render the information in product details page.
+
+    Input:
+        request (object): The HttpRequest object
+        product_id: int, database id of the product
+        rent_or_but: str, indicates if it should be rendered on page 
+                    for rental or buy
+    """
     rent = False
     if rent_or_buy == 'rent':
         rent = True
@@ -46,7 +56,8 @@ def get_product(request, product_id, rent_or_buy):
 
     context = {
         "product": product,
-        "rent": rent
+        "rent": rent,
+        "months": request.session.get('months', 1),
     }
     return render(request, 'products/product_detail.html', context)
 
@@ -74,7 +85,7 @@ def add_to_package(request, item_id):
 
 
 def adjust_package(request, item_id):
-    """ 
+    """
     In rental package adjust the quantity of the specified product to new
     amount
     """

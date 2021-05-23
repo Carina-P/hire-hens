@@ -95,6 +95,7 @@ TEMPLATES = [
                 'cart.context.cart_contents',
                 'cart.context.cart_rental_contents',
                 'products.context.rental_package_contents',
+                'products.context.rental_months',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

@@ -2,6 +2,15 @@ from django.shortcuts import get_object_or_404
 from products.models import Product, Category
 
 
+def rental_months(request):
+    months = request.session.get('months', 1)
+
+    context = {
+        'months': months,
+    }
+    return context
+
+
 def rental_package_contents(request):
 
     package_items = []
