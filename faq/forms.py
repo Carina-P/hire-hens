@@ -17,8 +17,10 @@ class FaqForm(forms.ModelForm):
             'answer': 'Answer',
         }
 
-        self.fields['question'].widget.attrs['placeholder'] = f'{placeholders["question"]} *'
+        self.fields['question'].widget.attrs['placeholder'] = (
+            f'{placeholders["question"]} *')
         self.fields['question'].widget.attrs['class'] = 'input-style'
 
-        self.fields['answer'].widget.attrs['placeholder'] = f'{placeholders["answer"]} *'
+        self.fields['answer'].widget.attrs['placeholder'] = (
+            f'{placeholders["answer"]} *')
         self.fields['answer'].widget.attrs['class'] = 'input-style'

@@ -12,7 +12,7 @@ Frequently Asked Questions
 </div>
 {% endif %}
 <div class="container mt-4">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         {% for faq in faqs %}
         <div class="col-11 col-md-8 col-lg-9">
             <button class="accordion m-0"><strong>{{ faq.question }}</strong></button>
@@ -33,5 +33,5 @@ Frequently Asked Questions
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
+<script type="text/javascript" src="{% static 'faq/js/accordion.js' %}"></script>
 {% endblock %}

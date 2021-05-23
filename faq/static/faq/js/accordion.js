@@ -1,3 +1,6 @@
+/**
+ * To manage the accordion actions in FAQ page.
+ **/
 let acc = document.getElementsByClassName("accordion");
 
 for (let i = 0; i < acc.length; i++) {
