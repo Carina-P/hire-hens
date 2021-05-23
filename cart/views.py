@@ -17,6 +17,8 @@ def add_to_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
+    # item_str = str(item_id)
+
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
     else:
@@ -57,27 +59,28 @@ def remove_from_cart(request, item_id):
         return HttpResponse(status=500)
 
 
-def add_to_cart_rental(request):
-    """ Add a rental package to the rental shopping cart """
+def add_to_cart_rental(request, item_id):
+    """
+    Add quantity to the rental shopping cart specified by months and item_id.
+    Number of months and quantity is retrieved from form in page.
+    Return to url given in form in page.
+    Input:
+        request (object): The HttpRequest object
+        item_id: int, database id of the product item
+    """
 
     months = int(request.POST.get('months'))
+    quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     cart_rental = request.session.get('cart_rental', {})
-    rental_package = request.session.get('package', {})
 
-    if months in list(cart_rental.keys()):
-        for item_id, quantity in rental_package.items():
-            if item_id in list(cart_rental[months].keys()):
-                cart_rental[months][item_id] += quantity
-            else:
-                cart_rental[months][item_id] = quantity
+    if (item_id in list(cart_rental[months].keys())):
+        cart_rental[months][item_id] += quantity
     else:
-        cart_rental[months] = rental_package
+        cart_rental[months][item_id] = quantity
 
     request.session['cart_rental'] = cart_rental
-
-    if 'package' in request.session:
-        del request.session['package']
+    request.session['months'] = months
 
     return redirect(redirect_url)
 

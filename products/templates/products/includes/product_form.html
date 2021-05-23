@@ -57,6 +57,11 @@
                     </div>
                 </div>
             </div>
+            {% if rent %}
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
+            {% else %}
+            <input type="hidden" name="redirect_url"
+                value="{% url 'get_products_by_category' product.category.category 'buy' %}">
+            {% endif %}
         </div>
     </form>

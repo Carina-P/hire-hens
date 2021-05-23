@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block products_header %}
-{% if rent == True %}
+{% if rent %}
 Rental:
 {% else %}
 Buy:
@@ -37,8 +37,8 @@ Buy:
                     {% include 'includes/product_form.html' with rent=rent product=product months=months %}
                 </div>
                 <div class="col12 col-md-6 mt-3 align-self-end">
-                    {% if rent == True %}
-                    <input type="submit" form="detail_rent_form" class="btn btn-black" value="Add to Cart">
+                    {% if rent %}
+                    <input type="submit" form="detail_rent_form" class="btn btn-black" value="Add to Cart_rental">
                     {% else %}
                     <input type="submit" form="detail_buy_form" class="btn btn-black" value="Add to Cart">
                     {% endif %}
