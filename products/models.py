@@ -1,9 +1,11 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Category(models.Model):
+    """
+    Implements model Category that contains all products
+    categories.
+    """
 
     category = models.CharField(max_length=20)
     buyable = models.BooleanField()
@@ -15,6 +17,10 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+    Implements model Product that contains all products
+    available
+    """
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL
         )

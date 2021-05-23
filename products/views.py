@@ -6,16 +6,31 @@ from django.contrib.auth.decorators import login_required
 from .models import Category, Product
 from .forms import ProductForm
 
-# Create your views here.
-
 
 def get_products_by_category(request, category, rent_or_buy):
+    """
+    Get all the products for a special category. I category=all
+    all products are fetched.
+
+    Input:
+        request (object): The HttpRequest object
+        category: str, category for products to fetch
+        rent_or_buy: str, Is rent if user wants to rent the products
+            and buy if user wants to buy the products.
+    """
     if rent_or_buy == 'rent':
         rental_categories = Category.objects.filter(rentable=True)
         rent = True
     else:
         rental_categories = []
         rent = False
+
+    if not category:
+        messages.error(
+            request, 'Error! Something went wrong. No category given.\
+                Contact support!'
+            )
+        return redirect('home')
 
     if category == "all":
         if not request.user.is_superuser:
@@ -51,6 +66,14 @@ def get_product(request, product_id, rent_or_buy):
     if rent_or_buy == 'rent':
         rent = True
 
+    if not product_id:
+        messages.error(
+            request, 'Error! Something went wrong. No product_id given.\
+                Contact support!'
+            )
+        return redirect('home')
+            
+
     product = get_object_or_404(Product, id=product_id)
 
     context = {
@@ -63,7 +86,15 @@ def get_product(request, product_id, rent_or_buy):
 
 @login_required
 def add_product(request):
-    """ Add a product. """
+    """
+    Add a new product.
+    Render an empty form in manage product. 
+    When user filled in the form add product to database.
+    Only superusers are allowed to do this.
+
+    Input:
+        request (object): The HttpRequest object
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
@@ -97,11 +128,28 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
+    """
+    Edit product with product_id.
+    Render the form with information about the product to 
+    be changed. 
+    When user made changes is form, update product to database.
+    Only superusers are allowed to do this.
+
+    Input:
+        request (object): The HttpRequest object
+        product_id: int, the id of the product in database
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
+    if not product_id:
+        messages.error(
+            request, 'Error! Something went wrong. No product_id given.\
+                Contact support!'
+            )
+        return redirect('home')
+    
     product = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
@@ -135,9 +183,23 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product """
+    """
+    Delete product with product_id.
+    Redirect user to the form with all products.
+    Only superusers are allowed to do this.
+
+    Input:
+        request (object): The HttpRequest object
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    if not product_id:
+        messages.error(
+            request, 'Error! Something went wrong. No product_id given.\
+                Contact support!'
+            )
         return redirect('home')
 
     product = get_object_or_404(Product, id=product_id)
