@@ -20,72 +20,125 @@ Orders Administration
     </div>
 </div>
 <div class="row mb-3">
-    <div class="col bg-white border-black pt-4">
-        <table class="table">
-            <thead class="text-black">
-                <tr>
-                    <h4>
-                        <th scope="col">Order no</th>
-                        <th scope="col">Order Date</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Grand Total</th>
-                        <th scope="col">Delivery Date</th>
-                        <th scope="col">Rental due</th>
-                        <th scope="col"></th>
-                    </h4>
-                </tr>
-            </thead>
+    <div class="col bg-lightgreen border-black pt-4">
+        <div class="d-block d-md-none">
             {% for order in orders %}
-            <tr>
-                <td class="py-3">
-                    <p class="my-0">{{ order.order_number }}</p>
-                </td>
-                <td class="p-3">
-                    <p class="my-0">{{ order.order_date }}</p>
-                </td>
-                <td class="py-3">
-                    <p class="my-0">{{ order.town_or_city}}</p>
-                </td>
-                <td class="py-3">
-                    <p class="my-0">{{ order.grand_total}} SEK</p>
-                </td>
-                <td class="py-3">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <p><strong>Order no:</strong> {{ order.order_number }}</p>
+                </div>
+                <div class="col-12">
+                    <p class="my-0"><strong>Order Date:</strong> {{ order.order_date }}</p>
+                </div>
+                <div class="col-12">
+                    <p class="my-0"><strong>City:</strong> {{ order.town_or_city}}</p>
+                </div>
+                <div class="col-12">
+                    <p class="my-0"><strong>Grand total:</strong> {{ order.grand_total}} SEK</p>
+                </div>
+                <div class="col-12">
                     <p class="my-0">
                         {% if order.delivery_date %}
+                        <strong>Deliver date:</strong>
                         {{ order.delivery_date }}</p>
                     {% else %}
-                    not delievered
+                    <strong>Not Delievered</strong>
                     {% endif %}
                     </p>
-                </td>
-                <td class="py-3">
+                </div>
+                <div class="col-12">
                     <p class="my-0">
                         {% if order.earliest_due_date%}
+                        <strong>Rental due:</strong>
                         {{ order.earliest_due_date }}
                         {% else %}
-                        no rental due
+                        No rental due
                         {% endif %}
                     </p>
-                </td>
-                <td>
-                    <a href="{% url 'order_details' order.id %}" class="btn btn-black rounded-0">Details</a>
-                </td>
-            </tr>
+                </div>
+                <div class="col-12 mt-1">
+                    <a href="{% url 'order_details' order.id %}" class="btn btn-black">Details</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr>
+                </div>
+            </div>
             {% endfor %}
-        </table>
+            <h4><strong>Buy Total: {{ total|floatformat:2 }} SEK</strong></h4>
+            <div class="btt-button shadow-sm rounded-0 border border-black">
+                <a class="btt-link d-flex h-100">
+                    <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col table-responsive rounded d-none d-md-block pt-4">
+            <table class="table">
+                <thead class="text-black">
+                    <tr>
+                        <h4>
+                            <th scope="col">Order no</th>
+                            <th scope="col">Order Date</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Grand Total</th>
+                            <th scope="col">Delivery Date</th>
+                            <th scope="col">Rental due</th>
+                            <th scope="col"></th>
+                        </h4>
+                    </tr>
+                </thead>
+                {% for order in orders %}
+                <tr>
+                    <td class="py-3">
+                        <p class="my-0">{{ order.order_number }}</p>
+                    </td>
+                    <td class="p-3">
+                        <p class="my-0">{{ order.order_date }}</p>
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">{{ order.town_or_city}}</p>
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">{{ order.grand_total}} SEK</p>
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">
+                            {% if order.delivery_date %}
+                            {{ order.delivery_date }}</p>
+                        {% else %}
+                        Not Delievered
+                        {% endif %}
+                        </p>
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0">
+                            {% if order.earliest_due_date%}
+                            {{ order.earliest_due_date }}
+                            {% else %}
+                            no rental due
+                            {% endif %}
+                        </p>
+                    </td>
+                    <td>
+                        <a href="{% url 'order_details' order.id %}" class="btn btn-black">Details</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
-</div>
 
-{% endblock checkout_content %}
+    {% endblock checkout_content %}
 
 
-{% block postloadjs %}
-{{ block.super }}
-<!-- Code from Bootstrap -->
-<script type="text/javascript">
-    let dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
-    let dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
-        return new bootstrap.Dropdown(dropdownToggleEl)
-    })
-</script>
-{% endblock %}
+    {% block postloadjs %}
+    {{ block.super }}
+    <!-- Code from Bootstrap -->
+    <script type="text/javascript">
+        let dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        let dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+            return new bootstrap.Dropdown(dropdownToggleEl)
+        })
+    </script>
+    {% endblock %}
