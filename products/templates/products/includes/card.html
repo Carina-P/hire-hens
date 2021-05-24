@@ -1,4 +1,4 @@
-<div class="card h-100 border-black">
+<div class="card h-100 border-black bg-lightgreen">
     {% if product.image %}
     <a href="{% url 'product_detail' product.id rent_or_buy %}">
         <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -13,7 +13,7 @@
             {{ product.name }}
         </p>
     </div>
-    <div class="card-footer bg-white pt-0 border-0 text-left">
+    <div class="card-footer bg-lightgreen pt-0 border-0 text-left">
         <div class="row">
             <div class="col">
                 {% if rent == True %}

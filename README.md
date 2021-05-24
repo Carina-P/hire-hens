@@ -249,4 +249,7 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Acknowledgements
 
-- I received inspiration for this project from X
+- I received inspiration for this project from:
+    - Code institute Boutique Ado.
+    - [Bootstrap](https://getbootstrap.com/)
+    - Sticky footer from [Sticky Footer, Five Ways](https://css-tricks.com/couple-takes-sticky-footer/)

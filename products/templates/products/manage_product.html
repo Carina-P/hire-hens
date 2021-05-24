@@ -2,6 +2,10 @@
 {% load static %}
 {% load cart_tools %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock extra_css %}
+
 {% block products_header %}
 {% if add %}
 <p>Add a Product</p>
@@ -11,6 +15,7 @@
 {% endblock products_header %}
 
 {% block products_content %}
+<!-- Code from Code institute - Boutique Ado -->
 <div class="row">
     <div class="col-12">
         {% if add %}
@@ -39,6 +44,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<!-- From Code Insitute Boutique Ado -->
 <script type="text/javascript">
     $('#new-image').change(function () {
         var file = $('#new-image')[0].files[0];
