@@ -106,12 +106,20 @@ body {
     color: #ffffff;
 }
 
+.text-black {
+    color: #000000;
+}
+
 .no-opacity {
     opacity: 1;
 }
 
 .opacity-50 {
     opacity: 0.8;
+}
+
+.form-textbox {
+    text-align: center !Important;
 }
 
 /*.opacity-10 {
@@ -144,6 +152,8 @@ body {
 .no-bullets {
     list-style-type: none;
 }
+
+.table {}
 
 /*---- Toasts ----*/
 
