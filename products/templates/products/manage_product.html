@@ -15,10 +15,10 @@
 {% endblock products_header %}
 
 {% block products_content %}
-<!-- Code from Code institute - Boutique Ado -->
 <div class="row">
     <div class="col-12">
         {% if add %}
+        <!-- Code from Code institute - Boutique Ado -->
         <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
             {% else %}
             <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2"
