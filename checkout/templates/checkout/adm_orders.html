@@ -7,15 +7,16 @@ Orders Administration
 
 {% block checkout_content %}
 <div class="row text-center justify-content-center mb-3">
-    <div id="all_orders" class="col-12 col-md-4 mb-2">
-        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'all' %}">All Orders</a>
-    </div>
-    <div id="nd_orders" class="col-12 col-md-4 mb-2">
-        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'not_delivered' %}">Orders not yet
-            delivered</a>
-    </div>
-    <div id="due_orders" class="col-12 col-md-4 mb-2">
-        <a class="btn btn-lg btn-black rounded-0" href="{% url 'adm_orders' 'due_rentals' %}">Orders with rental due</a>
+    <div class="dropdown">
+        <button class="btn btn-black btn-lg dropdown-toggle" type="button" id="dropdownButton" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Filter Orders
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownButton">
+            <li><a class="dropdown-item" href="{% url 'adm_orders' 'all' %}">All Orders</a></li>
+            <li><a class="dropdown-item" href="{% url 'adm_orders' 'not_delivered' %}">Orders not yet delivered</a></li>
+            <li><a class="dropdown-item" href="{% url 'adm_orders' 'due_rentals' %}">Orders with rental due</a></li>
+        </ul>
     </div>
 </div>
 <div class="row mb-3">
@@ -76,3 +77,15 @@ Orders Administration
 </div>
 
 {% endblock checkout_content %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+<!-- Code from Bootstrap -->
+<script type="text/javascript">
+    let dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+    let dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+        return new bootstrap.Dropdown(dropdownToggleEl)
+    })
+</script>
+{% endblock %}
