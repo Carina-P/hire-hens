@@ -10,7 +10,11 @@ from checkout.models import Order
 
 @login_required
 def profile(request):
-    """ Display the user's profile. """
+    """
+    Display the user's profile.
+    Input:
+        request (object): The HttpRequest object
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -24,7 +28,12 @@ def profile(request):
                 )
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+
+    try:
+        orders = profile.orders.all()
+    except Exception as e:
+        messages.error(request, "Something went wrong trying to fetch order \
+            information from database. Contact support!", e)
 
     template = 'profiles/profile.html'
     context = {
@@ -36,7 +45,20 @@ def profile(request):
 
 
 def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
+    """
+    Fetches order history and renders in checkout page.
+
+    Input:
+        request (object): The HttpRequest object
+        order_number (str): Ordernumber
+
+    """
+
+    if order_number:
+        order = get_object_or_404(Order, order_number=order_number)
+    else:
+        messages.error(request, "Something is wrong with ordernumber.\
+            Please contact support!")
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}. '
@@ -50,4 +72,3 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
-
