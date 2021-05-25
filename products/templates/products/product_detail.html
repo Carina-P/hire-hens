@@ -11,7 +11,7 @@ Buy:
 {% endblock products_header %}
 
 {% block products_content %}
-<div class="row bg-lightgreen border-black">
+<div class="row bg-lightgreen border-black mb-5">
     <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
         <div class="image-container my-5">
             {% if product.image %}
@@ -51,5 +51,5 @@ Buy:
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript" src="{% static 'js/change_qty.js' %}"></script>
+<script type="text/javascript" src="{% static 'products/js/change_number.js' %}"></script>
 {% endblock %}

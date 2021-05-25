@@ -153,8 +153,6 @@ body {
     list-style-type: none;
 }
 
-.table {}
-
 /*---- Toasts ----*/
 
 .toast-container {
@@ -170,8 +168,7 @@ body {
     border-color: #000000;
 }
 
-
-/* ----Cart ---*/
+/* Cart and product ?*/
 .update-link,
 .remove-item,
 .update-link_rental,
