@@ -39,7 +39,7 @@ Shopping cart
                 </li>
                 <li>Qty: </li>
                 <li class="mb-2 w-50 text-center">
-                    {% include 'includes/quantity_form.html' with rent_or_buy='rent'%}</span>
+                    {% include 'includes/quantity_form.html' with rent_or_buy='rent'%}
                 </li>
                 <li class="mb-2 mt-3">
                     <p class="my-0"><strong>Subtotal:
@@ -89,7 +89,7 @@ Shopping cart
                         <p class="my-0">{{ item.product.rental_price }} SEK</p>
                     </td>
                     <td class="py-3">
-                        {% include 'includes/quantity_form.html' with rent_or_buy='rent' %}
+                        {% include 'includes/quantity_form.html' with rent_or_buy='rent'%}
                     </td>
                     <td class="py-3">
                         <p class="my-0">{% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK
@@ -121,7 +121,7 @@ Shopping cart
                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                 </li>
                 <li class="mb-2">
-                    <p class="my-0">Price Each: ${{ item.product.buying_price }}</p>
+                    <p class="my-0">Price Each: {{ item.product.buying_price }} SEK</p>
                 </li>
                 <li>Qty: </li>
                 <li class="mb-2 w-50 text-center">

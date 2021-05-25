@@ -3,6 +3,15 @@ from products.models import Product, Category
 
 
 def cart_contents(request):
+    """
+    The shopping cart contains all items that buyer put in shopping cart so
+    far. This method fetches items and quantity, user want to buy, from
+    session and puts the items in a dict that is available in all
+    applications of Hire Hens.
+
+    Input:
+    request (object): The HttpRequest object
+    """
 
     cart_items = []
     total = 0
@@ -33,7 +42,15 @@ def cart_contents(request):
 
 
 def cart_rental_contents(request):
+    """
+    The shopping cart contains all items that buyer put in shopping cart so
+    far. This method fetches items and quantity, user wants to rent, from
+    session and puts the items in a dict that is available in all
+    applications of Hire Hens.
 
+    Input:
+    request (object): The HttpRequest object
+    """
     cart_rental_items = []
     total = 0
     product_count = 0

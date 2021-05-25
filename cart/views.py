@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 
-# Create your views here.
 
+def cart(request):
+    """
+    Renders the content of the shopping cart.
 
-def view_cart(request):
-    """ A view that renders the cart contents page. """
+    Input:
+    request (object): The HttpRequest object
+    """
 
     return render(request, 'cart/cart.html')
 
@@ -17,7 +20,7 @@ def add_to_cart(request, item_id):
     Return to url given in form in page.
     Input:
         request (object): The HttpRequest object
-        item_id: int, database id of the product item
+        item_id (int): Database id of the product item
     """
 
     quantity = int(request.POST.get('quantity'))
@@ -37,7 +40,16 @@ def add_to_cart(request, item_id):
 
 
 def adjust_cart(request, item_id):
-    """ Adjust the quantity of the specified product to new amount """
+    """
+    Adjust the buying part of the shopping cart content, in session,
+    with the quantity of the specified product to new amount. Quantity
+    is retrieved from form in page.
+    Redirect user to page with cart information.
+
+    Input:
+    request (object): The HttpRequest object
+    item_id (int): Database id for a product.
+    """
 
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
@@ -52,7 +64,13 @@ def adjust_cart(request, item_id):
 
 
 def remove_from_cart(request, item_id):
-    """ Remove item from cart """
+    """
+    Remove item from the buying part of shopping cart
+
+    Input:
+    request (object): The HttpRequest object
+    item_id (int): Database id for a product.
+    """
     try:
         cart = request.session.get('cart', {})
         cart.pop(item_id)
@@ -70,6 +88,7 @@ def add_to_cart_rental(request, item_id):
     Add quantity to the rental shopping cart specified by months and item_id.
     Number of months and quantity is retrieved from form in page.
     Return to url given in form in page.
+
     Input:
         request (object): The HttpRequest object
         item_id: int, database id of the product item
@@ -95,8 +114,17 @@ def add_to_cart_rental(request, item_id):
 
 
 def adjust_cart_rental(request, item_id, months):
-    """ Adjust the quantity of the specified product to new amount """
+    """
+    Adjust the rental part of the shopping cart content, in session,
+    with the quantity of the specified product and months, to new amount.
+    Quantity is retrieved from form in page.
+    Redirect user to page with cart content.
 
+    Input:
+    request (object): The HttpRequest object
+    item_id (int): Database id for a product.
+    months (int): Number of months to rent
+    """
     quantity = int(request.POST.get('quantity'))
     cart_rental = request.session.get('cart_rental', {})
 
@@ -113,7 +141,13 @@ def adjust_cart_rental(request, item_id, months):
 
 
 def remove_from_cart_rental(request, item_id, months):
-    """ Remove item from cart """
+    """
+    Remove item from the buying part of shopping cart
+
+    Input:
+    request (object): The HttpRequest object
+    item_id (int): Database id for a product.
+    """
     try:
         cart_rental = request.session.get('cart_rental', {})
         if len(cart_rental[months]) == 1:
