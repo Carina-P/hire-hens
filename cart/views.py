@@ -25,6 +25,14 @@ def add_to_cart(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+
+    if quantity < 1 or quantity > 40:
+        messages.error(
+            request,
+            "Item is not added you have give an invalid quantity."
+            )
+        return redirect(redirect_url)
+
     cart = request.session.get('cart', {})
 
     # item_str = str(item_id)
@@ -35,6 +43,7 @@ def add_to_cart(request, item_id):
         cart[item_id] = quantity
 
     request.session['cart'] = cart
+    messages.success(request, "Item was successfully added to cart.")
 
     return redirect(redirect_url)
 
@@ -52,14 +61,22 @@ def adjust_cart(request, item_id):
     """
 
     quantity = int(request.POST.get('quantity'))
+
     cart = request.session.get('cart', {})
 
-    if quantity > 0:
+    if quantity > 0 and quantity < 41:
         cart[item_id] = quantity
-    else:
+    elif quantity == 0:
         cart.pop(item_id)
+    else:
+        messages.error(
+            request,
+            "Item is not changed, you have give an invalid quantity."
+            )
+        return redirect('cart')
 
     request.session['cart'] = cart
+    messages.success(request, "Item in cart was successfully changed.")
     return redirect('cart')
 
 
@@ -76,6 +93,7 @@ def remove_from_cart(request, item_id):
         cart.pop(item_id)
 
         request.session['cart'] = cart
+        messages.success(request, "Item successfully removed from cart.")
         return HttpResponse(status=200)
 
     except Exception as e:
@@ -97,6 +115,11 @@ def add_to_cart_rental(request, item_id):
     months = request.POST.get('months')
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+
+    if int(months) < 1 or int(months) > 40 or quantity < 1 or quantity > 40:
+        messages.error(request, "Error: You have given invalid input!")
+        return redirect(redirect_url)
+
     cart_rental = request.session.get('cart_rental', {})
 
     if months in list(cart_rental.keys()):
@@ -109,6 +132,7 @@ def add_to_cart_rental(request, item_id):
 
     request.session['cart_rental'] = cart_rental
     request.session['months'] = months
+    messages.success(request, "Item was succesfully added to cart.")
 
     return redirect(redirect_url)
 
@@ -128,15 +152,20 @@ def adjust_cart_rental(request, item_id, months):
     quantity = int(request.POST.get('quantity'))
     cart_rental = request.session.get('cart_rental', {})
 
-    if quantity > 0:
+    if quantity > 0 and quantity < 41 and int(months) > 0 and int(months) < 41:
         cart_rental[months][item_id] = quantity
-    else:
+    elif quantity == 0 and int(months) > 0 and int(months) < 41:
         if len(cart_rental[months]) == 1:
             cart_rental.pop(months)
         else:
             cart_rental[months].pop(item_id)
+    else:
+        messages.error(
+            request, "Nothing was changed. You have given invalid input.")
+        return redirect('cart')
 
     request.session['cart_rental'] = cart_rental
+    messages.success(request, "Item was succesfully changed.")
     return redirect('cart')
 
 
@@ -148,6 +177,7 @@ def remove_from_cart_rental(request, item_id, months):
     request (object): The HttpRequest object
     item_id (int): Database id for a product.
     """
+
     try:
         cart_rental = request.session.get('cart_rental', {})
         if len(cart_rental[months]) == 1:
@@ -156,6 +186,7 @@ def remove_from_cart_rental(request, item_id, months):
             cart_rental[months].pop(item_id)
 
         request.session['cart_rental'] = cart_rental
+        messages.success(request, "Item successfully removed from cart.")
         return HttpResponse(status=200)
 
     except Exception as e:
