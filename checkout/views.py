@@ -77,10 +77,10 @@ def checkout(request):
                         quantity=item_data,
                     )
                     order_buy_item.save()
-                except Product.DoesNotExist:
+                except Exception as e:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
+                        "One of the products in your bag wasn't found in our\
+                        database. Please call us for assistance!", e)
                     )
                     order.delete()
                     return redirect('cart')
@@ -96,10 +96,10 @@ def checkout(request):
                             months=months,
                         )
                         order_rental_item.save()
-                    except Product.DoesNotExist:
+                    except Exception as e:
                         messages.error(request, (
-                            "One of the products in your bag wasn't found in our database. "
-                            "Please call us for assistance!")
+                            "One of the products in your bag wasn't found in\
+                            our database. Please call us for assistance!", e)
                         )
                         order.delete()
                         return redirect('cart')
@@ -146,7 +146,7 @@ def checkout(request):
                     'street_address1': profile.default_street_address1,
                     'street_address2': profile.default_street_address2,
                 })
-            except UserProfile.DoesNotExist:
+            except Exception:
                 order_form = OrderForm()
         else:
             order_form = OrderForm()

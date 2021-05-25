@@ -36,7 +36,14 @@ def get_products_by_category(request, category, rent_or_buy):
         if not request.user.is_superuser:
             messages.error(request, 'Sorry, only store owners can do that.')
             return redirect('home')
-        products = Product.objects.all()
+        try:
+            products = Product.objects.all()
+        except Exception as e:
+            messages.error(
+                request,
+                "Something went wrong when trying to fetch products\
+                from database. Please contact support!", e
+            )
     else:
         category_id = get_object_or_404(Category, category=category)
         products = Product.objects.filter(category=category_id.id)
@@ -59,7 +66,7 @@ def get_product(request, product_id, rent_or_buy):
     Input:
         request (object): The HttpRequest object
         product_id: int, database id of the product
-        rent_or_but: str, indicates if it should be rendered on page 
+        rent_or_but: str, indicates if it should be rendered on page
                     for rental or buy
     """
     rent = False
@@ -72,7 +79,6 @@ def get_product(request, product_id, rent_or_buy):
                 Contact support!'
             )
         return redirect('home')
-            
 
     product = get_object_or_404(Product, id=product_id)
 
@@ -88,7 +94,7 @@ def get_product(request, product_id, rent_or_buy):
 def add_product(request):
     """
     Add a new product.
-    Render an empty form in manage product. 
+    Render an empty form in manage product.
     When user filled in the form add product to database.
     Only superusers are allowed to do this.
 
@@ -130,8 +136,8 @@ def add_product(request):
 def edit_product(request, product_id):
     """
     Edit product with product_id.
-    Render the form with information about the product to 
-    be changed. 
+    Render the form with information about the product to
+    be changed.
     When user made changes is form, update product to database.
     Only superusers are allowed to do this.
 
@@ -149,7 +155,7 @@ def edit_product(request, product_id):
                 Contact support!'
             )
         return redirect('home')
-    
+
     product = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':

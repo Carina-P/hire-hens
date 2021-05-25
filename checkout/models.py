@@ -36,6 +36,7 @@ class Order(models.Model):
         max_length=254, null=False, blank=False, default=''
         )
     delivery_date = models.DateTimeField(null=True, blank=True)
+    objects = models.Manager()
 
     def _generate_order_number(self):
         """
@@ -87,6 +88,7 @@ class OrderBuyItem(models.Model):
     buyitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False, editable=False
         )
+    objects = models.Manager()
 
     def save(self, *args, **kwargs):
         """
