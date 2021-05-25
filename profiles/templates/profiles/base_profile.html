@@ -1,22 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-{% block page_header %}
-<div class="container header-container"></div>
-{% endblock %}
-
-{% block content %}
-<div class="overlay bg-green"></div>
-<div class="container overflow-auto h-100">
+{% block inner_content %}
+<div class="container">
     <div class="row">
-        <div class="col text-center">
-            <hr>
+        <div class="col text-center mt-5">
             <h2 class="mb-4">{% block profile_header %}{% endblock profile_header %}</h2>
-            <hr>
         </div>
     </div>
     {% block profile_content %}
     {% endblock profile_content %}
 </div>
-{% endblock %}
+{% endblock inner_content%}
