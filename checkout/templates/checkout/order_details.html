@@ -2,21 +2,21 @@
 {% load static %}
 
 {% block checkout_header %}
-Orders Administration
-Order Details
+Order Information
 {% endblock checkout_header %}
 
 {% block checkout_content %}
 <div class="d-block d-md-none text-center">
-    <a href="{% url 'adm_orders' 'all'%}" class="btn btn-lg btn-black rounded-0 mb-5">Return</a>
+    <a href="{% url 'adm_orders' 'all'%}" class="btn btn-lg btn-black mb-5">Return</a>
 </div>
-<div class="row justify-content-center bg-white border-black mb-5">
+<div class="row justify-content-center bg-lightgreen border-black mb-5">
     <div class="col-12 col-mb-10">
         <h3 class=" text-center my-3">Order details: </h3>
+        <p class="mb-3">Order number: <strong> {{ order.order_number }}</strong> </p>
         <div class="row">
-            <div class="col-6">
-                <ul class="no-bullets">
-                    <li class="mb-3">Order number: <strong> {{ order.order_number }}</strong> </li>
+            <div class="col-12 col-md-6">
+                <ul class="no-bullets ps-0">
+                    <li>Name: <strong>{{ order.full_name }}</strong></li>
                     <li>Order date: <strong> {{ order.order_date }}</strong> </li>
                     {% if order.delivery_date %}
                     <li>Delivery date: <strong> {{ order.delivery_date }}</strong> </li>
@@ -28,9 +28,8 @@ Order Details
                     <li class="mt-4">Grand Total: <strong>{{ order.grand_total }} SEK</strong></li>
                 </ul>
             </div>
-            <div class="col-6">
-                <ul class="no-bullets">
-                    <li>Name: <strong>{{ order.full_name }}</strong></li>
+            <div class="col-12 col-md-6">
+                <ul class="no-bullets ps-0">
                     <li>Email: <strong>{{ order.email }} </strong> </li>
                     <li>Phone: <strong> {{ order.phone_number }}</strong> </li>
                     <li>Adress:
@@ -49,47 +48,15 @@ Order Details
     </div>
 </div>
 <div class="row justify-content-between">
-    <div class="col-12 col-md-4 bg-white border-black mb-5">
-        <h3 class="text-center">Buy Items</h3>
-        <table class="table">
-            <thead class="text-black">
-                <tr>
-                    <h4>
-                        <th scope="col">Product</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Total</th>
-                    </h4>
-                </tr>
-            </thead>
-            {% for item in buyitems %}
-            <tr>
-                <td class="py-3">
-                    <p class="my-0">{{ item.product }}</p>
-                </td>
-                <td class="p-3">
-                    <p class="my-0">{{ item.quantity }}</p>
-                </td>
-                <td class="py-3">
-                    <p class="my-0">{{ item.buyitem_total }} SEK</p>
-                </td>
-            </tr>
-            {% empty %}
-            <div class="text-center">No items </div>
-            {% endfor %}
-        </table>
-
-    </div>
-    <div class="col-12 col-md-7 bg-white border-black ms-3">
+    <div class="col-12 col-md-7 bg-lightgreen border-black mb-5">
         <h3 class="text-center">Rental Items</h3>
         <table class="table">
             <thead class="text-black">
                 <tr>
                     <h4>
                         <th scope="col">Product</th>
-                        <th scope="col">Months</th>
-                        <th scope="col">Qty</th>
                         <th scope="col">Total</th>
-                        <th scope="col">End of Rental Date</th>
+                        <th scope="col">End of Rental</th>
                         <th scope="col">Items to return</th>
                     </h4>
                 </tr>
@@ -97,13 +64,9 @@ Order Details
             {% for item in rentalitems %}
             <tr>
                 <td class="py-3">
-                    <p class="my-0">{{ item.product }}</p>
-                </td>
-                <td class="p-3">
-                    <p class="my-0">{{ item.months }}</p>
-                </td>
-                <td class="py-3">
-                    <p class="my-0">{{ item.quantity }}</p>
+                    <p class="my-0"><strong>{{ item.product }}</strong></p>
+                    <p class="my-0">Months: {{ item.months }}</p>
+                    <p class="my-0">Qty: {{ item.quantity }}</p>
                 </td>
                 <td class="py-3">
                     <p class="my-0">{{ item.rentalitem_total }} SEK</p>
@@ -123,8 +86,8 @@ Order Details
                         No
                         {% else %}
                         Yes: <a href="{% url 'finish_rental' order.id item.id %}"
-                            class="btn btn-black rounded-0 mx-3">Finish
-                            Rental</a>
+                            class="btn btn-sm btn-black"><small>Finish
+                                Rental</small></a>
                         {% endif %}
                     </p>
                 </td>
@@ -134,9 +97,36 @@ Order Details
             {% endfor %}
         </table>
     </div>
+    <div class="col-12 col-md-4 bg-lightgreen border-black ms-md-3">
+        <h3 class="text-center">Buy Items</h3>
+        <table class="table">
+            <thead class="text-black">
+                <tr>
+                    <h4>
+                        <th scope="col">Product</th>
+                        <th scope="col">Total</th>
+                    </h4>
+                </tr>
+            </thead>
+            {% for item in buyitems %}
+            <tr>
+                <td class="py-3">
+                    <p class="my-0"><strong>{{ item.product }}</strong></p>
+                    <p class="my-0">Qty: {{ item.quantity }}</p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">{{ item.buyitem_total }} SEK</p>
+                </td>
+            </tr>
+            {% empty %}
+            <div class="text-center">No items </div>
+            {% endfor %}
+        </table>
+
+    </div>
 </div>
-<div class="text-center">
-    <a href="{% url 'adm_orders' 'all' %}" class="btn btn-lg btn-black rounded-0 mt-5">Return</a>
+<div class="text-center mb-5">
+    <a href="{% url 'adm_orders' 'all' %}" class="btn btn-lg btn-black mt-5">Return</a>
 </div>
 
 {% endblock checkout_content %}
