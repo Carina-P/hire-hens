@@ -12,8 +12,8 @@ Checkout
 
 {% block checkout_content %}
 <div class="row">
-    <div class="col-12 col-lg-6 bg-lightgreen border-black order-lg-last mb-5">
-        <p>Rental Order Summary ({{ product_rental_count }})</p>
+    <div class="col-12 col-lg-6 bg-lightgreen border-black order-lg-last mb-5 pb-3">
+        <p class="mt-2"><strong>Rental Order Summary ({{ product_rental_count }})</strong></p>
         <div class="row">
             <div class="col-6 offset-2">
                 <p class="mb-1 mt-0 small">Item to Hire</p>
@@ -46,14 +46,14 @@ Checkout
         {% endfor %}
         <div class="row text-black text-right">
             <div class="col-7 offset-2">
-                <p class="my-0">Rent Total:</p>
+                <p class="my-0"><strong>Rent Total:</strong></p>
             </div>
             <div class="col-3">
                 <p class="my-0"><strong>{{ total_rental| floatformat:2 }} SEK</strong></p>
             </div>
         </div>
         <hr class="my-0">
-        <p>Buy Order Summary ({{ product_count }})</p>
+        <p class="mt-2"><strong>Buy Order Summary ({{ product_count }})</strong></p>
         <div class="row">
             <div class="col-6 offset-2">
                 <p class="mb-1 mt-0 small">Item to Buy</p>
@@ -84,7 +84,7 @@ Checkout
         {% endfor %}
         <div class="row text-black text-right">
             <div class="col-7 offset-2">
-                <p class="my-0">Buy Total:</p>
+                <p class="my-0"><strong>Buy Total:</strong></p>
             </div>
             <div class="col-3">
                 <p class="my-0"><strong>{{ total | floatformat:2 }} SEK</strong></p>
@@ -136,7 +136,7 @@ Checkout
                 <!-- A Stripe card element will go here -->
                 <div class="mb-3" id="card-element"></div>
                 <!-- Used to display form errors -->
-                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <div class="mb-3 text-black" id="card-errors" role="alert"></div>
                 <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </fieldset>
 
@@ -153,7 +153,7 @@ Checkout
                         <i class="fas fa-lock"></i>
                     </span>
                 </button>
-                <p class="small text-danger my-0">
+                <p class="small my-0">
                     <span class="icon">
                         <i class="fas fa-exclamation-circle"></i>
                     </span>
@@ -166,7 +166,7 @@ Checkout
     </div>
 </div>
 <div id="loading-overlay">
-    <h1 class="text-light logo-font loading-spinner">
+    <h1 class="text-black logo-font loading-spinner">
         <span class="icon">
             <i class="fas fa-3x fa-sync-alt fa-spin"></i>
         </span>

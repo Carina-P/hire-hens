@@ -1,3 +1,4 @@
+/* Code from Code Institute: Boutique Ado */
 let stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 let clientSecret = $('#id_client_secret').text().slice(1, -1);
 let stripe = Stripe(stripePublicKey);
@@ -9,12 +10,12 @@ let style = {
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
-            color: '#aab7c4'
+            color: '#a3c284'
         }
     },
     invalid: {
-        color: '#dc3545',
-        iconColor: '#dc3545'
+        color: '#000',
+        iconColor: '#000'
     }
 };
 
