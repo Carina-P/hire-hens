@@ -168,17 +168,8 @@ body {
     border-color: #000000;
 }
 
-/* Cart and product ?*/
-.update-link,
-.remove-item,
-.update-link_rental,
-.remove-item_rental,
-.update-package-link,
-.remove-package-item,
-.btt-link {
-    cursor: pointer;
-}
 
+/* Cart and checkout ? */
 .btt-button {
     height: 42px;
     width: 42px;

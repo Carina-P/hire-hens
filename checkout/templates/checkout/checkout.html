@@ -12,45 +12,7 @@ Checkout
 
 {% block checkout_content %}
 <div class="row">
-    <div class="col-12 col-lg-6 order-lg-last mb-5">
-        <p>Buy Order Summary ({{ product_count }})</p>
-        <div class="row">
-            <div class="col-6 offset-2">
-                <p class="mb-1 mt-0 small">Item to Buy</p>
-            </div>
-            <div class="col-4 text-right">
-                <p class="mb-1 mt-0 small">Subtotal</p>
-            </div>
-        </div>
-        {% for item in cart_items %}
-        <div class="row mb-2">
-            <div class="col-2 mb-1">
-                <a href="{% url 'product_detail' item.product.id 'buy' %}">
-                    {% if item.product.image %}
-                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
-                    {% else %}
-                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                    {% endif %}
-                </a>
-            </div>
-            <div class="col-6">
-                <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                <p class="my-0 small">Qty: {{ item.quantity }}</p>
-            </div>
-            <div class="col-4 text-right">
-                <p class="my-0 small">{{ item.product.buying_price | calc_subtotal:item.quantity }} SEK</p>
-            </div>
-        </div>
-        {% endfor %}
-        <div class="row text-black text-right">
-            <div class="col-7 offset-2">
-                <p class="my-0">Buy Total:</p>
-            </div>
-            <div class="col-3">
-                <p class="my-0"><strong>{{ total | floatformat:2 }} SEK</strong></p>
-            </div>
-        </div>
-        <hr>
+    <div class="col-12 col-lg-6 bg-lightgreen border-black order-lg-last mb-5">
         <p>Rental Order Summary ({{ product_rental_count }})</p>
         <div class="row">
             <div class="col-6 offset-2">
@@ -91,6 +53,44 @@ Checkout
             </div>
         </div>
         <hr class="my-0">
+        <p>Buy Order Summary ({{ product_count }})</p>
+        <div class="row">
+            <div class="col-6 offset-2">
+                <p class="mb-1 mt-0 small">Item to Buy</p>
+            </div>
+            <div class="col-4 text-right">
+                <p class="mb-1 mt-0 small">Subtotal</p>
+            </div>
+        </div>
+        {% for item in cart_items %}
+        <div class="row mb-2">
+            <div class="col-2 mb-1">
+                <a href="{% url 'product_detail' item.product.id 'buy' %}">
+                    {% if item.product.image %}
+                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="col-6">
+                <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                <p class="my-0 small">Qty: {{ item.quantity }}</p>
+            </div>
+            <div class="col-4 text-right">
+                <p class="my-0 small">{{ item.product.buying_price | calc_subtotal:item.quantity }} SEK</p>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row text-black text-right">
+            <div class="col-7 offset-2">
+                <p class="my-0">Buy Total:</p>
+            </div>
+            <div class="col-3">
+                <p class="my-0"><strong>{{ total | floatformat:2 }} SEK</strong></p>
+            </div>
+        </div>
+        <hr>
         <div class="row text-black text-right mt-3">
             <div class="col-7 offset-2">
                 <p class="my-0">Grand Total:</p>
@@ -100,7 +100,7 @@ Checkout
             </div>
         </div>
     </div>
-    <div class="col-12 col-lg-6 bg-white border-black pt-4">
+    <div class="col-12 col-lg-6 pt-4 px-3">
         <p class="text-muted">Please fill out the form below to complete your order</p>
         <form action="{% url 'checkout' %}" method="POST" id="payment-form">
             {% csrf_token %}

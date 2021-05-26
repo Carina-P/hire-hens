@@ -1,22 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-{% block page_header %}
-<div class="container header-container"></div>
-{% endblock %}
-
-{% block content %}
-<div class="overlay bg-green"></div>
-<div class="container overflow-auto h-100">
-    <div class="row">
-        <div class="col text-center">
-            <hr>
-            <h2 class="mb-4">{% block checkout_header %}{% endblock checkout_header %}</h2>
-            <hr>
+{% block inner_content %}
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center mt-5">
+                <h2 class="mb-4">{% block checkout_header %}{% endblock checkout_header %}</h2>
+            </div>
         </div>
+        {% block checkout_content %}
+        {% endblock checkout_content %}
     </div>
-    {% block checkout_content %}
-    {% endblock checkout_content %}
 </div>
-{% endblock %}
+{% endblock inner_content %}
