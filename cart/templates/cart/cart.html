@@ -203,6 +203,8 @@ Shopping cart
         </a>
     </div>
 </div>
+
+{% include 'includes/modal_remove_item.html' %}
 {% endblock cart_content %}
 
 {% block postloadjs %}
@@ -215,20 +217,6 @@ Shopping cart
         form.submit();
     })
 
-    // Remove item and reload on click
-    $('.remove-item').click(function (e) {
-        let csrfToken = "{{ csrf_token }}";
-        let itemId = $(this).attr('id').split('remove_')[1];
-        let url = `/cart/remove/${itemId}/`;
-        let data = {
-            'csrfmiddlewaretoken': csrfToken
-        };
-
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-    })
 
     // Update quantity on click
     $('.update-link_rental').click(function (e) {
@@ -236,21 +224,45 @@ Shopping cart
         form.submit();
     })
 
-    // Remove item and reload on click
-    $('.remove-item_rental').click(function (e) {
-        let csrfToken = "{{ csrf_token }}";
-        let id = $(this).attr('id').split('_');
-        let itemId = id[0];
-        let months = id[1]
-        let url = `/cart/remove_rental/${itemId}/${months}/`;
-        let data = {
-            'csrfmiddlewaretoken': csrfToken
-        };
 
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-    })
+    function openRemoveModal(itemId, name) {
+        if (itemId === undefined || itemId === null) {
+            console.log(
+                "Error in function openRemoveModal, itemId undefined");
+            return;
+        }
+        if (name === undefined || name === null) {
+            console.log(
+                "Error in function openRemoveModal, name undefined");
+            return;
+        }
+
+        $('#name').html(name);
+        $('#hidden_item').html(`<input type="hidden" name="item_id" value="${itemId}">`)
+        $('#modal_remove').modal('show');
+    }
+
+    function openRemoveModalRent(itemId, name, months) {
+        if (itemId === undefined || itemId === null) {
+            console.log(
+                "Error in function openRemoveModal, itemId undefined");
+            return;
+        }
+        if (name === undefined || name === null) {
+            console.log(
+                "Error in function openRemoveModal, name undefined");
+            return;
+        }
+        if (months === undefined || months === null) {
+            console.log(
+                "Error in function openRemoveModal, months undefined");
+            return;
+        }
+
+        $('#name_rent').html(name);
+        $('#hidden_item_rent').html(`<input type="hidden" name="item_id" value="${itemId}">
+        <input type="hidden" name="months" value="${months}">`)
+        $('#modal_remove_rent').modal('show');
+    }
 </script>
 {% endblock %}

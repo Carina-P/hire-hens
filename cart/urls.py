@@ -6,7 +6,7 @@ urlpatterns = [
     path('add/<item_id>/', views.add_to_cart, name='add_to_cart'),
     path('adjust/<item_id>/', views.adjust_cart, name='adjust_cart'),
     path(
-        'remove/<item_id>/',
+        'remove/',
         views.remove_from_cart,
         name='remove_from_cart'
         ),
@@ -20,7 +20,7 @@ urlpatterns = [
         name='adjust_cart_rental'
         ),
     path(
-        'remove_rental/<item_id>/<months>/',
+        'remove_rental/',
         views.remove_from_cart_rental,
         name='remove_from_cart_rental'
         ),

@@ -67,9 +67,12 @@ def adm_orders(request, scope):
 
     if scope == "due_rentals":
         orders = orders.filter(id__in=due_list)
+        # Lose parameters that is not in QuerySet when filter
+        # Have to add due dates again
         for order in orders:
             due_dates = OrderRentalItem.objects.filter(
-                order=order.id, end_of_rental__isnull=False
+                order=order.id, end_of_rental__isnull=False,
+                item_returned=False
                     )
             if due_dates:
                 earliest_due_date = (

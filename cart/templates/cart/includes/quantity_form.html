@@ -25,8 +25,15 @@
         </div>
     </div>
 </form>
-<a class="update-link text-black px-3"><small>Update</small></a>
+<a class="update-link btn btn-black btn-sm px-3 mt-1"><small>Update</small></a>
+<button type="submit" class="btn btn-black btn-sm mt-1"
+    onclick="openRemoveModal('{{ item.item_id }}', '{{ item.product.name }}')">
+    <small>Remove</small>
+</button>
+<!--
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_remove">Open Modal</button>
 <a class="remove-item text-black" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+-->
 {% else %}
 <form class="form update-rental-form" method="POST" action="{% url 'adjust_cart_rental' item.item_id item.months  %}">
     {% csrf_token %}
@@ -54,6 +61,9 @@
         </div>
     </div>
 </form>
-<a class="update-link_rental text-black px-3"><small>Update</small></a>
-<a class="remove-item_rental text-black" id="{{ item.item_id }}_{{ item.months }}"><small>Remove</small></a>
+<a class="update-link_rental btn btn-black btn-sm px-3 mt-1"><small>Update</small></a>
+<button type="submit" class="btn btn-black btn-sm mt-1"
+    onclick="openRemoveModalRent('{{ item.item_id }}', '{{ item.product.name }}', '{{ item.months }}')">
+    <small>Remove</small>
+</button>
 {% endif %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
 
 
@@ -80,7 +80,7 @@ def adjust_cart(request, item_id):
     return redirect('cart')
 
 
-def remove_from_cart(request, item_id):
+def remove_from_cart(request):
     """
     Remove item from the buying part of shopping cart
 
@@ -89,16 +89,17 @@ def remove_from_cart(request, item_id):
     item_id (int): Database id for a product.
     """
     try:
+        item_id = request.POST.get('item_id')
         cart = request.session.get('cart', {})
         cart.pop(item_id)
 
         request.session['cart'] = cart
         messages.success(request, "Item successfully removed from cart.")
-        return HttpResponse(status=200)
+        return redirect('cart')
 
     except Exception as e:
         messages.error(request, 'Error!:', e)
-        return HttpResponse(status=500)
+        return redirect('cart')
 
 
 def add_to_cart_rental(request, item_id):
@@ -169,7 +170,7 @@ def adjust_cart_rental(request, item_id, months):
     return redirect('cart')
 
 
-def remove_from_cart_rental(request, item_id, months):
+def remove_from_cart_rental(request):
     """
     Remove item from the buying part of shopping cart
 
@@ -179,6 +180,9 @@ def remove_from_cart_rental(request, item_id, months):
     """
 
     try:
+        item_id = request.POST.get('item_id')
+        months = request.POST.get('months')
+
         cart_rental = request.session.get('cart_rental', {})
         if len(cart_rental[months]) == 1:
             cart_rental.pop(months)
@@ -187,8 +191,8 @@ def remove_from_cart_rental(request, item_id, months):
 
         request.session['cart_rental'] = cart_rental
         messages.success(request, "Item successfully removed from cart.")
-        return HttpResponse(status=200)
+        return redirect('cart')
 
     except Exception as e:
         messages.error(request, 'Error!:', e)
-        return HttpResponse(status=500)
+        return redirect('cart')
