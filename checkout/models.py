@@ -125,7 +125,9 @@ class OrderRentalItem(models.Model):
         Override the original save method to set the rentalitem total
         and update the order total.
         """
-        self.rentalitem_total = self.product.rental_price * self.quantity
+        self.rentalitem_total = (
+            self.product.rental_price * self.quantity * self.months
+        )
         super().save(*args, **kwargs)
 
     def __str__(self):

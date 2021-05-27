@@ -243,8 +243,8 @@ def checkout(request):
                     order_buy_item.save()
                 except Exception as e:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our\
-                        database. Please call us for assistance!", e)
+                        "Something went wrong when trying to save the order.\
+                        Please call us for assistance!", e)
                     )
                     order.delete()
                     return redirect('cart')
@@ -257,13 +257,13 @@ def checkout(request):
                             order=order,
                             product=product,
                             quantity=quantity,
-                            months=months,
+                            months=int(months),
                         )
                         order_rental_item.save()
                     except Exception as e:
                         messages.error(request, (
-                            "One of the products in your bag wasn't found in\
-                            our database. Please call us for assistance!", e)
+                            "Something went wrong when trying to save the order.\
+                            Please call us for assistance!", e)
                         )
                         order.delete()
                         return redirect('cart')
