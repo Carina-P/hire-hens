@@ -7,8 +7,6 @@ from django_countries.fields import CountryField
 from products.models import Product
 from profiles.models import UserProfile
 
-# Create your models here.
-
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -120,6 +118,7 @@ class OrderRentalItem(models.Model):
         )
     end_of_rental = models.DateTimeField(null=True, blank=True)
     item_returned = models.BooleanField(null=True, blank=True, default=False)
+    objects = models.Manager()
 
     def save(self, *args, **kwargs):
         """

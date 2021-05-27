@@ -22,7 +22,8 @@ Order Information
                     <li>Delivery date: <strong> {{ order.delivery_date }}</strong> </li>
                     {% else %}
                     <li>Not delivered:
-                        <a href="{% url 'deliver_order' order.id %}" class="ms-3 btn btn-black rounded-0">Deliver</a>
+                        <a href="{% url 'deliver_order' order.id %}"
+                            class="ms-3 btn btn-sm btn-black"><small>Deliver</small></a>
                     </li>
                     {% endif %}
                     <li class="mt-4">Grand Total: <strong>{{ order.grand_total }} SEK</strong></li>
@@ -49,7 +50,7 @@ Order Information
 </div>
 <div class="row justify-content-between">
     <div class="col-12 col-md-7 bg-lightgreen border-black mb-5">
-        <h3 class="text-center">Rental Items</h3>
+        <h3 class="text-center">Items for Rent</h3>
         <table class="table">
             <thead class="text-black">
                 <tr>
@@ -98,7 +99,7 @@ Order Information
         </table>
     </div>
     <div class="col-12 col-md-4 bg-lightgreen border-black ms-md-3">
-        <h3 class="text-center">Buy Items</h3>
+        <h3 class="text-center">Items Bought</h3>
         <table class="table">
             <thead class="text-black">
                 <tr>

@@ -20,11 +20,166 @@ from datetime import datetime as date_time
 from dateutil.relativedelta import relativedelta
 import pytz
 
-# Create your views here.
+
+@login_required
+def adm_orders(request, scope):
+    """
+    Fetches orders according to scope from database and renders them in
+    admin orders page.
+
+    Input:
+    request (object): The HttpRequest object
+    scope (str): Indicates which orders to show(all, orders not delivered or
+    orders with rental due)
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    try:
+        all_orders = Order.objects.all()
+
+    except Exception as e:
+        messages.error(request, 'Something went wrong, fetching orders: ', e)
+        return redirect('adm_orders')
+
+    orders = all_orders
+    if scope == 'not_delivered':
+        # Fetch ealiest end_of_rental date
+        orders = all_orders.filter(delivery_date__isnull=True)
+    else:
+        due_list = []
+        for order in orders:
+            # Can be different number of rental months with same item.
+            earliest_due_date = None
+            if order.delivery_date:
+                due_dates = OrderRentalItem.objects.filter(
+                    order=order.id, end_of_rental__isnull=False
+                    )
+                if due_dates:
+                    earliest_due_date = (
+                        due_dates.earliest('end_of_rental').end_of_rental
+                    )
+                    due_list.append(order.id)
+
+            order.earliest_due_date = earliest_due_date
+
+    if scope == "due_rentals":
+        orders = orders.filter(id__in=due_list)
+        for order in orders:
+            due_dates = OrderRentalItem.objects.filter(
+                order=order.id, end_of_rental__isnull=False
+                    )
+            if due_dates:
+                earliest_due_date = (
+                    due_dates.earliest('end_of_rental').end_of_rental
+                )
+
+            order.earliest_due_date = earliest_due_date
+
+    context = {
+        'orders': orders
+    }
+    return render(request, 'checkout/adm_orders.html', context)
+
+
+@login_required
+def order_details(request, order_id):
+    """
+    Get order information from database and render in Order detail page
+
+    Input:
+    request (object): The HttpRequest object
+    order_id (int): The id of the order in database.
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    context = {
+        "order": get_object_or_404(Order, id=order_id),
+        "buyitems": OrderBuyItem.objects.filter(order=order_id),
+        "rentalitems": OrderRentalItem.objects.filter(order=order_id)
+
+    }
+    return render(request, 'checkout/order_details.html', context)
+
+
+@login_required
+def deliver_order(request, order_id):
+    """
+    Set todays date as delivery date for order with order_id.
+
+    Input:
+    request (object): The HttpRequest object
+    order_id (int): The id of the order in database.
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    order = get_object_or_404(Order, id=order_id)
+
+    try:
+        order.delivery_date = date_time.now(pytz.utc)
+        order.save()
+
+        items = OrderRentalItem.objects.filter(order=order_id)
+        for item in items:
+            item.end_of_rental = (
+                date_time.now(pytz.utc)
+                + relativedelta(months=item.months)
+                )
+            item.save()
+
+        messages.success(
+            request, 'Success! Order is updated with today as delivery date'
+            )
+    except Exception as e:
+        messages.error(
+            request, 'Something went wrong, setting delivery date: ', e
+            )
+
+    return redirect('order_details', order_id)
+
+
+@login_required
+def finish_rental(request, order_id, item_id):
+    """
+    Rental items is returned and items_returned is set to True for
+    item with item_id in the order with order_id.
+
+    Input:
+    request (object): The HttpRequest object
+    order_id (int): The id of the order in database.
+    item_id (int): The id of the item in database.
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    item = get_object_or_404(OrderRentalItem, id=item_id)
+    try:
+        item.item_returned = True
+        item.save()
+        messages.success(request, 'Success! Rental finished.')
+    except Exception as e:
+        messages.error(
+            request, 'Error! Something went wrong, saving rental finished: ', e
+            )
+
+    return redirect('order_details', order_id)
 
 
 @require_POST
 def cache_checkout_data(request):
+    """
+    From Code institute Boutique Ado.
+    Handling the stripe process for payment.
+
+    Input:
+    request (object): The HttpRequest object
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -42,6 +197,15 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """
+    This code was highly inspired from Code Institute: Boutique Ado.
+    It renders checkout page with form to fill in.
+    When user are posting the information. Informationg from form in
+    the page are fetched and stripe is contacted for payment.
+
+    Input:
+    request (object): The HttpRequest object
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -166,7 +330,13 @@ def checkout(request):
 
 def checkout_success(request, order_number):
     """
-    Handle sucessful checkouts
+    This code was highly inspired from Code Institute: Boutique Ado.
+    It handles sucessful checkouts and renders the checkout success
+    page.
+
+    Input:
+    request (object): The HttpRequest object
+    order_number (str): The order number of current order.
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
@@ -200,7 +370,7 @@ def checkout_success(request, order_number):
 
     if 'cart_rental' in request.session:
         del request.session['cart_rental']
-    
+
     if 'months' in request.session:
         del request.session['months']
 
@@ -210,121 +380,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
-
-@login_required
-def adm_orders(request, scope):
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect('home')
-
-    try:
-        all_orders = Order.objects.all()
-
-        # Hämta fram det "minsta" end_of_rental och lägg i orders
-    except Exception as e:
-        messages.error(request, 'Something went wrong, fetching orders: ', e)
-        return redirect('adm_orders')
-
-    orders = all_orders
-    if scope == 'not_delivered':
-        orders = all_orders.filter(delivery_date__isnull=True)
-    else:
-        due_list = []
-        for order in orders:
-            # Can be different no of rental months among rental items in an order
-            earliest_due_date = None
-            if order.delivery_date:
-                due_dates = OrderRentalItem.objects.filter(
-                    order=order.id, end_of_rental__isnull=False
-                    )
-                if due_dates:
-                    earliest_due_date = (
-                        due_dates.earliest('end_of_rental').end_of_rental
-                    )
-                    due_list.append(order.id)
-
-            order.earliest_due_date = earliest_due_date
-
-    if scope == "due_rentals":
-        orders = orders.filter(id__in=due_list)
-        for order in orders:
-            due_dates = OrderRentalItem.objects.filter(
-                order=order.id, end_of_rental__isnull=False
-                    )
-            if due_dates:
-                earliest_due_date = (
-                    due_dates.earliest('end_of_rental').end_of_rental
-                )
-
-            order.earliest_due_date = earliest_due_date
-
-    context = {
-        'orders': orders
-    }
-    return render(request, 'checkout/adm_orders.html', context)
-
-
-@login_required
-def order_details(request, order_id):
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect('home')
-
-    context = {
-        "order": get_object_or_404(Order, id=order_id),
-        "buyitems": OrderBuyItem.objects.filter(order=order_id),
-        "rentalitems": OrderRentalItem.objects.filter(order=order_id)
-
-    }
-    return render(request, 'checkout/order_details.html', context)
-
-
-@login_required
-def deliver_order(request, order_id):
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect('home')
-
-    order = get_object_or_404(Order, id=order_id)
-
-    try:
-        order.delivery_date = date_time.now(pytz.utc)
-        order.save()
-
-        items = OrderRentalItem.objects.filter(order=order_id)
-        for item in items:
-            item.end_of_rental = (
-                date_time.now(pytz.utc)
-                + relativedelta(months=item.months)
-                )
-            item.save()
-
-        messages.success(
-            request, 'Success! Order is updated with today as delivery date'
-            )
-    except Exception as e:
-        messages.error(
-            request, 'Something went wrong, setting delivery date: ', e
-            )
-
-    return redirect('order_details', order_id)
-
-
-@login_required
-def finish_rental(request, order_id, item_id):
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect('home')
-
-    item = get_object_or_404(OrderRentalItem, id=item_id)
-    try:
-        item.item_returned = True
-        item.save()
-        messages.success(request, 'Success! Rental finished.')
-    except Exception as e:
-        messages.error(
-            request, 'Error! Something went wrong, saving rental finished: ', e
-            )
-
-    return redirect('order_details', order_id)
