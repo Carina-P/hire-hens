@@ -83,7 +83,7 @@ Order Information
                 </td>
                 <td class="py-3">
                     <p class="my-0">
-                        {% if item.item_returned %}
+                        {% if item.item_returned or not item.end_of_rental %}
                         No
                         {% else %}
                         Yes: <a href="{% url 'finish_rental' order.id item.id %}"
