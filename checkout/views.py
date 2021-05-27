@@ -54,7 +54,8 @@ def adm_orders(request, scope):
             earliest_due_date = None
             if order.delivery_date:
                 due_dates = OrderRentalItem.objects.filter(
-                    order=order.id, end_of_rental__isnull=False
+                    order=order.id, end_of_rental__isnull=False,
+                    item_returned=False
                     )
                 if due_dates:
                     earliest_due_date = (
