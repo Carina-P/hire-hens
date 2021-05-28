@@ -1,5 +1,6 @@
 {% extends "base_checkout.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block checkout_header %}
 Order Information
@@ -26,7 +27,7 @@ Order Information
                             class="ms-3 btn btn-sm btn-black"><small>Deliver</small></a>
                     </li>
                     {% endif %}
-                    <li class="mt-4">Grand Total: <strong>{{ order.grand_total }} SEK</strong></li>
+                    <li class="mt-4">Grand Total: <strong>{{ order.grand_total|intcomma }} SEK</strong></li>
                 </ul>
             </div>
             <div class="col-12 col-md-6">
@@ -70,7 +71,7 @@ Order Information
                     <p class="my-0">Qty: {{ item.quantity }}</p>
                 </td>
                 <td class="py-3">
-                    <p class="my-0">{{ item.rentalitem_total }} SEK</p>
+                    <p class="my-0">{{ item.rentalitem_total|intcomma }} SEK</p>
                 </td>
                 <td class="py-3">
                     <p class="my-0">
@@ -116,7 +117,7 @@ Order Information
                     <p class="my-0">Qty: {{ item.quantity }}</p>
                 </td>
                 <td class="py-3">
-                    <p class="my-0">{{ item.buyitem_total }} SEK</p>
+                    <p class="my-0">{{ item.buyitem_total|intcomma }} SEK</p>
                 </td>
             </tr>
             {% empty %}

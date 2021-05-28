@@ -1,3 +1,4 @@
+{% load humanize %}
 <div class="card h-100 border-black bg-lightgreen">
     {% if product.image %}
     <a href="{% url 'product_detail' product.id rent_or_buy %}">
@@ -17,9 +18,9 @@
         <div class="row">
             <div class="col">
                 {% if rent == True %}
-                <p class="lead mb-0 text-left font-weight-bold">{{ product.rental_price }} SEK/month</p>
+                <p class="lead mb-0 text-left font-weight-bold">{{ product.rental_price|intcomma }} SEK/month</p>
                 {% else %}
-                <p class="lead mb-0 text-left font-weight-bold">{{ product.buying_price }} SEK</p>
+                <p class="lead mb-0 text-left font-weight-bold">{{ product.buying_price|intcomma }} SEK</p>
                 {% endif %}
                 {% if request.user.is_superuser and this_category == 'all' %}
                 <small class="ml-3">

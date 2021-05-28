@@ -1,6 +1,7 @@
 {% extends "base_checkout.html" %}
 {% load static %}
 {% load cart_tools %}
+{% load humanize %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -40,7 +41,7 @@ Checkout
             </div>
             <div class="col-4 text-right">
                 <p class="my-0 small">
-                    {% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK</p>
+                    {% calc_rent_subtotal item.product.rental_price item.quantity item.months|intcomma %} SEK</p>
             </div>
         </div>
         {% endfor %}
@@ -49,7 +50,7 @@ Checkout
                 <p class="my-0"><strong>Rent Total:</strong></p>
             </div>
             <div class="col-3">
-                <p class="my-0"><strong>{{ total_rental| floatformat:2 }} SEK</strong></p>
+                <p class="my-0"><strong>{{ total_rental| floatformat:2|intcomma }} SEK</strong></p>
             </div>
         </div>
         <hr class="my-0">
@@ -87,7 +88,7 @@ Checkout
                 <p class="my-0"><strong>Buy Total:</strong></p>
             </div>
             <div class="col-3">
-                <p class="my-0"><strong>{{ total | floatformat:2 }} SEK</strong></p>
+                <p class="my-0"><strong>{{ total | floatformat:2 |intcomma}} SEK</strong></p>
             </div>
         </div>
         <hr>
@@ -96,7 +97,8 @@ Checkout
                 <p class=" my-0"><strong>Grand Total:</strong></p>
             </div>
             <div class="col-3">
-                <p class="my-0"><strong>{{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</strong></p>
+                <p class="my-0"><strong>{{ total | calc_cart_total:total_rental | floatformat:2|intcomma }} SEK</strong>
+                </p>
             </div>
         </div>
     </div>
@@ -160,7 +162,7 @@ Checkout
                         <i class="fas fa-exclamation-circle"></i>
                     </span>
                     <span>Your card will be charged
-                        <strong>{{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</strong></span>
+                        <strong>{{ total | calc_cart_total:total_rental | floatformat:2|intcomma }} SEK</strong></span>
                 </p>
             </div>
         </form>

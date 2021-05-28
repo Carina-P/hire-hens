@@ -1,3 +1,4 @@
+{% load humanize %}
 {% load cart_tools %}
 <div class="col-12 col-md-4 d-none d-md-block my-auto py-1 py-md-0 text-end">
     <ul class="list-inline list-unstyled text-center my-0">
@@ -26,7 +27,7 @@
                     <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                     <p class="my-0">
                         {% if total or total_rental %}
-                        {{ total | calc_cart_total:total_rental | floatformat:2 }} SEK
+                        {{ total | calc_cart_total:total_rental | floatformat:2|intcomma }} SEK
                         {% else %}
                         0.00 SEK
                         {% endif %}

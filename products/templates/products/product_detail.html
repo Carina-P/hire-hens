@@ -1,5 +1,6 @@
 {% extends "base_products.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block products_header %}
 {% if rent %}
@@ -26,8 +27,8 @@ Buy:
         <div class="bg-lightgreen mb-5 mt-md-5 p-2">
             <p class="mb-0">
                 <strong>
-                    {% if rent %} {{product.rental_price }} SEK/month
-                    {% else %} {{ product.buying_price }} SEK
+                    {% if rent %} {{product.rental_price|intcomma }} SEK/month
+                    {% else %} {{ product.buying_price|intcomma }} SEK
                     {% endif %}
                 </strong>
             </p>

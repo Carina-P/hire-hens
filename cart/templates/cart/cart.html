@@ -1,6 +1,7 @@
 {% extends "base_cart.html" %}
 {% load static %}
 {% load cart_tools %}
+{% load humanize %}
 
 {% block cart_header %}
 Shopping cart
@@ -9,7 +10,7 @@ Shopping cart
 {% block cart_content %}
 <div class="row d-block d-md-none">
     <div class="col-12 text-center mt-3">
-        <h4>Grand Total: {{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</h4>
+        <h4>Grand Total: {{ total | calc_cart_total:total_rental | floatformat:2|intcomma }} SEK</h4>
         <p class="mb-3">A summary of your cart contents is below</p>
     </div>
     <div class="col-12 text-center">
@@ -35,7 +36,7 @@ Shopping cart
                     <p class="my-0">No of months: {{ item.months }}</p>
                 </li>
                 <li class="mb-2">
-                    <p class="my-0">Price Each: {{ item.product.rental_price }} SEK</p>
+                    <p class="my-0">Price Each: {{ item.product.rental_price|intcomma }} SEK</p>
                 </li>
                 <li>Qty: </li>
                 <li class="mb-2 w-50 text-center">
@@ -43,7 +44,8 @@ Shopping cart
                 </li>
                 <li class="mb-2 mt-3">
                     <p class="my-0"><strong>Subtotal:
-                            {% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK</strong>
+                            {% calc_rent_subtotal item.product.rental_price item.quantity item.months|intcomma %}
+                            SEK</strong>
                     </p>
                 </li>
             </ul>
@@ -53,7 +55,7 @@ Shopping cart
                 </div>
             </div>
             {% endfor %}
-            <h4 class="text-center"><strong>Rent Total: {{ total_rental|floatformat:2 }} SEK</strong></h4>
+            <h4 class="text-center"><strong>Rent Total: {{ total_rental|floatformat:2|intcomma }} SEK</strong></h4>
             <div class="btt-button shadow-sm border-black">
                 <a class="btt-link d-flex h-100">
                     <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
@@ -86,20 +88,21 @@ Shopping cart
                         <p class="my-0">{{ item.months }}</p>
                     </td>
                     <td class="py-3">
-                        <p class="my-0">{{ item.product.rental_price }} SEK</p>
+                        <p class="my-0">{{ item.product.rental_price|intcomma }} SEK</p>
                     </td>
                     <td class="py-3">
                         {% include 'includes/quantity_form.html' with rent_or_buy='rent'%}
                     </td>
                     <td class="py-3">
-                        <p class="my-0">{% calc_rent_subtotal item.product.rental_price item.quantity item.months %} SEK
+                        <p class="my-0">
+                            {% calc_rent_subtotal item.product.rental_price item.quantity item.months|intcomma %} SEK
                         </p>
                     </td>
                 </tr>
                 {% endfor %}
                 <tr>
                     <td colspan="6" class="pt-5 text-center">
-                        <h4><strong>Rent Total: {{ total_rental|floatformat:2 }} SEK</strong></h4>
+                        <h4><strong>Rent Total: {{ total_rental|floatformat:2|intcomma }} SEK</strong></h4>
                     </td>
                 </tr>
 
@@ -121,14 +124,15 @@ Shopping cart
                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                 </li>
                 <li class="mb-2">
-                    <p class="my-0">Price Each: {{ item.product.buying_price }} SEK</p>
+                    <p class="my-0">Price Each: {{ item.product.buying_price|intcomma }} SEK</p>
                 </li>
                 <li>Qty: </li>
                 <li class="mb-2 w-50 text-center">
                     {% include 'includes/quantity_form.html' with rent_or_buy='buy'%}</span>
                 </li>
                 <li class="mb-2 mt-3">
-                    <p class="my-0"><strong>Subtotal: {{ item.product.buying_price | calc_subtotal:item.quantity }}
+                    <p class="my-0"><strong>Subtotal:
+                            {{ item.product.buying_price | calc_subtotal:item.quantity|intcomma }}
                             SEK</strong></p>
                 </li>
             </ul>
@@ -138,7 +142,7 @@ Shopping cart
                 </div>
             </div>
             {% endfor %}
-            <h4 class="text-center"><strong>Buy Total: {{ total|floatformat:2 }} SEK</strong></h4>
+            <h4 class="text-center"><strong>Buy Total: {{ total|floatformat:2|intcomma }} SEK</strong></h4>
             <div class="btt-button shadow-sm border border-black">
                 <a class="btt-link d-flex h-100">
                     <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
@@ -167,19 +171,19 @@ Shopping cart
                         <p class="my-0">{{ item.category }}</p>
                     </td>
                     <td class="py-3">
-                        <p class="my-0">{{ item.product.buying_price }} SEK</p>
+                        <p class="my-0">{{ item.product.buying_price|intcomma }} SEK</p>
                     </td>
                     <td class="py-3">
                         {% include 'includes/quantity_form.html' with rent_or_buy='buy'%}
                     </td>
                     <td class="py-3">
-                        <p class="my-0">{{ item.product.buying_price | calc_subtotal:item.quantity }} SEK</p>
+                        <p class="my-0">{{ item.product.buying_price | calc_subtotal:item.quantity|intcomma }} SEK</p>
                     </td>
                 </tr>
                 {% endfor %}
                 <tr>
                     <td colspan="5" class="pt-5 text-center">
-                        <h4><strong>Buy Total: {{ total|floatformat:2 }} SEK</strong></h4>
+                        <h4><strong>Buy Total: {{ total|floatformat:2|intcomma }} SEK</strong></h4>
                     </td>
                 </tr>
             </table>
@@ -192,7 +196,7 @@ Shopping cart
 
 <div class="row">
     <div class="col-12 text-center mt-5">
-        <h4>Grand Total: {{ total | calc_cart_total:total_rental | floatformat:2 }} SEK</h4>
+        <h4>Grand Total: {{ total | calc_cart_total:total_rental | floatformat:2|intcomma }} SEK</h4>
     </div>
     <div class="col-12 text-center">
         <a href="{% url 'checkout' %}" class="btn btn-black btn-lg m-4">
