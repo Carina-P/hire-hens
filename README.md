@@ -1,4 +1,4 @@
-# ![An egg](media/favicon.ico)   Hire Hens
+# ![An egg](media/favicon/favicon.ico)   Hire Hens
 
 Do you dream about fetching fresch eggs, from your own hens! **Hire Hens**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need. If you later on, or immediately, decides to buy hens instead - we can help you!
  

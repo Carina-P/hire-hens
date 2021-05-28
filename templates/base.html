@@ -22,13 +22,6 @@
   {% block extra_css %}
   {% endblock extra_css %}
 
-  {% block corejs %}
-  {% include 'includes/scripts.html' %}
-  {% endblock corejs %}
-
-  {% block extra_js%}
-  {% endblock extra_js %}
-
   <title>Hire Hens {% block extra_title %} {% endblock %}</title>
 </head>
 
@@ -52,8 +45,12 @@
 
   {% include 'includes/footer.html' %}
 
+  {% block corejs %}
+  {% include 'includes/scripts.html' %}
+  {% endblock corejs %}
+
   {% block postloadjs %}
-  <script type="text/javascript">
+  <script>
     $('.toast').toast('show');
   </script>
   {% endblock postloadjs %}
