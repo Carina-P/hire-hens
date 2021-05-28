@@ -1,3 +1,66 @@
+// Update quantity on click
+$('.update-link').click(function (e) {
+    let form = $(this).prev('.update-form');
+    form.submit();
+})
+
+
+// Update quantity on click
+$('.update-link_rental').click(function (e) {
+    let form = $(this).prev('.update-rental-form');
+    form.submit();
+})
+
+
+// Open modal to ask if user realy want to remove item from cart
+function openRemoveModal(itemId, name) {
+    if (itemId === undefined || itemId === null) {
+        console.log(
+            "Error in function openRemoveModal, itemId undefined");
+        return;
+    }
+    if (name === undefined || name === null) {
+        console.log(
+            "Error in function openRemoveModal, name undefined");
+        return;
+    }
+
+    $('#name').html(name);
+    $('#hidden_item').html(`<input type="hidden" name="item_id" value="${itemId}">`)
+    $('#modal_remove').modal('show');
+}
+
+// Open modal to ask if user realy want to remove item from cart
+function openRemoveModalRent(itemId, name, months) {
+    if (itemId === undefined || itemId === null) {
+        console.log(
+            "Error in function openRemoveModal, itemId undefined");
+        return;
+    }
+    if (name === undefined || name === null) {
+        console.log(
+            "Error in function openRemoveModal, name undefined");
+        return;
+    }
+    if (months === undefined || months === null) {
+        console.log(
+            "Error in function openRemoveModal, months undefined");
+        return;
+    }
+
+    $('#name_rent').html(name);
+    $('#hidden_item_rent').html(`<input type="hidden" name="item_id" value="${itemId}">
+    <input type="hidden" name="months" value="${months}">`)
+    $('#modal_remove_rent').modal('show');
+}
+
+// Code from Code Institute Boutique Ado
+$('.btt-link').click(function (e) {
+    window.scrollTo(0, 0)
+})
+
+
+// Code below is inspired from Code Institute Boutique Ado
 // BUY PART OF CART
 // Disable +/- buttons outside 1-40 range
 function handleEnableDisable(itemId) {
