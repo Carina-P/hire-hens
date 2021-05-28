@@ -104,6 +104,13 @@ body {
     color: #000000 !important;
 }
 
+.home-link:hover {
+    background-color: #c2d7ad;
+    border-radius: .3rem;
+    color: #000000 !important;
+    padding: 1rem;
+}
+
 .center-nav-items {
     display: flex !important;
     justify-content: space-around;
