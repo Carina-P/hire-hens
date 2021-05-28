@@ -103,6 +103,10 @@ body {
     color: #000000 !important;
 }
 
+.soc-link:hover {
+    color: #ebf2e4;
+}
+
 .text-white {
     color: #ffffff;
 }
@@ -110,6 +114,11 @@ body {
 .text-black {
     color: #000000;
 }
+
+.text-green {
+    color: #a3c284;
+}
+
 
 .no-opacity {
     opacity: 1;
@@ -184,7 +193,7 @@ body {
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
     /* mt-4 */
-    color: #6c757d;
+    color: #000000;
     /* text-secondary */
 }
 
@@ -198,7 +207,7 @@ body {
 }
 
 .allauth-form-inner-content input::placeholder {
-    color: #aab7c4;
+    color: #000000;
 }
 
 .allauth-form-inner-content button,

@@ -26,6 +26,8 @@
                     <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-black">Edit</a>
                     <a class="btn btn-sm btn-black" href="{% url 'delete_product' product.id %}">Delete</a>
                 </small>
+                {% else %}
+                <a class="btn btn-black btn-sm" href="{% url 'product_detail' product.id rent_or_buy %}">Details</a>
                 {% endif %}
             </div>
         </div>
