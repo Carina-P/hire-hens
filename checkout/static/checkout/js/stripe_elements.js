@@ -7,15 +7,17 @@ let elements = stripe.elements();
 let style = {
     base: {
         color: '#000',
+        fontFamily: '"IBM Plex Serif", "Roboto", "Open Sans"',
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
-            color: '#a3c284'
+            color: '#3d3d3d',
+            fontStyle: 'italic'
         }
     },
     invalid: {
-        color: '#000',
-        iconColor: '#000'
+        color: '#dc3545',
+        iconColor: '#dc3545'
     }
 };
 

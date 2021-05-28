@@ -40,7 +40,7 @@ class StripeWH_Handler:
     def handle_event(self, event):
         """
         Handle a generic/unknown/unexpected webhook event
-         Code from Code Institute: Boutique Ado
+        Code from Code Institute: Boutique Ado
         """
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',

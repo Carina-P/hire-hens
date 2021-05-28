@@ -1,4 +1,4 @@
-ello {{ order.full_name }}!
+Hello {{ order.full_name }}!
 
 This is a confirmation of your order at Hire Hens. Your order information is below:
 
