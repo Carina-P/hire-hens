@@ -86,6 +86,14 @@ body {
     color: #a3c284;
 }
 
+.text-done {
+    color: green;
+}
+
+.text-notdone {
+    color: red !important;
+}
+
 .border-black {
     border-style: solid;
     border-color: #000000;

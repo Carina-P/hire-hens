@@ -22,7 +22,7 @@ Order Information
                     {% if order.delivery_date %}
                     <li>Delivery date: <strong> {{ order.delivery_date }}</strong> </li>
                     {% else %}
-                    <li>Not delivered:
+                    <li><strong class="text-notdone">Not delivered:</strong>
                         <a href="{% url 'deliver_order' order.id %}"
                             class="ms-3 btn btn-sm btn-black"><small>Deliver</small></a>
                     </li>
@@ -78,18 +78,20 @@ Order Information
                         {% if item.end_of_rental %}
                         {{ item.end_of_rental }}
                         {% else %}
-                        no due date
+                        <strong class="text-done">No returns</strong>
                         {% endif %}
                     </p>
                 </td>
                 <td class="py-3">
                     <p class="my-0">
-                        {% if item.item_returned or not item.end_of_rental %}
-                        No
+                        {% if item.item_returned %}
+                        <strong class="text-done">Finished</strong>
+                        {% elif not item.end_of_rental%}
+                        <strong class="text-done">No</strong>
                         {% else %}
-                        Yes: <a href="{% url 'finish_rental' order.id item.id %}"
-                            class="btn btn-sm btn-black"><small>Finish
-                                Rental</small></a>
+                        <a href="{% url 'finish_rental' order.id item.id %}" class="btn btn-sm btn-black"><small>Finish
+                                rental</small>
+                        </a>
                         {% endif %}
                     </p>
                 </td>
