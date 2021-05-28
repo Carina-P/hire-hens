@@ -1,5 +1,6 @@
 {% extends "base_checkout.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block checkout_header %}
 Orders Administration
@@ -34,7 +35,7 @@ Orders Administration
                     <p class="my-0"><strong>City:</strong> {{ order.town_or_city}}</p>
                 </div>
                 <div class="col-12">
-                    <p class="my-0"><strong>Grand total:</strong> {{ order.grand_total}} SEK</p>
+                    <p class="my-0"><strong>Grand total:</strong> {{ order.grand_total|intcomma}} SEK</p>
                 </div>
                 <div class="col-12">
                     <p class="my-0">
@@ -99,7 +100,7 @@ Orders Administration
                         <p class="my-0">{{ order.town_or_city}}</p>
                     </td>
                     <td class="py-3">
-                        <p class="my-0">{{ order.grand_total}} SEK</p>
+                        <p class="my-0">{{ order.grand_total|intcomma}} SEK</p>
                     </td>
                     <td class="py-3">
                         <p class="my-0">

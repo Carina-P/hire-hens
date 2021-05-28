@@ -82,7 +82,18 @@ body {
 
 .btn-black {
     background-color: #000000;
-    color: #ffffff;
+    color: #ffffff !important;
+}
+
+.btn-black-red {
+    background-color: #000000;
+    color: red !important;
+}
+
+.btn-black-red:hover {
+    background-color: red;
+    color: #000000 !important;
+    border-color: #000000;
 }
 
 .nav-link,
