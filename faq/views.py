@@ -97,19 +97,19 @@ def edit_faq(request, faq_id):
     return render(request, 'faq/faq_input.html', context)
 
 
-def delete_faq(request, faq_id):
+def delete_faq(request):
     """
     Delete a question and then redirect user to FAQ page.
     Only superusers are authorized to delete information.
 
     Input:
         request (object): The HttpRequest object
-        faq_id: int, database id of the question
     """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('faq')
 
+    faq_id = request.POST.get('faq_id')
     faq = get_object_or_404(Faq, id=faq_id)
 
     try:

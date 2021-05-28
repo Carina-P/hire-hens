@@ -23,15 +23,28 @@ Frequently Asked Questions
         {% if request.user.is_superuser %}
         <div class="col-8 col-md-3 col-lg-3 col-xl-2 text-center mt-2 mb-4">
             {% include 'includes/black_button.html' with url_to='edit_faq' param=faq.id button_text='Edit' %}
-            {% include 'includes/black_button.html' with url_to='delete_faq' param=faq.id button_text='Remove' %}
+            <button type="submit" class="btn btn-black-red" onclick="openRemoveModalFaq('{{ faq.id }}')">Delete</button>
         </div>
         {% endif %}
         {% endfor %}
     </div>
-</div>
+</div>{% include 'includes/modal_remove_faq.html' %}
+
 {% endblock faq_content %}
 
 {% block postloadjs %}
 {{ block.super }}
 <script src="{% static 'faq/js/accordion.js' %}"></script>
+<script>
+    function openRemoveModalFaq(faqId) {
+        if (faqId === undefined || faqId === null) {
+            console.log(
+                "Error in function openRemovefaq, questionId undefined");
+            return;
+        }
+
+        $('#hidden_faq').html(`<input type="hidden" name="faq_id" value="${faqId}">`)
+        $('#modal_remove_faq').modal('show');
+    }
+</script>
 {% endblock %}
