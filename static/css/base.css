@@ -29,22 +29,6 @@ body {
     width: 1.5rem;
 }
 
-/* Background for all pages but index
-.overlay {
-    min-height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: #afc1d5;
-    z-index: -1;
-}
-*/
-
-/* .bg-opac {
-    background-color: rgba(255, 255, 255, 0.5);
-}*/
-
 .bg-black {
     background-color: #000000;
     color: #ffffff;
@@ -64,21 +48,10 @@ body {
     background-color: #ebf2e4;
 }
 
-/*.bg-beige {
-    background-color: #edca96;
-    color: #000000;
-}*/
-
 .bg-green {
     background-color: #a3c284;
     color: #000000;
 }
-
-
-/*.bg-orange {
-    background-color: #f9b236;
-    color: #000000;
-}*/
 
 .btn-black {
     background-color: #000000;
@@ -96,26 +69,9 @@ body {
     border-color: #000000;
 }
 
-.nav-link,
-.navbar-brand {
-    color: #ffffff !important;
-}
-
 .btn-black:hover {
     background-color: #c2d7ad;
     border-color: #000000;
-}
-
-.nav-link:hover,
-.navbar-brand:hover,
-.dropdown-item:hover {
-    background-color: #c2d7ad;
-    border-radius: .3rem;
-    color: #000000 !important;
-}
-
-.soc-link:hover {
-    color: #ebf2e4;
 }
 
 .text-white {
@@ -130,39 +86,22 @@ body {
     color: #a3c284;
 }
 
-
-.no-opacity {
-    opacity: 1;
+.border-black {
+    border-style: solid;
+    border-color: #000000;
 }
 
-.opacity-50 {
-    opacity: 0.8;
+.nav-link,
+.navbar-brand {
+    color: #ffffff !important;
 }
 
-.form-textbox {
-    text-align: center !Important;
-}
-
-/*.opacity-10 {
-    opacity: 10%;
-}*/
-
-/*.border-rounded {
-    border: 2px solid black;
-    border-radius: 5px;
-}*/
-
-.no-margin-right {
-    margin-right: 0px !important;
-}
-
-
-.no-margin-left {
-    margin-left: 0px !important;
-}
-
-.header-container {
-    padding-top: 80px;
+.nav-link:hover,
+.navbar-brand:hover,
+.dropdown-item:hover {
+    background-color: #c2d7ad;
+    border-radius: .3rem;
+    color: #000000 !important;
 }
 
 .center-nav-items {
@@ -174,8 +113,35 @@ body {
     list-style-type: none;
 }
 
-/*---- Toasts ----*/
+.soc-link:hover {
+    color: #ebf2e4;
+}
 
+
+
+/* används desss!!!!*/
+.no-opacity {
+    opacity: 1;
+}
+
+.form-textbox {
+    text-align: center !Important;
+}
+
+.no-margin-right {
+    margin-right: 0 !important;
+}
+
+/* Används denna? */
+.no-margin-left {
+    margin-left: 0 !important;
+}
+
+.header-container {
+    padding-top: 80px;
+}
+
+/*---- Toasts ----*/
 .toast-container {
     z-index: 9999999;
 }
@@ -183,12 +149,6 @@ body {
 .toast-line {
     height: 4px;
 }
-
-.border-black {
-    border-style: solid;
-    border-color: #000000;
-}
-
 
 /* Cart and checkout ? */
 .btt-button {
@@ -208,8 +168,7 @@ a:not([href]) {
     text-decoration: none;
 }
 
-/* Allauth form formatting */
-
+/* Allauth form formatting,  from Code Institute Boutique Ado*/
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
     /* mt-4 */
@@ -232,7 +191,6 @@ a:not([href]) {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-    /* btn */
     display: inline-block;
     font-weight: 400;
     color: #fff;
@@ -261,7 +219,7 @@ a:not([href]) {
 }
 
 .allauth-form-inner-content a {
-    color: #17a2b8;
+    color: #000000;
     /* text-info */
 }
 

@@ -1,3 +1,4 @@
+/* Very close to code from Code Institute Boutique Ado */
 .StripeElement,
 .stripe-style-input {
     box-sizing: border-box;
@@ -6,7 +7,7 @@
     border: 1px solid transparent;
     border-radius: 0.3rem;
     background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
+    box-shadow: 0 1px 3px 0 #000000;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
 }
@@ -22,7 +23,8 @@
 }
 
 .stripe-style-input::placeholder {
-    color: #ebf2e4;
+    color: #3d3d3d;
+    font-style: italic;
 }
 
 .fieldset-label {
