@@ -66,7 +66,7 @@ Orders Administration
                 </div>
             </div>
             {% endfor %}
-            <div class="btt-button shadow-sm border border-black">
+            <div class="btt-button shadow-sm border-black">
                 <a class="btt-link d-flex h-100">
                     <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
                 </a>
@@ -133,11 +133,16 @@ Orders Administration
 
     {% block postloadjs %}
     {{ block.super }}
-    <!-- Code from Bootstrap -->
-    <script type="text/javascript">
+    <script>
+        // Code from Bootstrap
         let dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
         let dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
             return new bootstrap.Dropdown(dropdownToggleEl)
+        })
+
+        // Code from Code Institute Boutique Ado
+        $('.btt-link').click(function (e) {
+            window.scrollTo(0, 0)
         })
     </script>
     {% endblock %}
