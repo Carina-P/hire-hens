@@ -1,6 +1,7 @@
 {% if messages %}
-<div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts" autohide="false">
-    <div class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x text-center" id="toastPlacement">
+<div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts" data-autohide="false">
+    <div class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x text-center"
+        id="toastPlacement">
         {% for message in messages %}
         {% with message.level as level %}
         {% if level == 40 %}

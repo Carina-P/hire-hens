@@ -1,5 +1,10 @@
 {% extends "base_products.html" %}
 {% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock extra_css %}
+
 {% load cart_tools %}
 
 {% block products_header %}

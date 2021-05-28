@@ -2,7 +2,9 @@
     <ol class="breadcrumb justify-content-center">
         {% for category in rental_categories %}
         {% if category.category == this_category %}
-        <li class="breadcrumb-item" aria-current="page">{{ this_category }}</li>
+        <li class="breadcrumb-item" aria-current="page">
+            {{ this_category }}
+        </li>
         {% else %}
         <li class="breadcrumb-item">
             <a class="btn btn-black"

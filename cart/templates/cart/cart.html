@@ -209,8 +209,8 @@ Shopping cart
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript" src="{% static 'js/change_qty.js' %}"></script>
-<script type="text/javascript">
+<script src="{% static 'js/change_qty.js' %}"></script>
+<script>
     // Update quantity on click
     $('.update-link').click(function (e) {
         let form = $(this).prev('.update-form');
