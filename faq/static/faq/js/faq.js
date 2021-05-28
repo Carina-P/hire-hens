@@ -14,3 +14,17 @@ for (let i = 0; i < acc.length; i++) {
         }
     });
 }
+
+/** 
+ * Manage Modal
+ **/
+function openRemoveModalFaq(faqId) {
+    if (faqId === undefined || faqId === null) {
+        console.log(
+            "Error in function openRemovefaq, questionId undefined");
+        return;
+    }
+
+    $('#hidden_faq').html(`<input type="hidden" name="faq_id" value="${faqId}">`)
+    $('#modal_remove_faq').modal('show');
+}

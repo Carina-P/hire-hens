@@ -34,17 +34,5 @@ Frequently Asked Questions
 
 {% block postloadjs %}
 {{ block.super }}
-<script src="{% static 'faq/js/accordion.js' %}"></script>
-<script>
-    function openRemoveModalFaq(faqId) {
-        if (faqId === undefined || faqId === null) {
-            console.log(
-                "Error in function openRemovefaq, questionId undefined");
-            return;
-        }
-
-        $('#hidden_faq').html(`<input type="hidden" name="faq_id" value="${faqId}">`)
-        $('#modal_remove_faq').modal('show');
-    }
-</script>
+<script src="{% static 'faq/js/faq.js' %}"></script>
 {% endblock %}
