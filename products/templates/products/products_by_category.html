@@ -49,4 +49,27 @@ Product Management
         {% endif %}
     </div>
 </div>
+{% include 'includes/modal_remove_product.html' %}
 {% endblock products_content %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    function openRemoveProduct(productId, name) {
+        if (productId === undefined || productId === null) {
+            console.log(
+                "Error in function openRemoveProduct, productId undefined");
+            return;
+        }
+        if (name === undefined || name === null) {
+            console.log(
+                "Error in function openRemoveProduct, name undefined");
+            return;
+        }
+
+        $('#name').html(name);
+        $('#hidden_product').html(`<input type="hidden" name="product_id" value="${productId}">`)
+        $('#modal_remove_product').modal('show');
+    }
+</script>
+{% endblock postloadjs%}

@@ -188,7 +188,7 @@ def edit_product(request, product_id):
 
 
 @login_required
-def delete_product(request, product_id):
+def delete_product(request):
     """
     Delete product with product_id.
     Redirect user to the form with all products.
@@ -201,16 +201,22 @@ def delete_product(request, product_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
+    product_id = request.POST.get('product_id')
     if not product_id:
         messages.error(
             request, 'Error! Something went wrong. No product_id given.\
-                Contact support!'
+                Contact support!', product_id
             )
         return redirect('home')
 
     product = get_object_or_404(Product, id=product_id)
-    product.delete()
-    messages.success(request, 'Product deleted!')
+    try:
+        product.delete()
+        messages.success(request, 'Product deleted!')
+    except Exception as e:
+        messages.error(request, 'Error! Something went wrong when trying to\
+            delete product.', e)
+
     return redirect(
         'get_products_by_category',
         category='all',
