@@ -298,9 +298,6 @@ The site is designed to fit devices with screen widths from 320px and larger.
     - to change background colour of homepage background image.
 
 
-DONE THIS FAR!
-----------------------------------------------------------------------------
-
 ## Testing
 
 OBS!!!
@@ -490,10 +487,6 @@ os.environ["STRIPE_WH_SECRET"] = "<Your Stripe webhook secret key">
 
 
 ## Credits
-
-### Content
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
-
 ### Media
 - The photos used in this site were obtained from:
     - Egg in logo: [pixabay](https://pixabay.com/sv/vectors/%C3%A4gg-oval-mat-omg%C3%A5ngen-157224/)
@@ -507,5 +500,8 @@ os.environ["STRIPE_WH_SECRET"] = "<Your Stripe webhook secret key">
 
 - I received inspiration for this project from:
     - Code institute Boutique Ado.
-    - [Bootstrap](https://getbootstrap.com/)
+    - [Bootstrap](https://getbootstrap.com/) with its excelllent docs with examples.
+    - [Django](https://docs.djangoproject.com/en/3.2/) which also have excellent docs with information and examples.
     - Sticky footer from [Sticky Footer, Five Ways](https://css-tricks.com/couple-takes-sticky-footer/)
+    - Add months to a datetime: [Add months to datetime in python](https://serge-m.github.io/posts/add-months-to-datetime-in-python/)
+    - A huge and special thanks to [Simen Daelien](https://www.github.com/eventyret) my mentor at Code Institute. Who is always very commited with lots of energy and knowledge to share.
