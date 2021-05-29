@@ -29,7 +29,8 @@ body {
     width: 1.5rem;
 }
 
-.bg-black {
+.bg-black,
+.bg-black-red {
     background-color: #000000;
     color: #ffffff;
 }
@@ -53,14 +54,10 @@ body {
     color: #000000;
 }
 
-.btn-black {
-    background-color: #000000;
-    color: #ffffff !important;
-}
-
+.btn-black,
 .btn-black-red {
     background-color: #000000;
-    color: red !important;
+    color: #ffffff !important;
 }
 
 .btn-black-red:hover {
@@ -72,6 +69,7 @@ body {
 .btn-black:hover {
     background-color: #c2d7ad;
     border-color: #000000;
+    color: #000000 !important;
 }
 
 .text-white {
