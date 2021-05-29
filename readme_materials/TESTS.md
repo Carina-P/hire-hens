@@ -286,31 +286,71 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Go to questionr "How does hens sleep?" and click Delete. Answer yes to the question that you are sure you want to delete faq.
     * Expected outcome:
         * In Frequently asked questions page you should not find the faq with question "How does hens sleep?" any more.
-        * Also go to admin and check in **database** that the faq is not in Fag table.
+        * Also go to admin and check in **database** that the faq is not in Faq table.
 
+* Testing use case US_017. As an administrator I want to be able to look at the orders and filter them to see:
+    - which orders have not been delivered yet
+    - which orders includes rentals that is not returned and be able to see if they are overdue.
+    **TC_022: Filter orders.
     * How to test:
+        * Carry ut test case TC_023 and TC_024 before this test case.
+        * Log in as an administrator.
+        * In navbar choose ADM and Orders
+        * Click on Filter Orders button and choose Orders not yet delivered.
+        * Then click on Filter Orders button and choose Orders with rental due.
     * Expected outcome:  
-* Testing use case US_003.
-    * How to test:
-    * Expected outcome:  
-* Testing use case US_003.
-    * How to test:
-    * Expected outcome:  
-* Testing use case US_003.
-    * How to test:
-    * Expected outcome: 
-* Testing use case US_003.
-    * How to test:
-    * Expected outcome:  
-* Testing use case US_003.
-    * How to test:
-    * Expected outcome: 
-* Testing use case US_003.
-    * How to test:
-    * Expected outcome: 
+        * When you choose Orders not yet delivered. All orders that show up should have a red Not Delivered text.
+        * When you choose Orders with rental due all orders that show up should have a rental due date (red or green depending on if rental was due before today or not)
 
+* Testing use case US_018. As an administrator I want to be able to mark an order that has no delivery date as delivered.
+    **TC_023** Mark an order as delivered.
+    * How to test:
+        * Log in as administrator.
+        * In navbar choose ADM and then Orders.
+        * Filter Orders and choose Orders not yet delivered.
+        * Click Details for one of them.
+        * In Order Information page order should be marked with red Not Delivered. Click on button Deliver.
+    * Expected outcome: 
+        * In the Order Information page Not Delivered should have disappeared and a delivery date of todays date should be present.
+        * All rental items should now also have a rental due date that is green.
+        * If you return to Orders Admininstration page the order you looked at should have delivery date and if it has rental items also a rental due date.
+        * Go to database and check that everything is correct.
+* Testing use case US_019. As an administrator I want to be able to mark a rental item that has a due date as returned.
+    **TC_024** Mark rental item with due date as returned.
+    * How to test:
+        * Log in as administrator.
+        * In navbar choose ADM and then Orders.
+        * Filter orders and Choose orders with rental due.
+        * Click Details for one of them.
+        * In order information page, rental items part, there should be items with rental due dates.
+        * Choose one of the items and click Items returned.
+    * Expected outcome:
+        * In the Order Information in column of Rental Due the date should have disappeared replaced with the green text no.
+        * Go to database and check that everything is as expected in table Orders.
+    **TC_025** If different rental due dates for items in an order check that earliest date is shown in Orders Administrators page.
+     **TC_026** Check that rental that where due before todays date have red due dates.
+    * How to test:
+        * Find an order with more than one rental items with delivery due dates.
+        * Go to database and change one of the due dates to 2021-05-15.
+        * Go to Orders Administration.
+        * Check which rental due date appears at the order we changed in database.
+        * Go to Order Details and check which rental due dates appears.
+    * Expected outcome:
+        * In Orders Administration page: you should see the date 2021-05-15 (+ a time) in the rental due date colunn of the order.
+        * In Order Details page: you should see the date 2021-05-15(+ a time) in red text and all the other rental due dates should be another date in green.
+
+### Test protocol
+The outcome of testing according to above test cases is documented in [Test protocol]()
 
 ### Other tests
 - The navbar functionality was test by clicking on all possibilities.
 - Webhooks was tested by removing form.save() to simulate that connection was lost before form is saved.
 - After each order transaction I checked in Stripe under Developers tab to see that everything looks alright.
+
+##UX testing
+UX testing is conducted by watching and interviewing users when the move around in the site. Examples of issues/discussions:
+    * I had red text in black buttons for delete items. User thought it was bas contrast.
+    * In product detail page Add to Cart was below page before. Users thought it was better to put the button after the choose quantity form. It is easier to reach and to see.
+    * Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart.
+    Users thought this hard to understand and non-intuitive.
+    So this was changed and rental items are added one by one to the shopping cart. I did put months in context so user did not have to remember how many months he/she had choosen.
