@@ -99,12 +99,18 @@ def order_details(request, order_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
+    
+    if not order_id:
+        messages.error(request, 'Error! Something went wrong when trying to\
+            fetch order. Please contact support!')
+        return redirect('home')
 
+    now = date_time.now(pytz.utc)
     context = {
         "order": get_object_or_404(Order, id=order_id),
         "buyitems": OrderBuyItem.objects.filter(order=order_id),
-        "rentalitems": OrderRentalItem.objects.filter(order=order_id)
-
+        "rentalitems": OrderRentalItem.objects.filter(order=order_id),
+        "now": now
     }
     return render(request, 'checkout/order_details.html', context)
 

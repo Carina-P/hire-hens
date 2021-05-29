@@ -8,7 +8,7 @@ Order Information
 
 {% block checkout_content %}
 <div class="d-block d-md-none text-center">
-    <a href="{% url 'adm_orders' 'all'%}" class="btn btn-lg btn-black mb-5">Return</a>
+    <a href="{% url 'adm_orders' 'all'%}" class="btn btn-lg btn-black mb-5">Back</a>
 </div>
 <div class="row justify-content-center bg-lightgreen border-black mb-5">
     <div class="col-12 col-mb-10">
@@ -76,7 +76,11 @@ Order Information
                 {% if item.end_of_rental and not item.item_returned %}
                 <td class="py-3">
                     <p class="my-0">
-                        {{ item.end_of_rental }}
+                        {% if item.end_of_rental < now %}
+                        <strong class="text-notdone">{{ item.end_of_rental }}</strong>
+                        {% else %}
+                        <strong class="text-done">{{ item.end_of_rental }}</strong>
+                        {% endif %}
                     </p>
                 </td>
                 <td class="py-3">
@@ -128,7 +132,7 @@ Order Information
     </div>
 </div>
 <div class="text-center mb-5">
-    <a href="{% url 'adm_orders' 'all' %}" class="btn btn-lg btn-black mt-5">Return</a>
+    <a href="{% url 'adm_orders' 'all' %}" class="btn btn-lg btn-black mt-5">Back</a>
 </div>
 
 {% endblock checkout_content %}
