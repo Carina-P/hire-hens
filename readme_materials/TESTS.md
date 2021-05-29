@@ -195,12 +195,28 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome: 
         * As stated in TC_011 you should not have to fill in delivery and contact information again.
  
-* Testing use case US_013. As a user i want confirmation when my order is processed and added to the system.
+* Testing use case US_013.  As a user, I want to be able to see my profile information with my order history.
+    **TC_0014** Check profile information
     * How to test:
-    * Expected outcome: 
-* Testing use case US_003.
+        * Log in with same credentials as in TC_011
+        * Follow steps in TC_006.
+        * From cart choose checkout.
+        * Add test credit card number and Complete order.
+        * Choose My Account and My Profile in navbar. Notice the information.
+        * Click on one of the order numbers.
+    * Expected outcome:
+        * You should see two orders:
+            * The one completed TC_012 and the one completed in this test case.
+            * Check that all details are correct in profile page is correct.
+            * When you click on order number you should end up at checkout succes page for the order with given order number.
+
+* Testing use case US_014. As a user, I want to find information about e.g. how to hire hens and how to take care of hens.
+    **TC_0015** Go to FAQ
     * How to test:
-    * Expected outcome: 
+        * In navbar choose FAQ
+        * Click on a question that you are interested in.
+    * Expected outcome:
+        * You should see the answers to you questions.
 * Testing use case US_003.
     * How to test:
     * Expected outcome:  
