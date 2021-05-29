@@ -123,7 +123,8 @@ Test cases are described below and linked to use cases. Each test case have a na
             * buy: 2 pieces of food
         * Also check prices, subtotals and Grand total.
 
-* Testing use case US_008.As a user, I want to change quantity or remove items in cart.
+* Testing use case US_008. As a user, I want to change quantity or remove items in cart.
+    **TC_008** Add items to cart according to TC_007 and do adjustments to the cart
     * How to test:
         * Follow the steps in how to test TC_007.
         * In cart add 1 more piece of food and click update.
@@ -134,7 +135,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Carefully check subtotals and grand totals.
 
 * Testing use case US_009. As a user, I want to checkout my cart.
-    **TC_008** Checkout cart from TC_007
+    **TC_009** Checkout cart from TC_007
         * How to test:
             * Log in to the site.
             * Complete the steps in how to test from TC_007
@@ -149,15 +150,33 @@ Test cases are described below and linked to use cases. Each test case have a na
                 * rent: 2 waterers for 5 months
                 * buy: 2 pieces of food
             * Please carefully check subtotals and grand totals.
-
-    
-    
-    Try to give false creditcard number when checking out.
-        * How to test:
-            * Complete all steps according to TC_005
-            * Go to checkout. Fill out form but give wrong credit card number.
+    **TC_010** Give wrong credit card number.
+        * How to test
+            * Complete all steps according to TC_009
+            * Fill out form in checkout page but give wrong credit card number.
         * Expected outcome:
-            * You should get an error message telling you that credit card number is wrong. And you cannot checkout.
+            * You should get an error message telling you that credit card number is wrong. And you cannot choose complete order.
+
+*Testing use case US_010. As a user, I want to return from the checkout page to my cart and do some adjustments.
+    **TC_011** 
+        * How to test:
+            * Log in to the site, with same credentials as in TC_009.
+            * Complete the steps in how to test from TC_007
+            * Go to checkout page.
+            * Information in form should be given - same as you filled out in TC_009.
+            * Choose adjust cart.
+            * Remove 1 coop for 10 hens for 2 months.
+            * Return to checkout page.
+        * What to expect:
+            * You should not have to fill in checkout form.
+            * In your order summary you should have:
+                * rent: 12 Lohman hens for 5 months
+                * rent: 1 coop for 10 hens for 5 months
+                * rent: 2 waterers for 5 months
+                * buy: 2 pieces of food
+            * Check subtotals and grand totals!
+    
+   
 * Testing use case UC_007 As a user, I want to buy hens, coop/s, equipment/s and consumables.
   
 * Testing use case US_007. 
