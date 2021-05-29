@@ -134,7 +134,7 @@ WSGI_APPLICATION = 'hire_hens.wsgi.application'
 if 'HEROKU_POSTGRESQL_ONYX_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(
-            os.environ.get('HEROKU_POSTGRESQL_ONYX_URL')
+            os.environ.get('DATABASE_URI')
             )
     }
 else:
