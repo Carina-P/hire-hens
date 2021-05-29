@@ -1,6 +1,20 @@
 # ![An egg](media/favicon/favicon.ico)   Hens for Hire
 
 Do you dream about fetching fresch eggs, from your own hens! **Hens for Hire**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need. If you later on, or immediately, decides to buy hens instead - we give you the possibility!
+
+The live project can be found here: [https://hire-hens.herokuapp.com/](https://hire-hens.herokuapp.com/)
+
+**Browser requirements** (at least version)|
+|---------------------------|
+|Chrome 58|
+|Edge 14|
+|Firefox 54|
+|Safari 10|
+|Opera 55|
+|Opera mini can not be used|
+|IE10|
+|iOS 9|
+|Android 4.4|
  
 ## UX
 ### Strategy Plane
@@ -151,10 +165,87 @@ Blue and green was choosen as the hens are able to be outside under the blue sky
 
 
 ## Features
-
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
- 
 ### Existing Features
+This project is highly inspired of the Boutique Ado example from Code Institute. Especially the checkout, checkout success, profile and stripe management appearance and functionality are very close to Boutique Ado. This app uses the allauth applications from Django to administrate user authentication.
+This app differs from Boutique Ado in:
+- The product and cart parts since user can both rent and buy items. The rental possibility adds the time dimension. 
+- FAQ is offered which is not present in Boutique Ado.
+- Administrators can filter orders and handle delivery and rental due times.
+* Features in all pages:
+    * Navbar with possibility to navigate to:
+        * Homepage
+        * Hire products (you are led to Hens)
+        * Buy products (a dropdown is shown where you choose Hens, Coops, Equipment or Consumables)
+        * FAQ (frequently asked questions)
+        * ADM (only for users with administrators authority)- a dropdown where you can choose between Products, Orders or FAQ.
+        *  My Account - if you are logged in you can choose My Profile or Log out. If you are not logged in you can choose between Log in or Register.
+        * Cart: Here you can see total sum of products/rentals in cart. Link leads to the cart.
+    * Toasts with messages are shown in top of page. They disappear when user closes them or if user interact in other ways in the page or got to other page.
+    * Footer: With contact information.
+**Home**
+* Home -page: Picture to attract users and possibility to go to and Explore rental alternatives.
+
+**products**
+* Show rental products within category page:
+    * All products belonging to a category with general information and possibility to go to product detail page.
+    * From Hire in navbar user is guided to product beloning to Hens category page. When Hens are added to cart user is guided to Coops and then Equipment.
+    * If user is an administrator and is guided to this page from the ADM link in navbar: All products are shown. User can choose to add, change or delete product. When adding or changing a product user is guided to manage product page. When deleting a product a modal is shown asking if user is sure he/she wants to delete the product.
+* Show product details page:
+    * Gives more information about a product. A possibility to choose number of months and number of items to rent and add to cart.
+    * Possibility for user to go to cart.
+    * The number of months is saved in context and for every new item to rent user is presented with the last choosen number of months.
+* Manage product page:
+    * Add product: User can fill in information about the product in a form and then submit.
+    * Change product: User is presented with current information about the product in a form. User can change the information and then submit.
+
+**cart**
+* Shopping cart page:
+    * User can see both products to buy and products to rent with quantity, number of months and price. Subtotals and Grand totals are calculated and presented.
+    * Possibility to go to checkout page.
+    * User can change the quantity. If user chooses to remove item from cart a modal i shown that askes if user is sure.
+
+**checkout**
+* Checkout page:
+    * Form to fill in contact and delivery information. If user is logged in, personal information is already filled in.
+    * Credit card information can be added. Validation of credit card information with error messages are shown.
+    * An overview of the shopping cart is presented.
+    * User can choose to go ahead with the checkout or return to shopping cart.
+    * Webhooks is used to communicate with Stripe to be sure no orders are lost due to unintendet behaviour.
+* Checkout success page:
+    * If payment and order transactions are succesfull the user is guided to this page. Here is information of order number and order details.
+* Administrate orders page:
+    * Initially all orders are shown. But user can filter to show:
+        * All orders
+        * Orders that is not delivered yet
+        * Order that have rentals due
+    * Orders that are not delivered are "marked" with a red Not Delivered.
+    * For orders with rental due the date of rental due is shown. Rental due in the future are green and rental due that is late are red.
+    * Possibility to choose to se more details about an order. Then user is guided to order details page.
+* Order details page:
+    * The details for the order with all items to buy and all items to rent.
+    * If order there is no delivery date for order in database. Not delivered is shown in red. User is given possibility to add todays date as delivery date.
+    * If a rental item has a rental due, the rental due date is shown. Red if due date has passed and green if the date is in the future. User has the possibility to "mark" rental as returned.
+
+**profile**
+* Profile page:
+    * A form with user contact information and delivery information. User can update information and save.
+    * An overview of order history and possibility to look at specific order by linking to Checkout success page.
+
+**faq**
+* FAQ-page:
+    * Frequently asked questions and corresponding answers are shown in an "accordion".
+    * If user is an administrator, user can choose to add, change or delete FAQ.
+    * If user wants to delete a faq a modal is shown with the question if user is sure.
+* FAQ input page:
+    * If user is administrator:
+        * Add FAQ: A form is presented where user can add question and answere and submit.
+        * Change FAQ: Information for a specific FAQ is presented in a form and user can change the information and then submit.
+* Register page:
+    * User register email, user name, password and repeat of password in a form.
+* Sign in page:
+    * User give user name and password in a form.
+* Log out page:
+    * User confirm that he/she wants to log out.
 ### Responsive
 
 ### Features Left to Implement
