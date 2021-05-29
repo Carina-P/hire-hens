@@ -66,17 +66,15 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 - US_012: As a user, I want to be able to buy things even if I am not logged in. And if I am logged in I want my personal information for delivery, to be shown at checkout time.
 
-- US_013: As a user i want confirmation when my order is processed and added to the system.
+- US_013: As a user, I want to be able to see my profile information with my order history. 
 
-- US_014: As a user, I want to be able to see my profile information with my order history. 
+- US_014: As a user, I want to find information about e.g. how to hire hens and how to take care of hens.
 
-- US_015: As a user, I want to find information about how to hire hens and how to take care of hens through FAQs.
+- US_015: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
 
-- US_016: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
+- US_016: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete.
 
-- US_017: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
-
-- US_018: As an administrator I want to be able to look at the orders and filter them to see:
+- US_017: As an administrator I want to be able to look at the orders and filter them to see:
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
 

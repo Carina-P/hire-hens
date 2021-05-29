@@ -235,17 +235,59 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome:
         * You should end up in Product Management Page.
         * There should be a new product with the name Cook and the other details you filled in. The image should be a girl with a hen.
+        * Also go to admin and check in **database** that product is added to table Product.
     **TC_017** Change a product
     *   How to test:
-        * Log in as administrator.
-        * In navbar choose ADM and then Products
+        * Log in as an administrator.
+        * In navbar choose ADM and then Products.
         * Move to Coop for 2 hens and click edit.
         * Change buying price to 1100
         * Click Update Product
     * Expected outcome:
-        * In the Product Management page you should see that the price is 1100 SEK
+        * In the Product Management page you should see that the price is 1100 SEK.
+        * Also go to admin and check that the price is changed in **database** table Products.
+    **TC_018** Delete a product
+    * How to test:
+        * Log in as an administrator.
+        * In navbar choose ADM and then Products.
+        * Go to product Cook and click Delete. Answer yes to the question that you are sure you want to delete the Coop.
+    * Expected outcome:
+        * In Product Management page you should not find the product Coop any more.
+        * Also go to admin and check in **database** that coop is not in Product table.
 
-* Testing use case US_003.
+* Testing use case US_016. As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete.
+     **TC_0019** Add a FAQ
+    * How to test:
+        * Log in as an administrator.
+        * In navbar choose ADM and then FAQ
+        * Click Add FAQ.
+        * Fill out the form:
+            * Question: "How does hens sleep?"
+            * Answer: "They sit cose together on sticks."
+        * Click Add.
+    * Expected outcome:
+        * You should end up in Frequently Asked Questions page.
+        * There should be a new faq with question and answer as above.
+        * Also go to admin and check in **database** that faq is added to table Faq.
+    **TC_020** Change a FAQ
+    *   How to test:
+        * Log in as an administrator.
+        * In navbar choose ADM and then FAQ.
+        * Move to question: "How does hens sleep?".
+        * Update answer: cose to close.
+        * Click Edit.
+    * Expected outcome:
+        * In the Frequently asked questions page you should see that cose is changed to close in the answer to "How does hens sleep?".
+        * Also go to admin and check that the answer is changed in **database** table Faq.
+    **TC_021** Delete a FAQ
+    * How to test:
+        * Log in as an administrator.
+        * In navbar choose ADM and then FAQ.
+        * Go to questionr "How does hens sleep?" and click Delete. Answer yes to the question that you are sure you want to delete faq.
+    * Expected outcome:
+        * In Frequently asked questions page you should not find the faq with question "How does hens sleep?" any more.
+        * Also go to admin and check in **database** that the faq is not in Fag table.
+
     * How to test:
     * Expected outcome:  
 * Testing use case US_003.
