@@ -259,6 +259,7 @@ Since I have put all required libraries in requirements.txt, you just have to ru
 |STRIPE_SECRET_KEY|`Your stripe secret key`|
 |STRIPE_WH_SECRET|`Your stripe webhook key`|
 |USE_AWS|`True`|
+
 8. In the Deploy tab, at Deployment method, in Heroku, select GitHub. And then set up automatic deploys at Autmatic deploys.
 9. Log in to heroku from your terminal: `heroku login -i` and give your email and password.
 10. Makemigrations in heroku database with following command in terminal: `heroku run python3 manage.py makemigrations -a "name of the app in heroku`
@@ -266,6 +267,7 @@ Since I have put all required libraries in requirements.txt, you just have to ru
 12. Migrate the database: `heroku run pythons3 migrate -a "name of the app in heroku`
 13. Create a new superuser in database using the folowing command in terminal: `heroku run python3 manage.py createsuperuser -a "name of the app in heroku` and enter email, username and password.
 14. The following settings i settings.py connects to the right database:
+
 `if 'DATABASE_URI' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(
@@ -283,6 +285,7 @@ else:
 15. Check in settings ALLOWED_HOSTS that the right heroku host is given. In my case the setting is: `ALLOWED_HOSTS = ['hire-hens.herokuapp.com', 'localhost']`
 16. In Stripe at tab Developers and then webhooks, register the URL endpoint for checkout webhooks. In my case: `https://hire-hens.herokuapp.com/checkout/wh/`
 17. To make email work in production environment you have to have the following settings in settings.py. In your local environment you se "emails" in your terminal:
+
 `if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'hire.hens@gmail.com'
@@ -295,6 +298,16 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')`
 18. Make sure all settings are commited to GitHub and Heroku.
+19. The categories must exist in the database for the app to work. Open your application and go to admin (/admin) and add the following values to the Category table:
+
+|Category|Buyable|Rentable|
+|---|---|---|
+|Hens|True|True|
+|Coops|True|True|
+|Equipment|True|True|
+|Consumables|True|False|
+
+
 
 ### Amazon web services (aws)
 The static and media files for the deployed site are hosten in the AWS S3 bucket.
@@ -345,6 +358,33 @@ The static and media files for the deployed site are hosten in the AWS S3 bucket
 `
 8. Delete the DISABLE_COLLECTSTATIC from Heroku Settings, Config Var.
 10. Push all changes to GitHub and Heroku.
+
+### Local Deployment
+For local deployment follow these steps:
+1. In the terminal write: `git clone https://github.com/Carina-P/hire-hens.git` or use [this guide](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository).
+2. Create an env.py-file in the root directory. Add the following to the file:
+`import os
+
+os.environ["DEVELOPMENT"] = "True"
+os.environ["SECRET_KEY"] = "<Your secret key>"
+os.environ["STRIPE_PUBLIC_KEY"] = "<Your stripe public key>"
+os.environ["STRIPE_SECRET_KEY"] = "<Your stripe secret key>" 
+os.environ["STRIPE_WH_SECRET"] = "<Your Stripe webhook secret key">
+`
+3. Add env.py to the .gitignore file and the secrets will not be stored in GitHub and Heroku.
+4. Migrate the models to database with:
+    - `python3 manage.py makemigrations`
+    - `python3 manage.py migrate`
+5. Create a superuser: `python3 manage.py createsuperuser`
+6. You can access the app using the command `python3 manage.py runserver`
+7. Run the application and login to the admin (/admin) to fill Category table with information. The following values must be in the table for the app to work:
+|Category|Buyable|Rentable|
+|---|---|---|
+|Hens|True|True|
+|Coops|True|True|
+|Equipment|True|True|
+|Consumables|True|False|
+
 
 ## Credits
 
