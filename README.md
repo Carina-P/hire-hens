@@ -42,7 +42,7 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 ### Scope Plane
 #### User stories
 (this is not in priority order)
-- US_001: As a user I want to be able to sign up to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.
+- US_001: As a user I want to be able to register to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.
 
 - US_002: As a user, I want to be able to login to the site.
 
@@ -72,11 +72,11 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 - US_015: As a user, I want to find information about how to hire hens and how to take care of hens through FAQs.
 
-- US_0016: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
+- US_016: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
 
-- US_0017: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
+- US_017: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
 
-- US_0018: As an administrator I want to be able to look at the orders and filter them to see:
+- US_018: As an administrator I want to be able to look at the orders and filter them to see:
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
 
