@@ -36,6 +36,11 @@ def adm_orders(request, scope):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
+    if not scope:
+        messages.error(request, 'Error! Something went wrong when trying to\
+            fetch orders. Please contact support!')
+        return redirect('home')
+
     try:
         all_orders = Order.objects.all()
 
@@ -81,8 +86,11 @@ def adm_orders(request, scope):
 
             order.earliest_due_date = earliest_due_date
 
+    now = date_time.now(pytz.utc)
+
     context = {
-        'orders': orders
+        'orders': orders,
+        'now': now
     }
     return render(request, 'checkout/adm_orders.html', context)
 
@@ -99,7 +107,7 @@ def order_details(request, order_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
-    
+
     if not order_id:
         messages.error(request, 'Error! Something went wrong when trying to\
             fetch order. Please contact support!')

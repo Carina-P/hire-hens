@@ -51,7 +51,11 @@ Orders Administration
                     <p class="my-0">
                         {% if order.earliest_due_date%}
                         <strong>Rental return:</strong>
-                        {{ order.earliest_due_date }}
+                        {% if order.earliest_due_date < now %}
+                        <strong class="text-notdone">{{ order.earliest_due_date }}</strong>
+                        {% else %}
+                        <strong class="text-done">{{ order.earliest_due_date }}</strong>
+                        {% endif %}
                         {% endif %}
                     </p>
                 </div>
@@ -111,8 +115,12 @@ Orders Administration
                     </td>
                     <td class="py-3">
                         <p class="my-0">
-                            {% if order.earliest_due_date%}
-                            {{ order.earliest_due_date }}
+                            {% if order.earliest_due_date %}
+                            {% if order.earliest_due_date < now %}
+                            <strong class="text-notdone">{{ order.earliest_due_date }}</strong>
+                            {% else %}
+                            <strong class="text-done">{{ order.earliest_due_date }}</strong>
+                            {% endif %}
                             {% endif %}
                         </p>
                     </td>
