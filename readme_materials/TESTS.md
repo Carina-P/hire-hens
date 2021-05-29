@@ -18,3 +18,105 @@ When all features are implemented and tested, the following tests are performed:
 ## Test of functionality and responsiveness
 Functionality tests and tests of responsiveness are done by following test cases below. Test of responsiveness is mainly performed with the help of Chrome Developers Tool.
 
+### Test cases
+Test cases are described below and linked to use cases. Each test case have a name beginning with TC and then a number, e.g. TC_001.
+
+* Testing use case US_001. As a user I want to be able to register to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.:
+    **TC_001** Register to the site:
+    * How to test:
+        * In the navbar choose My Account and then Register.
+        * Fill out email, user name and password.
+        * Also test to fill in email without an @.
+        * Also test to give to different passwords.
+    * Expected outcome:
+        * A message that a mail is sent with link for verification. When you get the mail and follow the verification your should get the possibility to login.
+        * If you give email without @ or two different passwords you will be informed that they are wrong and not have possibility to register.
+
+* Testing use case US_002. As a user, I want to be able to login to the site:
+    **TC_002** Log in to the site:
+    * How to test:
+        * In navbar choose My Account and Log in.
+        * Fill in user name and password.
+        * Also test to give wrong user name.
+        * Also test to give wrong password.
+    * Expected outcome:
+        * You are logged in to site and guided to homepage.
+        * If you gie wrong user name or password you get an error message and are not logged in.
+* Testing use case US_003. As a user, I want to be able to log out.
+    **TC_003** Log out:
+    * How to test:
+        * Go to navbar, choose My Account and Log out.
+    * Expected outcome: 
+        * You are guided to log out-page and are asked if you are sure.
+        * If you click yes you get a message that you are logged out and are guided to home page.
+* Testing use case US_004. As a user, I want to be able to look at the site anonymously, without logging in.
+    **TC_004** Go through all the steps to add an order to the system without logging in.
+    * How to test:
+        * Be sure you are not logged in.
+        * In navbar choose Hire.
+        * Add 10 brahma hens for 4 months to the cart.
+        * Add a coop for 10 hens for 4 months to the cart.
+        * Go to buy consumables and add bedding to cart.
+        * Go to cart.
+        * Choose checkout.
+        * Fill in form and checkout.
+    * Expected outcome:
+        * You should be able to go through all the steps and add an order without problem.
+* Testing use case US_005. As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer.
+    **TC_005** Add hens, coop and waterer, with same amount of months for rental, in cart.
+    * How to test:
+        * Choose Hire in navbar.
+        * Choose Lohman hens.
+        * Add 10 hens for 5 months to cart.
+        * Choose coop for 10 hens.
+        * Do not change months and add 1 coop.
+        * Choose waterer
+        * Do not change months and add 2 waterers to cart.
+        * Go to cart and look.
+    * Expected outcome:
+        * You should finsd 10 Lohman hens, 1 coop for 10 hens and 2 waterers in the cart. And all should have 5 months as rental lenght. 
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome:  
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome: 
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome: 
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome: 
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome: 
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome:  
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome:  
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome:  
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome:  
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome: 
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome:  
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome: 
+* Testing use case US_003.
+    * How to test:
+    * Expected outcome: 
+
+
+### Other tests
+- The navbar functionality was test by clicking on all possibilities.
+- Webhooks was tested by removing form.save() to simulate that connection was lost before form is saved.
+- After each order transaction I checked in Stripe under Developers tab to see that everything looks alright.
