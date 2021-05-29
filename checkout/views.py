@@ -135,6 +135,11 @@ def deliver_order(request, order_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
+    
+    if not order_id:
+        messages.error(request, 'Error! Something went wrong when trying to\
+            mark order as delivered. Please contact support!')
+        return redirect('home')
 
     order = get_object_or_404(Order, id=order_id)
 

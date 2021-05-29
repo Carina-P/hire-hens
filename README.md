@@ -232,6 +232,20 @@ In particular, you should provide all details of the differences between the dep
 
 In addition, if it is not obvious, you should also describe how to run your code locally.
 
+### Heroku Deployment with AWS
+I took the following steps to deploy my site onto [Heroku](https://hire-hens.herokuapp.com/):
+1. Installed gunicorn, psycopg2-binary and dj-database-url using [PIP]((https://pypi.org/project/pip/).
+2. Saved all versions of Python libraries need for the application in the file requirements.txt, using command: ```pip3 freeze > requirements.txt``` in the terminal.
+3. Created a Procfile, with content: ```web: gunicorn hire_hens.wsgi:application```
+4. Then I gave the following commands in the terminal to save changes and push them to GitHub repository:
+    - ```git add .```
+    - ```git commit -m"Created requirements and Procfile"```
+    - ```git push```
+5. Logged into my Heroku account (if you do not have one you need to create one: [Heroku](https://id.heroku.com/) ) and created a new app that I called hire-hens.
+6. In Resource tab I searched for Postgres in the Add-ons search bar. And added Heroku Postgres where I selected the Free account and submitted.
+7. In Settings tab I clicked Reveal Config vars and added the following values:
+|Key|Value|
+
 
 ## Credits
 
