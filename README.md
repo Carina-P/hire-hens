@@ -50,33 +50,29 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 - US_004: As a user, I want to be able to look at the site anonymously, without logging in.
 
-- US_005: As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer.
+- US_005: As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer and add to cart.
 
-- US_006: As a user, I want to buy hens, coop/s, equipment/s and consumables for hens.
+- US_006: As a user, I want to add products that I want to buy to the cart.
 
-- US_007: As a user, I want to add my rental products to a cart.
+- US_007: As a user, I want to look at my cart and then continue shopping.
 
-- US_008: As a user, I want to add products that I want to buy to the cart.
+- US_008: As a user, I want to checkout my cart to pay for the content.
 
-- US_009: As a user, I want to look at my cart.
+- US_009: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
 
-- US_010: As a user, I want to checkout my cart to pay for the content.
+- US_010: As a user, I want to be able to buy things even if I am not logged in. And if I am logged in I want my personal information for delivery, to be shown at checkout time.
 
-- US_011: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
+- US_011: As a user i want confirmation when my order is processed and added to the system.
 
-- US_012: As a user, I want to be able to buy things even if I am not logged in. And if I am logged in I want my personal information for delivery, to be shown at checkout time.
+- US_012: As a user, I want to be able to see my profile information with my order history. 
 
-- US_013: As a user i want confirmation when my order is processed and added to the system.
+- US_013: As a user, I want to find information about how to hire hens and how to take care of hens through FAQs.
 
-- US_014: As a user, I want to be able to see my profile information with my order history. 
+- US_014: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
 
-- US_015: As a user, I want to find information about how to hire hens and how to take care of hens through FAQs.
+- US_015: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
 
-- US_016: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
-
-- US_017: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
-
-- US_018: As an administrator I want to be able to look at the orders and filter them to see:
+- US_016: As an administrator I want to be able to look at the orders and filter them to see:
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
 

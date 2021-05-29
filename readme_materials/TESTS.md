@@ -72,13 +72,66 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Do not change months and add 1 coop.
         * Choose waterer
         * Do not change months and add 2 waterers to cart.
-        * Go to cart and look.
+        * Go to cart.
     * Expected outcome:
-        * You should finsd 10 Lohman hens, 1 coop for 10 hens and 2 waterers in the cart. And all should have 5 months as rental lenght. 
-* Testing use case US_003.
+        * In cart you should find 10 Lohman hens, 1 coop for 10 hens and 2 waterers in the cart. And all should have 5 months as rental lenght.
+        * Carefully check all the prices, subtotals and grand total.
+* Testing use case US_006. As a user, I want to add products that I want to buy to the cart.
+  **TC_006** Add hens, coop, waterer, feeder, food and bedding to buy in shopping cart.
     * How to test:
-    * Expected outcome:  
-* Testing use case US_003.
+        * In navbar choose buy and Hens
+        * Choose Brahma hen
+        * Add 4 hens to cart
+        * In navbar choose buy and coop
+        * Choose coop for 2 hens
+        * Add 2 coops to cart
+        * In navbar choose buy and equipment
+        * Choose feederS
+        * Add 2 feeders to cart
+        * Choose waterer
+        * Add 1 waterer to cart
+        * In navbar choose buy and consumables
+        * Choose food
+        * Add 5 to cart
+        * Choose bedding
+        * Add 1 to cart
+        * Go to cart
+    * Expected outcome:
+        * In the cart you should see 4 Brahma hens, 2 coops for 2 hens, 2 feeders, 1 waterer, 5 pieces of food and 1 bedding.
+        * Carefully check all the prices, subtotals and grand total
+
+* Testing use case US_007. As a user, I want to look at my cart and then continue shopping.
+    **TC_007** Add items to cart, go to the cart and look and then continue adding items to the cart.
+    * How to test:
+        * Fill a cart as in TC_005.
+        * Go to cart.
+        * In navbar choose hire
+        * Choose Lohman hen
+        * Add 2 Lohman hens for 5 months to cart.
+        * Choose coop for 10 hens
+        * Add 1 coop for 2 months to cart
+        * Choose Buy and Consumables in navbar
+        * Choose food
+        * Add 2 pieces to cart
+        * Go to cart
+    * Expected outcome:
+        * Check carefully that you have:
+            * rent: 12 Lohman hens for 5 months
+            * rent: 1 coop for 10 hens for 5 months
+            * rent: 1 coop for 10 hens for 2 months
+            * rent: 2 waterers for 5 months
+            * buy: 2 pieces of food
+        * Also check prices, subtotals and Grand total.
+* Testing use case US_008. As a user, I want to checkout my cart to pay for the content.
+    **TC_008** Try to give false creditcard number when checking out.
+        * How to test:
+            * Complete all steps according to TC_005
+            * Go to checkout. Fill out form but give wrong credit card number.
+        * Expected outcome:
+            * You should get an error message telling you that credit card number is wrong. And you cannot checkout.
+* Testing use case UC_007 As a user, I want to buy hens, coop/s, equipment/s and consumables.
+  
+* Testing use case US_007. 
     * How to test:
     * Expected outcome: 
 * Testing use case US_003.
