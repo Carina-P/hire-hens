@@ -347,10 +347,24 @@ The outcome of testing according to above test cases is documented in [Test prot
 - Webhooks was tested by removing form.save() to simulate that connection was lost before form is saved.
 - After each order transaction I checked in Stripe under Developers tab to see that everything looks alright.
 
-##UX testing
+## UX testing
 UX testing is conducted by watching and interviewing users when the move around in the site. Examples of issues/discussions:
     * I had red text in black buttons for delete items. User thought it was bas contrast.
     * In product detail page Add to Cart was below page before. Users thought it was better to put the button after the choose quantity form. It is easier to reach and to see.
     * Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart.
     Users thought this hard to understand and non-intuitive.
     So this was changed and rental items are added one by one to the shopping cart. I did put months in context so user did not have to remember how many months he/she had choosen.
+
+## Code Validation
+
+## Different browsers
+
+
+## Some of the bugs
+- It was a little hard to add the dimension months to cart. And I had several bugs before it got it right (I hope). For example when I added an item with some amount of rental months that already existed in the cart, instead of increasing quantity, the old value was overwritten.
+- To get all my includes to work I needed to add app in TEMPLATES_DIRS.
+- Forgot to add include static in some templates.
+
+## Remaining bugs
+- On larger viewports in cart you can change quantity to below 0 and above 40, which is not the case on smaller viewports. The limits is tested on backend side so the wrong numbers is not added to the database.
+- Upon checkout succes order information is not emailed as informed in the checkout success page.
