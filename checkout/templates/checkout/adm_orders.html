@@ -40,10 +40,10 @@ Orders Administration
                 <div class="col-12">
                     <p class="my-0">
                         {% if order.delivery_date %}
-                        <strong>Deliver date:</strong>
+                        <strong>Delivered date:</strong>
                         {{ order.delivery_date }}</p>
                     {% else %}
-                    <strong class="text-notdone">Not done</strong>
+                    <strong class="text-notdone">Not Delivered</strong>
                     {% endif %}
                     </p>
                 </div>
@@ -52,8 +52,6 @@ Orders Administration
                         {% if order.earliest_due_date%}
                         <strong>Rental return:</strong>
                         {{ order.earliest_due_date }}
-                        {% else %}
-                        <strong class="text-done">No</strong>
                         {% endif %}
                     </p>
                 </div>
@@ -82,7 +80,7 @@ Orders Administration
                             <th scope="col">Order Date</th>
                             <th scope="col">City</th>
                             <th scope="col">Grand Total</th>
-                            <th scope="col">Delivery Date</th>
+                            <th scope="col">Delivered Date</th>
                             <th scope="col">Rental due</th>
                             <th scope="col"></th>
                         </h4>
@@ -107,7 +105,7 @@ Orders Administration
                             {% if order.delivery_date %}
                             {{ order.delivery_date }}</p>
                         {% else %}
-                        <strong class="text-notdone">Not done</strong>
+                        <strong class="text-notdone">Not Delivered</strong>
                         {% endif %}
                         </p>
                     </td>
@@ -115,8 +113,6 @@ Orders Administration
                         <p class="my-0">
                             {% if order.earliest_due_date%}
                             {{ order.earliest_due_date }}
-                            {% else %}
-                            <strong class="text-done">No</strong>
                             {% endif %}
                         </p>
                     </td>

@@ -20,7 +20,7 @@ Order Information
                     <li>Name: <strong>{{ order.full_name }}</strong></li>
                     <li>Order date: <strong> {{ order.order_date }}</strong> </li>
                     {% if order.delivery_date %}
-                    <li>Delivery date: <strong> {{ order.delivery_date }}</strong> </li>
+                    <li>Delivered date: <strong> {{ order.delivery_date }}</strong> </li>
                     {% else %}
                     <li><strong class="text-notdone">Not delivered:</strong>
                         <a href="{% url 'deliver_order' order.id %}"
@@ -58,8 +58,8 @@ Order Information
                     <h4>
                         <th scope="col">Product</th>
                         <th scope="col">Total</th>
-                        <th scope="col">End of Rental</th>
-                        <th scope="col">Items to return</th>
+                        <th scope="col">Rental Due</th>
+                        <th scope="col"></th>
                     </h4>
                 </tr>
             </thead>
@@ -73,28 +73,26 @@ Order Information
                 <td class="py-3">
                     <p class="my-0">{{ item.rentalitem_total|intcomma }} SEK</p>
                 </td>
+                {% if item.end_of_rental and not item.item_returned %}
                 <td class="py-3">
                     <p class="my-0">
-                        {% if item.end_of_rental %}
                         {{ item.end_of_rental }}
-                        {% else %}
-                        <strong class="text-done">No returns</strong>
-                        {% endif %}
                     </p>
                 </td>
                 <td class="py-3">
                     <p class="my-0">
-                        {% if item.item_returned %}
-                        <strong class="text-done">Finished</strong>
-                        {% elif not item.end_of_rental%}
-                        <strong class="text-done">No</strong>
-                        {% else %}
-                        <a href="{% url 'finish_rental' order.id item.id %}" class="btn btn-sm btn-black"><small>Finish
-                                rental</small>
+                        <a href="{% url 'finish_rental' order.id item.id %}" class="btn btn-sm btn-black"><small>Items
+                                returned</small>
                         </a>
-                        {% endif %}
                     </p>
                 </td>
+                {% else %}
+                <td class="py-3">
+                    <p class="my-0 text-done">
+                        No
+                    </p>
+                </td>
+                {% endif %}
             </tr>
             {% empty %}
             <p class="text-center">No items </p>

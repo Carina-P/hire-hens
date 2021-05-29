@@ -162,7 +162,13 @@ def finish_rental(request, order_id, item_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
 
+    if not order_id and not item_id:
+        messages.error(request, 'Error! Something went wrong when trying to\
+            finish rental. Please contact support!')
+        return redirect('home')
+
     item = get_object_or_404(OrderRentalItem, id=item_id)
+    print(item)
     try:
         item.item_returned = True
         item.save()
