@@ -56,23 +56,27 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 - US_007: As a user, I want to look at my cart and then continue shopping.
 
-- US_008: As a user, I want to checkout my cart to pay for the content.
+- US_008: As a user, I want to change quantity or remove item in cart.
 
-- US_009: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
+- US_009: As a user, I want to checkout my cart.
 
-- US_010: As a user, I want to be able to buy things even if I am not logged in. And if I am logged in I want my personal information for delivery, to be shown at checkout time.
+- US_010: As a user, I want to return from the checkout page to my cart and do some adjustments.
 
-- US_011: As a user i want confirmation when my order is processed and added to the system.
+- US_011: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
 
-- US_012: As a user, I want to be able to see my profile information with my order history. 
+- US_012: As a user, I want to be able to buy things even if I am not logged in. And if I am logged in I want my personal information for delivery, to be shown at checkout time.
 
-- US_013: As a user, I want to find information about how to hire hens and how to take care of hens through FAQs.
+- US_013: As a user i want confirmation when my order is processed and added to the system.
 
-- US_014: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
+- US_014: As a user, I want to be able to see my profile information with my order history. 
 
-- US_015: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
+- US_015: As a user, I want to find information about how to hire hens and how to take care of hens through FAQs.
 
-- US_016: As an administrator I want to be able to look at the orders and filter them to see:
+- US_016: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
+
+- US_017: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
+
+- US_018: As an administrator I want to be able to look at the orders and filter them to see:
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
 

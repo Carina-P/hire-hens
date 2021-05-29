@@ -122,8 +122,37 @@ Test cases are described below and linked to use cases. Each test case have a na
             * rent: 2 waterers for 5 months
             * buy: 2 pieces of food
         * Also check prices, subtotals and Grand total.
-* Testing use case US_008. As a user, I want to checkout my cart to pay for the content.
-    **TC_008** Try to give false creditcard number when checking out.
+
+* Testing use case US_008.As a user, I want to change quantity or remove items in cart.
+    * How to test:
+        * Follow the steps in how to test TC_007.
+        * In cart add 1 more piece of food and click update.
+        * Remove the 12 Lohman hens by clicking Remove and answer yes to question if you want to remove.
+    * What to expect:
+        * You shoud now have 3 pieces of food in your cart
+        * And you should not have any hens.
+        * Carefully check subtotals and grand totals.
+
+* Testing use case US_009. As a user, I want to checkout my cart.
+    **TC_008** Checkout cart from TC_007
+        * How to test:
+            * Log in to the site.
+            * Complete the steps in how to test from TC_007
+            * Go to checkout page and fill out the form.
+            * Save the delivery information in the form.
+        * What to expect:
+            * You should have a filled out form in checkout page 
+            * You should also have an order summary that consists of:
+                * rent: 12 Lohman hens for 5 months
+                * rent: 1 coop for 10 hens for 5 months
+                * rent: 1 coop for 10 hens for 2 months
+                * rent: 2 waterers for 5 months
+                * buy: 2 pieces of food
+            * Please carefully check subtotals and grand totals.
+
+    
+    
+    Try to give false creditcard number when checking out.
         * How to test:
             * Complete all steps according to TC_005
             * Go to checkout. Fill out form but give wrong credit card number.
