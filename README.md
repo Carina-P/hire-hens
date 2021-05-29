@@ -246,9 +246,17 @@ This app differs from Boutique Ado in:
     * User give user name and password in a form.
 * Log out page:
     * User confirm that he/she wants to log out.
+
 ### Responsive
+The site is designed to fit devices with screen widths from 320px and larger.
+* Navbar collapses into "hamburger" menu on smaller viewports.
+* Footer looks different in different viewport sizes.
+* Almost all of the pages differ between smaller and larger viewport. The informations placement differ slightly.
 
 ### Features Left to Implement
+- Sending an email when order is completed.
+- Possibility to change full name in Profile page.
+- It is prepared to connect social media but it is not completed.
 
 
 ## Technologies Used
@@ -272,8 +280,14 @@ This app differs from Boutique Ado in:
     - To host the web app
 - [GitHub](https://github.com)
     - GitHub is used to store the code.
+- [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+    - Library for html/css/js features.
+- [JQuery](https://jquery.com/)
+    - To simplify DOM manipulation.
 - [Balsamiq Wireframes](https://balsamiq.com/)
     - For designing the wireframes
+- [Coolors](https://coolors.co/):
+    - To generate color-schemes
 - [DrawSQL](https://drawsql.app/)
     - To draw database diagrams
 - [Google Fonts](https://fonts.google.com/)
