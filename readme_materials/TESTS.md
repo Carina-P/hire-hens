@@ -357,7 +357,20 @@ UX testing is conducted by watching and interviewing users when the move around 
 
 ## Code Validation
 
+OBS!!!!!!!!!!!!!!!!!!!
+
 ## Different browsers
+The code is mainly tested with Chrome.
+- According to [W3 Schools](https://www.w3schools.com/js/js_es6.asp) the 
+**JavaScript** code will probably not work well on browsers less than the 
+following versions: **Chrome 58, Edge 14, Firefox 54, Safari 10 and Opera 55**. 
+That are because following features from **ECMAScriptS6** is used: 
+    - let
+    - template literal syntax
+- **Bootstrap 4** is used and according to [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/browsers-devices/) you need at least: 
+**Chrome 45, Firefox 38, Edge 12, IE10, iOS 9, Safari 9, Android 4.4 and Opera 30**.
+- **HTML5 semantics and form features** are used, according to [Can I use](https://caniuse.com/?search=HTML5), that requires at least:
+**IE9, Firefox 4, Safari 4 and Android Browser 4.4**. **Opera mini** cannot be used.
 
 
 ## Some of the bugs
