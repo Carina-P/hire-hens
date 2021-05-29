@@ -216,10 +216,35 @@ Test cases are described below and linked to use cases. Each test case have a na
         * In navbar choose FAQ
         * Click on a question that you are interested in.
     * Expected outcome:
-        * You should see the answers to you questions.
-* Testing use case US_003.
+        * You should see the answers to the questions in the FAQ.
+
+* Testing use case US_015. As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
+    **TC_0016** Add a product
     * How to test:
-    * Expected outcome:  
+        * Log in as an administrator.
+        * In navbar choose ADM and then Products
+        * Click Add Product.
+        * Fill out the form:
+            * Category: Hens
+            * Name: Cook
+            * Information: This is a very handsome type of cooks.
+            * Buying price: 500
+            * Rental price: 100
+            * Do not select an image
+        * Click Add Product.
+    * Expected outcome:
+        * You should end up in Product Management Page.
+        * There should be a new product with the name Cook and the other details you filled in. The image should be a girl with a hen.
+    **TC_017** Change a product
+    *   How to test:
+        * Log in as administrator.
+        * In navbar choose ADM and then Products
+        * Move to Coop for 2 hens and click edit.
+        * Change buying price to 1100
+        * Click Update Product
+    * Expected outcome:
+        * In the Product Management page you should see that the price is 1100 SEK
+
 * Testing use case US_003.
     * How to test:
     * Expected outcome:  
