@@ -299,27 +299,7 @@ The site is designed to fit devices with screen widths from 320px and larger.
 
 
 ## Testing
-
-OBS!!!
-för att lösa problemet med att addera månader till ett datum https://serge-m.github.io/posts/add-months-to-datetime-in-python/
-
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+The tests conducted are detailed in [TESTS.md]()
 
 ## Deployment
 
@@ -502,6 +482,7 @@ os.environ["STRIPE_WH_SECRET"] = "<Your Stripe webhook secret key">
     - Code institute Boutique Ado.
     - [Bootstrap](https://getbootstrap.com/) with its excelllent docs with examples.
     - [Django](https://docs.djangoproject.com/en/3.2/) which also have excellent docs with information and examples.
+    - Thanks to [Adam Delancey](https://github.com/adamdelancey/ms4-england-cricket-tickets). The deployment section of his README.md, in project ms4-england-cricket-tickets, inspired me a lot.
     - Sticky footer from [Sticky Footer, Five Ways](https://css-tricks.com/couple-takes-sticky-footer/)
     - Add months to a datetime: [Add months to datetime in python](https://serge-m.github.io/posts/add-months-to-datetime-in-python/)
     - A huge and special thanks to [Simen Daelien](https://www.github.com/eventyret) my mentor at Code Institute. Who is always very commited with lots of energy and knowledge to share.
