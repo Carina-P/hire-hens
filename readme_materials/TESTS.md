@@ -176,16 +176,26 @@ Test cases are described below and linked to use cases. Each test case have a na
                 * buy: 2 pieces of food
             * Check subtotals and grand totals!
     
-   
-* Testing use case UC_007 As a user, I want to buy hens, coop/s, equipment/s and consumables.
-  
-* Testing use case US_007. 
+* Testing use case UC_011 As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
+    **TC_0012** Complete order for TC_011
     * How to test:
+        * Follow step in TC_011
+        * Choose Complete order
     * Expected outcome: 
-* Testing use case US_003.
+        * A page with a spinner is shown for a while.
+        * Then you are guided to checkout success page with order details and grand total.
+        * Check that the order details are correct.
+        * Log in to account at **Stripe** and check under Developer that transaction succeeded and information is correct by looking under weebhooks, events and logs.
+        * Go to admin and check the Order table in the **database** and check that everything is OK.
+
+* Testing use case US_012. As a user that is logged in I want to be able to save my delivery and contact information to be shown in checkout form every time I checkout.
+    **TC_0013** This test is part of TC_011
     * How to test:
+        * This is actually tested in TC_011
     * Expected outcome: 
-* Testing use case US_003.
+        * As stated in TC_011 you should not have to fill in delivery and contact information again.
+ 
+* Testing use case US_013. As a user i want confirmation when my order is processed and added to the system.
     * How to test:
     * Expected outcome: 
 * Testing use case US_003.
