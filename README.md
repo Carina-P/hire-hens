@@ -1,29 +1,24 @@
-# ![An egg](media/favicon/favicon.ico)   Hire Hens
+# ![An egg](media/favicon/favicon.ico)   Hens for Hire
 
-Do you dream about fetching fresch eggs, from your own hens! **Hire Hens**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need. If you later on, or immediately, decides to buy hens instead - we can help you!
+Do you dream about fetching fresch eggs, from your own hens! **Hens for Hire**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need. If you later on, or immediately, decides to buy hens instead - we give you the possibility!
  
 ## UX
 ### Strategy Plane
 #### Site owner's goal
 - Sell rental packages including hens and accessories.
 - Sell hens, coops, equipment and consumables fitted for hens.
-- Being able to update the information of the page.
-- Being able to administrate orders
 
 #### External user's goal
-- Hire hens and accessories, as coop, feeders and waterers.
-- Find information:
-    - How to hire hens.
-    - What a package consists of.
-    - How to take care of the hens.
-    - How long it is possible to hire and what happens after the hire.
+- Hire hens, coops and equipment as feeders and waterers.
+- Find information about hens, how to buy or hire and how to take care of them.
 - Buy hens, coops, equipment and consumables.
 
 **Site owners need**
 - That it is easy for a user to hire hens and accessories.
 - That is easy for a user to buy hens, equipment and consumables.
-- That it is easy and intuitive to update information on the page.
-- Authority to manage information on the page.
+- Possibilty to add frequently asked questions (FAQ).
+- Being able to administer products, orders and FAQs.
+- That only people with authority are being able to administer the products, FAQs and orders.
 
 **Users** needs:
 - Easy and intuitive way to hire hens, coops and equipment.
@@ -45,80 +40,83 @@ Do you dream about fetching fresch eggs, from your own hens! **Hire Hens**, is t
 
 - US_006: As a user, I want to buy hens, coop/s, equipment/s and consumables for hens.
 
-- US_007: As a user, I want to add my rental package to a cart.
+- US_007: As a user, I want to add my rental products to a cart.
 
-- US_008: As a user, I want to add my hens, coop/s, equipment/s and consumable/s, that I want to buy, to a cart.
+- US_008: As a user, I want to add products that I want to buy to the cart.
 
 - US_009: As a user, I want to look at my cart.
 
-- US_010: As a user, I want to checkout my cart.
+- US_010: As a user, I want to checkout my cart to pay for the content.
 
 - US_011: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
 
-- US_012: As a user, I want to be able to buy things even if I am not logged in.
+- US_012: As a user, I want to be able to buy things even if I am not logged in. And if I am logged in I want my personal information for delivery, to be shown at checkout time.
 
-- US_013: As a user, I want to find information about how to hire hens and how to take care of hens.
+- US_013: As a user i want confirmation when my order is processed and added to the system.
 
-- US_0014: As an administrator of the site, I want to login with the authority to add, change and delete information on the site.
+- US_014: As a user, I want to be able to see my profile information with my order history. 
 
-- US_0015: As an administrator of the site, I want to be able to add, change and delete the type of hens, coops, equipment that can be hired or bought. And add, change and delete consumables that can be bought.
+- US_015: As a user, I want to find information about how to hire hens and how to take care of hens through FAQs.
 
-- US_0016: As an administrator of the site, I want to be able to add, change and delete information of renting process and how to take care of the hens.
+- US_0016: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
 
-- US_0017: As an administrator I want to be able to look at the orders and filter to see:
-    - which orders have not been delivered yet or when they where delivered.
-    - which orders includes with rentals that still is not returned.
-    - whick orders includes rental that should be returned within a month.
+- US_0017: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete..
 
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
-
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+- US_0018: As an administrator I want to be able to look at the orders and filter them to see:
+    - which orders have not been delivered yet
+    - which orders includes rentals that is not returned and be able to see if they are overdue.
 
 ### Structure Plane
 - A "homepage" with a picture of hens.
 - Navbar with:
     - Brand-image that leads to homepage.
-    - Link to page where user can put together rental package.
-    - Link to page where user can buy eg. food and beding
+    - Link to page where user can rent product. Easily guided through a flow building a package of rental products to hire for same amount of time.
+    - Link to page where user can buy eg. food and bedding
     - Link to page with FAQ
     - Link to cart
     - Sign up and Login In, or Log Out
     - Profile page
-- Rental package-pages:
-    - Start with choosing type of hen and number of hens.
-    - Then possibility to add coop and/or feeder and waterer.
-    - Information of what package consists of and possibility to start subscription.
-    - User with administrator authority can add, change or delete type of hens.
-    - User with administrator authority can add, change or delete accessories as eg coop, feeder...
+    - For administrators only an link to administer:
+        - Products
+        - Orders
+        - FAQs
+- Rental-page
+    - One page for each category(Hens, Coops and Equipment) of products.
+    - One page for each product with more detailed information and possibility to add to cart. This page is reached from the category of products page.
 - Buy-page:
-    - User can buy food, beding and other consumeables.
-    - Possibility to add consumeables to cart.
-    - User with administrator authority can add, change or delete consumable.
+    - One page for each category( Hens, Coops, Equipment and Consumables) of products.
+   - One page for each product with more detailed information and possibility to add product to cart. This page is reached from the category of products page.
 - FAQ-page:
     - Questions and answeres to frequently asked questions.
-    - User with administrator authority can add, change or delete questions and answeres.
 - Cart page:
-    - Information what the cart consists of and possibility to change it.
+    - Information what the cart consists of and possibility to change its content. Cart consists of a rental part and a part with items to buy.
     - Link to checkout page.
 - Checkout page:
     - Possibility to pay with card.
     - If user is logged in,  personal information is given.
     - If anonymous user, user has to fill in information necessary to pay.
+- Order confirmation page:
+    - A confirmation that the order is added to database and information what the order consists of.
 - Profile page:
-    - Page where user can add and change personal information.
+    - Page where user can add and change personal information. And also se historical orders.
+- Administer Products page:
+    - Page where user can add, change or delete products.
+- Administer orders page:
+    - Page where user can filter orders, mark order as delivered and mark rental items as returned.
+- Administer FAQ page:
+    - Page where user can add, change and delete FAQ.
 
 ### Skeleton Plane
 - The user browses via the navigation system.
 - To hire hens, the user is led through the process:
-    - first choosing hens (which is mandatory)
-    - then coop
-    - and then equipment as feeder and waterer
-    - add the package to a cart
-    - and finally pay for the content of the cart.
-- User can go to cart and see its content. User can change and delete content in cart.
+    - choose hens to add to the cart
+    - then coop to add to cart
+    - and then equipment as feeder and waterer to add to cart.
+    - Through the process the number of months to rent, last choosen, is given as a suggestion for next item to rent. (High probability user wants to rent items the same amount of time.) 
+    - after equipment user can either go to cart to checkout or go to buy consumables as bedding and food.
+- To buy products user choose one item at a time to add to the cart.
+- User can always go to cart and see its content and then continue to shop.
+- Only User with special authority reaches administrator pages for managing Products, Orders and FAQs.
 - Interactive design that works on Mobile, Tablet as well as Desktop.
 
 #### Wireframes
