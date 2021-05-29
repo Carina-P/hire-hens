@@ -232,18 +232,19 @@ In particular, you should provide all details of the differences between the dep
 
 In addition, if it is not obvious, you should also describe how to run your code locally.
 
-### Heroku Deployment with AWS
-I took the following steps to deploy my site onto [Heroku](https://hire-hens.herokuapp.com/):
-1. Installed gunicorn, psycopg2-binary and dj-database-url using [PIP]((https://pypi.org/project/pip/).
-2. Saved all versions of Python libraries need for the application in the file requirements.txt, using command: `pip3 freeze > requirements.txt` in the terminal.
-3. Created a Procfile, with content: `web: gunicorn hire_hens.wsgi:application`
-4. Then I gave the following commands in the terminal to save changes and push them to GitHub repository:
+### Heroku Deployment (using GitHub) with AWS and Postgres
+Take the following steps to deploy my site onto [Heroku](https://hire-hens.herokuapp.com/):
+1. I installed gunicorn, psycopg2-binary and dj-database-url using [PIP]((https://pypi.org/project/pip/).
+2. Then I saved all versions of Python libraries need for the application in the file requirements.txt, using command: `pip3 freeze > requirements.txt` in the terminal.
+Since I have put all required libraries in requirements.txt, you just have to run: `pip3 install -r requirements.txt` in your terminal.
+3. Create a Procfile, with content: `web: gunicorn hire_hens.wsgi:application`
+4. Then give the following commands in the terminal to save changes and push them to GitHub repository:
     - `git add .`
     - `git commit -m"Created requirements and Procfile"`
     - `git push`
-5. Logged into my Heroku account (if you do not have one you need to create one: [Heroku](https://id.heroku.com/) ) and created a new app that I called hire-hens.
-6. In Resource tab I searched for Postgres in the Add-ons search bar. And added Heroku Postgres where I selected the Free account and submitted.
-7. In Settings tab I clicked Reveal Config vars and added the following values:
+5. Logged into your Heroku account (if you do not have one you need to create one: [Heroku](https://id.heroku.com/) ) and created a new app. I called mine hire-hens.
+6. In Resource tab search for Postgres in the Add-ons search bar. Add Heroku Postgres and  selected account, I use the Free account, and submit.
+7. In Settings tab click Reveal Config vars and add the following values:
 
 |Key|Value|
 |---|---|
@@ -258,7 +259,92 @@ I took the following steps to deploy my site onto [Heroku](https://hire-hens.her
 |STRIPE_SECRET_KEY|`Your stripe secret key`|
 |STRIPE_WH_SECRET|`Your stripe webhook key`|
 |USE_AWS|`True`|
+8. In the Deploy tab, at Deployment method, in Heroku, select GitHub. And then set up automatic deploys at Autmatic deploys.
+9. Log in to heroku from your terminal: `heroku login -i` and give your email and password.
+10. Makemigrations in heroku database with following command in terminal: `heroku run python3 manage.py makemigrations -a "name of the app in heroku`
+11. Push this to heroku with: `git add .`, `git commit` and `git push`
+12. Migrate the database: `heroku run pythons3 migrate -a "name of the app in heroku`
+13. Create a new superuser in database using the folowing command in terminal: `heroku run python3 manage.py createsuperuser -a "name of the app in heroku` and enter email, username and password.
+14. The following settings i settings.py connects to the right database:
+`if 'DATABASE_URI' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(
+            os.environ.get('DATABASE_URI')
+            )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': (os.path.join(BASE_DIR, 'db.sqlite3')),
+        }
+    }
+`
+15. Check in settings ALLOWED_HOSTS that the right heroku host is given. In my case the setting is: `ALLOWED_HOSTS = ['hire-hens.herokuapp.com', 'localhost']`
+16. In Stripe at tab Developers and then webhooks, register the URL endpoint for checkout webhooks. In my case: `https://hire-hens.herokuapp.com/checkout/wh/`
+17. To make email work in production environment you have to have the following settings in settings.py. In your local environment you se "emails" in your terminal:
+`if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'hire.hens@gmail.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')`
+18. Make sure all settings are commited to GitHub and Heroku.
 
+### Amazon web services (aws)
+The static and media files for the deployed site are hosten in the AWS S3 bucket.
+1. You need an account in aws and a S3 bucket. Guidelines [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html).
+2. Under permissions I turned of "block all public access" and used the following CORS configuration:
+`[
+    {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]`
+3. Create a folder media/ and a folder static/. 
+4. Copy all media files to the S3 bucket media/ folder. The static files are taking care of when code is pushed to GitHub and Heroku. 
+5. In order to connect to the S3 bucket (back at the terminal) the boto3 and django-storages must be installed. I used `pip3 install` and them added to requirements.txt with `pip3 freeze > requirements.txt`. All required packeges is allready in requirements.txt so you can run `pip3 install -r requirements.txt` in your terminal.
+6. Make sure 'storages is in the list of INSTALLED_APPS in settings.py.
+7. In settings.py the following settings must be present:
+`if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket config
+    AWS_STORAGE_BUCKET_NAME = 'hire-hens'
+    AWS_S3_REGION_NAME = 'eu-north-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+`
+8. Delete the DISABLE_COLLECTSTATIC from Heroku Settings, Config Var.
+10. Push all changes to GitHub and Heroku.
 
 ## Credits
 
