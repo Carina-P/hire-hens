@@ -2,27 +2,27 @@
 $('.update-link').click(function (e) {
     let form = $(this).prev('.update-form');
     form.submit();
-})
+});
 
 
 // Update quantity on click
 $('.update-link_rental').click(function (e) {
     let form = $(this).prev('.update-rental-form');
     form.submit();
-})
+});
 
 // Update quantity on click
 $('.update-link_lg').click(function (e) {
     let form = $(this).prev('.update-form_lg');
     form.submit();
-})
+});
 
 
 // Update quantity on click
 $('.update-link_rental_lg').click(function (e) {
     let form = $(this).prev('.update-rental-form_lg');
     form.submit();
-})
+});
 
 
 // Open modal to ask if user realy want to remove item from cart
@@ -39,7 +39,7 @@ function openRemoveModal(itemId, name) {
     }
 
     $('#name').html(name);
-    $('#hidden_item').html(`<input type="hidden" name="item_id" value="${itemId}">`)
+    $('#hidden_item').html(`<input type="hidden" name="item_id" value="${itemId}">`);
     $('#modal_remove').modal('show');
 }
 
@@ -63,14 +63,14 @@ function openRemoveModalRent(itemId, name, months) {
 
     $('#name_rent').html(name);
     $('#hidden_item_rent').html(`<input type="hidden" name="item_id" value="${itemId}">
-    <input type="hidden" name="months" value="${months}">`)
+    <input type="hidden" name="months" value="${months}">`);
     $('#modal_remove_rent').modal('show');
 }
 
 // Code from Code Institute Boutique Ado
 $('.btt-link').click(function (e) {
-    window.scrollTo(0, 0)
-})
+    window.scrollTo(0, 0);
+});
 
 
 // Code below is inspired from Code Institute Boutique Ado

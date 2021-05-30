@@ -17,9 +17,10 @@ class OrderRentalItemAdminInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderBuyItemAdminInline, OrderRentalItemAdminInline)
 
-    readonly_fields = ('order_number', 'order_date', 'grand_total',
-                        'original_cart', 'original_cart_rental', 'stripe_pid'
-                        )
+    readonly_fields = (
+        'order_number', 'order_date', 'grand_total',
+        'original_cart', 'original_cart_rental', 'stripe_pid'
+    )
 
     fields = ('order_number', 'user_profile', 'order_date', 'full_name',
               'email', 'phone_number', 'country',
@@ -29,7 +30,7 @@ class OrderAdmin(admin.ModelAdmin):
               )
 
     list_display = (
-        'order_number', 'order_date', 'full_name', 'grand_total', 
+        'order_number', 'order_date', 'full_name', 'grand_total',
         'delivery_date'
         )
 

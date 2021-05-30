@@ -384,14 +384,15 @@ There is one "num stepper" for each item in rental part and also in buy part. Si
 
 ### Validation with JSHint
 **JavaScript** validated with **no errors**. 
-- There are **one undefined variables**: 
+- There are **Two undefined variables**: 
     - $ (JQuery)
-- There are **seven unused variables**:
-    - moveTo, cancelAddBook, addBook, searchBooks, addOpinion, changeOpinion and buyBook:
-    These are all functions called from HTML.
+    - Stripe (Stripe)
+- There are **three unused variables**:
+    - openRemoveModal, openRemoveModalRent, openRemoveModalFaq
+    These are functions called from HTML.
 
 ### Validation with PEP8
-**python** validated with ...
+**python** validated with the comment "All right" on everything.
 
 ## Different browsers
 The code is mainly tested with Chrome.

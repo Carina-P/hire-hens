@@ -35,11 +35,6 @@ body {
     color: #ffffff;
 }
 
-.bg-blue {
-    background-color: #afc1d5;
-    color: #000000;
-}
-
 .bg-white {
     background-color: #ffffff;
     color: #000000;
@@ -130,13 +125,6 @@ body {
     color: #ebf2e4;
 }
 
-
-
-/* används desss!!!!*/
-.no-opacity {
-    opacity: 1;
-}
-
 .form-textbox {
     text-align: center !Important;
 }
@@ -145,7 +133,6 @@ body {
     margin-right: 0 !important;
 }
 
-/* Används denna? */
 .no-margin-left {
     margin-left: 0 !important;
 }

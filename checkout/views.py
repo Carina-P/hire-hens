@@ -135,7 +135,7 @@ def deliver_order(request, order_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('home')
-    
+
     if not order_id:
         messages.error(request, 'Error! Something went wrong when trying to\
             mark order as delivered. Please contact support!')
@@ -150,8 +150,8 @@ def deliver_order(request, order_id):
         items = OrderRentalItem.objects.filter(order=order_id)
         for item in items:
             item.end_of_rental = (
-                date_time.now(pytz.utc)
-                + relativedelta(months=item.months)
+                date_time.now(pytz.utc) +
+                relativedelta(months=item.months)
                 )
             item.save()
 
@@ -391,9 +391,9 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. You can look at your order history in\
-            My Profile-page. And from that page you can always come back to\
-            this page and look at the order.')
+        Your order number is {order_number}. You can look at your order\
+            history in My Profile-page. And from that page you can always\
+            come back to this page and look at the order.')
 
     if 'cart' in request.session:
         del request.session['cart']
