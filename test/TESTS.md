@@ -1,5 +1,5 @@
 # Test plan
-Back to [README]()
+Back to [README](https://github.com/Carina-P/hire-hens/blob/master/README.md)
 ## Contents
 
 The below plan for testing was followed during development of the site: The TDD, TestDriven Development, process is followed as much as possible. Test cases are developed/thought of, before the code is implemented. The test process is conducted in an iterative manner and implementation cycles are short with small parts of code constructed every time. In some cases, prototyping is used and the thorough test is done when I was satisfied with the prototype.
@@ -366,11 +366,15 @@ The outcome of testing according to above test cases is documented in [Test prot
 
 ## UX testing
 UX testing is conducted by watching and interviewing users when the move around in the site. Examples of issues/discussions:
-    * I had red text in black buttons for delete items. User thought it was bad contrast. Instead I used red background on button when user hover.
-    * In product detail page Add to Cart was below page before. Users thought it was better to put the button after the choose quantity form. It is easier to reach and to see.
-    * Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart.
-    Users thought this hard to understand and non-intuitive.
-    So this was changed and rental items are added one by one to the shopping cart. I did put months in context so user did not have to remember how many months he/she had choosen.
+- I had red text in black buttons for delete items. User thought it was bad contrast. Instead I used red background on button when user hover.
+- In product detail page Add to Cart was below page before. Users thought it was better to put the button after the choose quantity form. It is easier to reach and to see.
+- Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart. Users thought this hard to understand and non-intuitive. So this was changed and rental items are added one by one to the shopping cart. I did put months in context so user did not have to remember how many months he/she had choosen.
+-  In Cart-page there is several "num steppers".
+
+![The "num stepper"](../readme_materials/num_stepper.jpg)
+
+I had some problem implementing the js-code to update the stepper.
+There is one "num stepper" for each item in rental part and also in buy part. Since the layout is different on smaller compared to larger viewports, the "num steppers" occure in different places in the template for the different layout-solutions. I am using id´s in the html-code to refer to the "num steppers". Since they occur on severel places and id shoud be unique I have different id-names for rental "num.stepper" and buying "num.stepper" and then also different on large and small viewports. This gives four different "id-names" and that is way I have a lot of js-code - four implementations of the same "problem". **This is not ideal** and in the future I would like to **refactor** this part of the js-code (/cart/static/cart/js/cart.js).
 
 ## Code Validation
 

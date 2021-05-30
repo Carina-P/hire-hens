@@ -376,6 +376,14 @@ The site is designed to fit devices with screen widths from 320px and larger.
     - Library for html/css/js features.
 - [JQuery](https://jquery.com/)
     - To simplify DOM manipulation.
+- [PEP](http://pep8online.com/)
+    - to validate python code
+- [JSHint](https://jshint.com)
+    - to validate JavaScript code
+- [Markup Validation Service](https://validator.w3.org)
+    - to validate HTML code
+- [CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+    - to check CSS
 - [Balsamiq Wireframes](https://balsamiq.com/)
     - For designing the wireframes
 - [Coolors](https://coolors.co/):
