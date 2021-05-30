@@ -150,6 +150,12 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 ##### Data modell
 The data modell was visualised with [DrawSQL](https://drawsql.app/):
 ![Data Model](wireframes/data_model.png)
+In the visualisation the modells Group, Email_address, User and Site is not shown. It is the modells that django provide.
+The column types shown in visualization differs in some case from reality. Here is the differenses:
+- In Order and Profile, column country have the django fieldtype: CountryField.
+- In Order, column order_date and delivery_date are DatetimeFields.
+- In Product, column image is an ImageField.
+- In OrderRentalItem, column end_of_rental is DatetimeField.
 
 #### Design Choices
 ##### Fonts
@@ -185,29 +191,63 @@ The application differs from Boutique Ado in:
         * ADM (only for users with administrators authority)- a dropdown where you can choose between Products, Orders or FAQ.
         *  My Account - if you are logged in you can choose My Profile or Log out. If you are not logged in you can choose between Log in or Register.
         * Cart: Here you can see total sum of products/rentals in cart. Link leads to the cart.
+
+![implementation of navbar large viewports](readme_materials/navbar_lg.jpg)
+
+![implementation of navbar small viewports](readme_materials/navbar_sm.jpg)
+
     * Toasts with messages are shown in top of page. They disappear when user closes them or if user interact in other ways in the page or got to other page.
+
+![implementation of toast](readme_materials/toast.jpg)
+ 
     * Footer: With contact information.
+
+![implementation of footer large viewports](readme_materials/footer_lg.jpg)
+
+![implementation of footer small viewports](readme_materials/footer_sm.jpg)
+
 **home**
 * Home -page: Picture to attract users and possibility to go and Explore rental alternatives.
 
+![implementation of homepage ](readme_materials/homepage.jpg)
+
 **products**
 * Show rental products within category-page:
+
+![implementation of products within category ](readme_materials/rental_products_within_category.jpg)
+
     * All products belonging to a category, with general information and possibility to go to product detail page.
     * From Hire in navbar user is guided to product belonging to Hens category page. When hens are added to cart user is guided to Coops and then Equipment.
     * If user is an administrator and is guided to this page from the ADM link in navbar: All products are shown. User can choose to add, change or delete product. When adding or changing a product user is guided to manage product page. When deleting a product a modal is shown asking if user is sure he/she wants to delete the product.
+
+![implementation of product administration ](readme_materials/product_management.jpg)
+
+
+![implementation asking user if sure to remove ](readme_materials/remove_question.jpg)
+
 * Show product details page:
-    * Gives more information about a product. A possibility to choose number of months and number of items to rent and add to cart.
+    * Gives more information about a product. A possibility to choose number of months (if applicable) and number of items to rent and add to cart.
     * Possibility for user to go to cart.
     * The number of months is saved in context and for every new item to rent, user is presented with the last choosen number of months.
+
+![implementation of product details](readme_materials/product_details_rent.jpg)
+
 * Manage product page:
     * Add product: User can fill in information about the product in a form and then submit.
+
+![implementation of add product](readme_materials/add_product.jpg)
+
     * Change product: User is presented with current information about the product in a form. User can change the information and then submit.
+
+![implementation of change product details ](readme_materials/edit_product.jpg)
 
 **cart**
 * Shopping cart page:
     * User can see both products to buy and products to rent with quantity, number of months and price. Subtotals and Grand totals are calculated and presented.
     * Possibility to go to checkout page.
     * User can change the quantity. If user chooses to remove item from cart a modal is shown that askes if user is sure.
+
+![implementation of cart](readme_materials/cart.jpg)
 
 **checkout**
 * Checkout page:
@@ -216,8 +256,14 @@ The application differs from Boutique Ado in:
     * An overview of the shopping cart is presented.
     * User can choose to complete order or return to shopping cart.
     * Webhooks is used to communicate with Stripe to be sure no orders are lost due to unintendet behaviour.
+
+![implementation of checkout page ](readme_materials/checkout.jpg)
+
 * Checkout success page:
     * If payment and order transactions are succesfull the user is guided to this page. Here is information of order number and order details.
+
+![implementation of checkout success](readme_materials/checkout_success.jpg)
+
 * Administrate orders page:
     * Initially all orders are shown. But user can filter to show:
         * All orders
@@ -226,31 +272,59 @@ The application differs from Boutique Ado in:
     * Orders that are not delivered are "marked" with a red Not Delivered.
     * For orders with rental due the date of rental due is shown. Rental due in the future are green and rental due that is late are red.
     * Possibility to choose to se more details about an order. Then user is guided to order details page.
+
+![implementation of order administration](readme_materials/adm_orders.jpg)
+
 * Order details page:
     * The details for the order with all items to buy and all items to rent.
     * If order there is no delivery date for order in database. Not delivered is shown in red. User is given possibility to add todays date as delivery date.
     * If a rental item has a rental due, the rental due date is shown. The date is red if due date has passed and green if the date is in the future. User has the possibility to "mark" rental as returned.
+
+![implementation of order details](readme_materials/order_details.jpg)
 
 **profile**
 * Profile page:
     * A form with user contact information and delivery information. User can update information and save.
     * An overview of order history and possibility to look at specific order by linking to Checkout success page.
 
+![implementation of profile page](readme_materials/profile.jpg)
+
 **faq**
 * FAQ-page:
     * Frequently asked questions and corresponding answers are shown in an "accordion".
+
+![implementation of the faq accordion](readme_materials/faq.jpg)
+
     * If user is an administrator, user can choose to add, change or delete FAQ.
+
+![implementation of faq administration](readme_materials/faq_adm.jpg)
+
     * If user wants to delete a faq a modal is shown with the question if user is sure.
+
 * FAQ input page:
     * If user is administrator:
         * Add FAQ: A form is presented where user can add question and answere and submit.
+
+![implementation of add faq](readme_materials/add_faq.jpg)
+
         * Change FAQ: Information for a specific FAQ is presented in a form and user can change the information and then submit.
+
+![implementation of change faq](readme_materials/edit_faq.jpg)
+
 * Register page:
     * User register email, user name, password and repeat of password in a form.
+
+![implementation of register ](readme_materials/sign_up.jpg)
+
 * Sign in page:
     * User give user name and password in a form.
+
+![implementation of log in ](readme_materials/sign_in.jpg)
+
 * Log out page:
     * User confirm that he/she wants to log out.
+
+![implementation of log out](readme_materials/sign_out.jpg)
 
 ### Responsive
 The site is designed to fit devices with screen widths from 320px and larger.
