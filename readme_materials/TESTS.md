@@ -21,7 +21,7 @@ Functionality tests and tests of responsiveness are done by following test cases
 ### Test cases
 Test cases are described below and linked to use cases. Each test case have a name beginning with TC and then a number, e.g. TC_001.
 
-* Testing use case US_001. As a user I want to be able to register to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.:
+* Testing use case **UC_001**. As a user I want to be able to register to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.:
     **TC_001** Register to the site:
     * How to test:
         * In the navbar choose My Account and then Register.
@@ -32,7 +32,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * A message that a mail is sent with link for verification. When you get the mail and follow the verification your should get the possibility to login.
         * If you give email without @ or two different passwords you will be informed that they are wrong and not have possibility to register.
 
-* Testing use case US_002. As a user, I want to be able to login to the site:
+* Testing use case **UC_002**. As a user, I want to be able to login to the site:
     **TC_002** Log in to the site:
     * How to test:
         * In navbar choose My Account and Log in.
@@ -42,14 +42,16 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome:
         * You are logged in to site and guided to homepage.
         * If you gie wrong user name or password you get an error message and are not logged in.
-* Testing use case US_003. As a user, I want to be able to log out.
+
+* Testing use case **UC_003**. As a user, I want to be able to log out.
     **TC_003** Log out:
     * How to test:
         * Go to navbar, choose My Account and Log out.
     * Expected outcome: 
         * You are guided to log out-page and are asked if you are sure.
         * If you click yes you get a message that you are logged out and are guided to home page.
-* Testing use case US_004. As a user, I want to be able to look at the site anonymously, without logging in.
+
+* Testing use case **UC_004**. As a user, I want to be able to look at the site anonymously, without logging in.
     **TC_004** Go through all the steps to add an order to the system without logging in.
     * How to test:
         * Be sure you are not logged in.
@@ -62,7 +64,8 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Fill in form and checkout.
     * Expected outcome:
         * You should be able to go through all the steps and add an order without problem.
-* Testing use case US_005. As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer.
+
+* Testing use case **UC_005**. As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer.
     **TC_005** Add hens, coop and waterer, with same amount of months for rental, in cart.
     * How to test:
         * Choose Hire in navbar.
@@ -76,7 +79,8 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome:
         * In cart you should find 10 Lohman hens, 1 coop for 10 hens and 2 waterers in the cart. And all should have 5 months as rental lenght.
         * Carefully check all the prices, subtotals and grand total.
-* Testing use case US_006. As a user, I want to add products that I want to buy to the cart.
+
+* Testing use case **UC_006**. As a user, I want to add products that I want to buy to the cart.
   **TC_006** Add hens, coop, waterer, feeder, food and bedding to buy in shopping cart.
     * How to test:
         * In navbar choose buy and Hens
@@ -100,7 +104,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * In the cart you should see 4 Brahma hens, 2 coops for 2 hens, 2 feeders, 1 waterer, 5 pieces of food and 1 bedding.
         * Carefully check all the prices, subtotals and grand total
 
-* Testing use case US_007. As a user, I want to look at my cart and then continue shopping.
+* Testing use case **UC_007**. As a user, I want to look at my cart and then continue shopping.
     **TC_007** Add items to cart, go to the cart and look and then continue adding items to the cart.
     * How to test:
         * Fill a cart as in TC_005.
@@ -123,7 +127,7 @@ Test cases are described below and linked to use cases. Each test case have a na
             * buy: 2 pieces of food
         * Also check prices, subtotals and Grand total.
 
-* Testing use case US_008. As a user, I want to change quantity or remove items in cart.
+* Testing use case **UC_008**. As a user, I want to change quantity or remove items in cart.
     **TC_008** Add items to cart according to TC_007 and do adjustments to the cart
     * How to test:
         * Follow the steps in how to test TC_007.
@@ -134,7 +138,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * And you should not have any hens.
         * Carefully check subtotals and grand totals.
 
-* Testing use case US_009. As a user, I want to checkout my cart.
+* Testing use case **UC_009**. As a user, I want to checkout my cart.
     **TC_009** Checkout cart from TC_007
         * How to test:
             * Log in to the site.
@@ -157,7 +161,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Expected outcome:
             * You should get an error message telling you that credit card number is wrong. And you cannot choose complete order.
 
-*Testing use case US_010. As a user, I want to return from the checkout page to my cart and do some adjustments.
+*Testing use case **UC_010**. As a user, I want to return from the checkout page to my cart and do some adjustments.
     **TC_011** 
         * How to test:
             * Log in to the site, with same credentials as in TC_009.
@@ -176,7 +180,7 @@ Test cases are described below and linked to use cases. Each test case have a na
                 * buy: 2 pieces of food
             * Check subtotals and grand totals!
     
-* Testing use case UC_011 As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
+* Testing use case **UC_011** As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
     **TC_0012** Complete order for TC_011
     * How to test:
         * Follow step in TC_011
@@ -188,14 +192,14 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Log in to account at **Stripe** and check under Developer that transaction succeeded and information is correct by looking under weebhooks, events and logs.
         * Go to admin and check the Order table in the **database** and check that everything is OK.
 
-* Testing use case US_012. As a user that is logged in I want to be able to save my delivery and contact information to be shown in checkout form every time I checkout.
+* Testing use case **UC_012**. As a user that is logged in I want to be able to save my delivery and contact information to be shown in checkout form every time I checkout.
     **TC_0013** This test is part of TC_011
     * How to test:
         * This is actually tested in TC_011
     * Expected outcome: 
         * As stated in TC_011 you should not have to fill in delivery and contact information again.
  
-* Testing use case US_013.  As a user, I want to be able to see my profile information with my order history.
+* Testing use case **UC_013**. As a user, I want to be able to see my profile information with my order history.
     **TC_0014** Check profile information
     * How to test:
         * Log in with same credentials as in TC_011
@@ -210,7 +214,7 @@ Test cases are described below and linked to use cases. Each test case have a na
             * Check that all details are correct in profile page is correct.
             * When you click on order number you should end up at checkout succes page for the order with given order number.
 
-* Testing use case US_014. As a user, I want to find information about e.g. how to hire hens and how to take care of hens.
+* Testing use case **UC_014**. As a user, I want to find information about e.g. how to hire hens and how to take care of hens.
     **TC_0015** Go to FAQ
     * How to test:
         * In navbar choose FAQ
@@ -218,7 +222,7 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome:
         * You should see the answers to the questions in the FAQ.
 
-* Testing use case US_015. As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
+* Testing use case **UC_015**. As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
     **TC_0016** Add a product
     * How to test:
         * Log in as an administrator.
@@ -255,7 +259,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * In Product Management page you should not find the product Coop any more.
         * Also go to admin and check in **database** that coop is not in Product table.
 
-* Testing use case US_016. As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete.
+* Testing use case **UC_016**. As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete.
      **TC_0019** Add a FAQ
     * How to test:
         * Log in as an administrator.
@@ -288,7 +292,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * In Frequently asked questions page you should not find the faq with question "How does hens sleep?" any more.
         * Also go to admin and check in **database** that the faq is not in Faq table.
 
-* Testing use case US_017. As an administrator I want to be able to look at the orders and filter them to see:
+* Testing use case **UC_017**. As an administrator I want to be able to look at the orders and filter them to see:
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
     **TC_022: Filter orders.
@@ -302,7 +306,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * When you choose Orders not yet delivered. All orders that show up should have a red Not Delivered text.
         * When you choose Orders with rental due all orders that show up should have a rental due date (red or green depending on if rental was due before today or not)
 
-* Testing use case US_018. As an administrator I want to be able to mark an order that has no delivery date as delivered.
+* Testing use case **UC_018**. As an administrator I want to be able to mark an order that has no delivery date as delivered.
     **TC_023** Mark an order as delivered.
     * How to test:
         * Log in as administrator.
@@ -315,7 +319,8 @@ Test cases are described below and linked to use cases. Each test case have a na
         * All rental items should now also have a rental due date that is green.
         * If you return to Orders Admininstration page the order you looked at should have delivery date and if it has rental items also a rental due date.
         * Go to database and check that everything is correct.
-* Testing use case US_019. As an administrator I want to be able to mark a rental item that has a due date as returned.
+
+* Testing use case **UC_019**. As an administrator I want to be able to mark a rental item that has a due date as returned.
     **TC_024** Mark rental item with due date as returned.
     * How to test:
         * Log in as administrator.
@@ -343,7 +348,8 @@ Test cases are described below and linked to use cases. Each test case have a na
 The outcome of testing according to above test cases is documented in [Test protocol]()
 
 ### Other tests
-- The navbar functionality was test by clicking on all possibilities.
+- The navbar functionality was test by clicking on all possibilities and checking that user end up at right page.
+- All buttons and links on all pages were checked that right action happens when clicking.
 - Webhooks was tested by removing form.save() to simulate that connection was lost before form is saved.
 - After each order transaction I checked in Stripe under Developers tab to see that everything looks alright.
 

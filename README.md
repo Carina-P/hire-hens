@@ -42,45 +42,45 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 ### Scope Plane
 #### User stories
 (this is not in priority order)
-- US_001: As a user I want to be able to register to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.
+- UC_001: As a user I want to be able to register to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.
 
-- US_002: As a user, I want to be able to login to the site.
+- UC_002: As a user, I want to be able to login to the site.
 
-- US_003: As a user, I want to be able to log out.
+- UC_003: As a user, I want to be able to log out.
 
-- US_004: As a user, I want to be able to look at the site anonymously, without logging in.
+- UC_004: As a user, I want to be able to look at the site anonymously, without logging in.
 
-- US_005: As a user, I want to build my own rental package for a specific number of months, having the possibility to add hens, coop and/or other equipment.
+- UC_005: As a user, I want to build my own rental package for a specific number of months, having the possibility to add hens, coop and/or other equipment.
 
-- US_006: As a user, I want to add products that I want to buy to the cart.
+- UC_006: As a user, I want to add products that I want to buy to the cart.
 
-- US_007: As a user, I want to look at my cart and then continue shopping.
+- UC_007: As a user, I want to look at my cart and then continue shopping.
 
-- US_008: As a user, I want to change quantity or remove item in cart.
+- UC_008: As a user, I want to change quantity or remove item in cart.
 
-- US_009: As a user, I want to checkout my cart.
+- UC_009: As a user, I want to checkout my cart.
 
-- US_010: As a user, I want to return from the checkout page to my cart and do some adjustments.
+- UC_010: As a user, I want to return from the checkout page to my cart and do some adjustments.
 
-- US_011: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
+- UC_011: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
 
-- US_012: As a user that is logged in I want to be able to save my delivery and contact information to be shown in checkout form every time I checkout.
+- UC_012: As a user that is logged in I want to be able to save my delivery and contact information to be shown in checkout form every time I checkout.
 
-- US_013: As a user, I want to be able to see my profile information with my order history. 
+- UC_013: As a user, I want to be able to see my profile information with my order history. 
 
-- US_014: As a user, I want to find information about e.g. how to hire hens and how to take care of hens.
+- UC_014: As a user, I want to find information about e.g. how to hire hens and how to take care of hens.
 
-- US_015: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
+- UC_015: As the administrator of the site I want to be able to login and manage products - add, change and/or delete.
 
-- US_016: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete.
+- UC_016: As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete.
 
-- US_017: As an administrator I want to be able to look at the orders and filter them to see:
+- UC_017: As an administrator I want to be able to look at the orders and filter them to see:
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
 
-- US_018: As an administrator I want to be able to mark an order that has no delivery date as delivered.
+- UC_018: As an administrator I want to be able to mark an order that has no delivery date as delivered.
 
-- US_019: As an administrator I want to be able to mark a rental item that has a due date as returned.
+- UC_019: As an administrator I want to be able to mark a rental item that has a due date as returned.
 
 ### Structure Plane
 - A "homepage" with a picture of hens.
@@ -171,8 +171,8 @@ For error messages or delete/remove buttons a red color is sometimes used to get
 
 ## Features
 ### Existing Features
-This project is highly inspired of the Boutique Ado example from Code Institute. Especially the checkout, checkout success, profile and stripe management appearance and functionality are very close to Boutique Ado. This app uses the allauth applications from Django to administrate user authentication.
-This app differs from Boutique Ado in:
+This project is highly inspired of the Boutique Ado example from Code Institute. Especially the checkout, checkout success, profile and stripe management appearance and functionality are very close to Boutique Ado. This application uses the allauth applications from Django to administrate user authentication.
+The application differs from Boutique Ado in:
 - The product and cart parts since user can both rent and buy items. The rental possibility adds the time dimension. 
 - FAQ is offered which is not present in Boutique Ado.
 - Administrators can filter orders and handle delivery and rental due times.
@@ -187,18 +187,18 @@ This app differs from Boutique Ado in:
         * Cart: Here you can see total sum of products/rentals in cart. Link leads to the cart.
     * Toasts with messages are shown in top of page. They disappear when user closes them or if user interact in other ways in the page or got to other page.
     * Footer: With contact information.
-**Home**
-* Home -page: Picture to attract users and possibility to go to and Explore rental alternatives.
+**home**
+* Home -page: Picture to attract users and possibility to go and Explore rental alternatives.
 
 **products**
-* Show rental products within category page:
-    * All products belonging to a category with general information and possibility to go to product detail page.
-    * From Hire in navbar user is guided to product beloning to Hens category page. When Hens are added to cart user is guided to Coops and then Equipment.
+* Show rental products within category-page:
+    * All products belonging to a category, with general information and possibility to go to product detail page.
+    * From Hire in navbar user is guided to product belonging to Hens category page. When hens are added to cart user is guided to Coops and then Equipment.
     * If user is an administrator and is guided to this page from the ADM link in navbar: All products are shown. User can choose to add, change or delete product. When adding or changing a product user is guided to manage product page. When deleting a product a modal is shown asking if user is sure he/she wants to delete the product.
 * Show product details page:
     * Gives more information about a product. A possibility to choose number of months and number of items to rent and add to cart.
     * Possibility for user to go to cart.
-    * The number of months is saved in context and for every new item to rent user is presented with the last choosen number of months.
+    * The number of months is saved in context and for every new item to rent, user is presented with the last choosen number of months.
 * Manage product page:
     * Add product: User can fill in information about the product in a form and then submit.
     * Change product: User is presented with current information about the product in a form. User can change the information and then submit.
@@ -207,14 +207,14 @@ This app differs from Boutique Ado in:
 * Shopping cart page:
     * User can see both products to buy and products to rent with quantity, number of months and price. Subtotals and Grand totals are calculated and presented.
     * Possibility to go to checkout page.
-    * User can change the quantity. If user chooses to remove item from cart a modal i shown that askes if user is sure.
+    * User can change the quantity. If user chooses to remove item from cart a modal is shown that askes if user is sure.
 
 **checkout**
 * Checkout page:
     * Form to fill in contact and delivery information. If user is logged in, personal information is already filled in.
     * Credit card information can be added. Validation of credit card information with error messages are shown.
     * An overview of the shopping cart is presented.
-    * User can choose to go ahead with the checkout or return to shopping cart.
+    * User can choose to complete order or return to shopping cart.
     * Webhooks is used to communicate with Stripe to be sure no orders are lost due to unintendet behaviour.
 * Checkout success page:
     * If payment and order transactions are succesfull the user is guided to this page. Here is information of order number and order details.
@@ -229,7 +229,7 @@ This app differs from Boutique Ado in:
 * Order details page:
     * The details for the order with all items to buy and all items to rent.
     * If order there is no delivery date for order in database. Not delivered is shown in red. User is given possibility to add todays date as delivery date.
-    * If a rental item has a rental due, the rental due date is shown. Red if due date has passed and green if the date is in the future. User has the possibility to "mark" rental as returned.
+    * If a rental item has a rental due, the rental due date is shown. The date is red if due date has passed and green if the date is in the future. User has the possibility to "mark" rental as returned.
 
 **profile**
 * Profile page:
@@ -256,7 +256,8 @@ This app differs from Boutique Ado in:
 The site is designed to fit devices with screen widths from 320px and larger.
 * Navbar collapses into "hamburger" menu on smaller viewports.
 * Footer looks different in different viewport sizes.
-* Almost all of the pages differ between smaller and larger viewport. The informations placement differ slightly.
+* Almost all of the pages differ between smaller and larger viewport:
+    - 
 
 ### Features Left to Implement
 - Sending an email when order is completed.
@@ -307,23 +308,13 @@ The site is designed to fit devices with screen widths from 320px and larger.
 The tests conducted are detailed in [TESTS.md]()
 
 ## Deployment
-
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
-
 ### Heroku Deployment (using GitHub) with AWS and Postgres
-Take the following steps to deploy my site onto [Heroku](https://hire-hens.herokuapp.com/):
+To deploy the site onto [Heroku](https://hire-hens.herokuapp.com/):
 1. I installed gunicorn, psycopg2-binary and dj-database-url using [PIP]((https://pypi.org/project/pip/).
 2. Then I saved all versions of Python libraries need for the application in the file requirements.txt, using command: `pip3 freeze > requirements.txt` in the terminal.
 Since I have put all required libraries in requirements.txt, you just have to run: `pip3 install -r requirements.txt` in your terminal.
-3. Create a Procfile, with content: `web: gunicorn hire_hens.wsgi:application`
-4. Then give the following commands in the terminal to save changes and push them to GitHub repository:
+3. Created a Procfile, with content: `web: gunicorn hire_hens.wsgi:application`
+4. Then gave the following commands in the terminal to save changes and push them to GitHub repository:
     - `git add .`
     - `git commit -m"Created requirements and Procfile"`
     - `git push`
@@ -346,7 +337,7 @@ Since I have put all required libraries in requirements.txt, you just have to ru
 |USE_AWS|`True`|
 
 8. In the Deploy tab, at Deployment method, in Heroku, select GitHub. And then set up automatic deploys at Autmatic deploys.
-9. Log in to heroku from your terminal: `heroku login -i` and give your email and password.
+9. Log in to heroku from the terminal: `heroku login -i` and give email and password.
 10. Makemigrations in heroku database with following command in terminal: `heroku run python3 manage.py makemigrations -a "name of the app in heroku`
 11. Push this to heroku with: `git add .`, `git commit` and `git push`
 12. Migrate the database: `heroku run pythons3 migrate -a "name of the app in heroku`
