@@ -137,17 +137,18 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 #### Wireframes
 Wireframes for mobile:
-- [mobile_part1](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile_part1.png)
-- [mobile_part2](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile_part2.png)
+- [mobile](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile_part1.png)
+- [mobile: wireframes for administration](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile_part2.png)
 
 Wireframes for tablet:
-- [tablet_part1](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet_part1.png)
-- [tablet_part2](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet_part2.png)
+- [tablet](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet_part1.png)
+- [tablet: wireframes for administration](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet_part2.png)
 
 Wireframes for desktop:
 - [Desktop](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_desktop.png)
 
 ##### Major changes compared to wireframes
+Cart: The **Qty column** in the table, on tablets and desktop, in reality contains a "number stepper" and the buttons Update and Delete are also part of the column.
 
 #### Information Architecture
 ##### Database Choice
