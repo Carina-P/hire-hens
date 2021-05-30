@@ -3,12 +3,12 @@
 {% load i18n %}
 
 {% block account_header%}
-{% trans "Sign Out" %}
+{% trans "Log Out" %}
 {% endblock account_header %}
 
 {% block account_content %}
 <div class="text-center">
-  <p>{% trans 'Are you sure you want to sign out?' %}</p>
+  <p>{% trans 'Are you sure you want to log out?' %}</p>
 
   <form method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
@@ -16,7 +16,7 @@
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
     <a class="btn btn-black" href="{% url 'home' %}">Cancel</a>
-    <button class="btn btn-black" type="submit">{% trans 'Sign Out' %}</button>
+    <button class="btn btn-black" type="submit">{% trans 'Log Out' %}</button>
   </form>
 </div>
 
