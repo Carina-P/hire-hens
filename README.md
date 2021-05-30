@@ -1,6 +1,6 @@
 # ![An egg](media/favicon/favicon.ico)   Hens for Hire
 
-Do you dream about fetching fresch eggs, from your own hens! **Hens for Hire**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need. If you later on, or immediately, decides to buy hens instead - we give you the possibility!
+Do you dream about fetching fresh eggs, from your own hens! **Hens for Hire**, is the easy way to live your dream and try out having hens in your own backyard. We will help you with the "how to" and the equipment you need. If you later on, or immediately, decides to buy hens instead - just go ahead!
 
 The live project can be found here: [https://hire-hens.herokuapp.com/](https://hire-hens.herokuapp.com/)
 
@@ -28,14 +28,14 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 - Buy hens, coops, equipment and consumables.
 
 **Site owners need**
-- That it is easy for a user to hire hens and accessories.
-- That is easy for a user to buy hens, equipment and consumables.
+- That it is easy for a user to hire hens, coop and equipment (as waterer and feeder).
+- That is easy for a user to buy hens, coop, equipment and consumables (as food and bedding).
 - Possibilty to add frequently asked questions (FAQ).
 - Being able to administer products, orders and FAQs.
 - That only people with authority are being able to administer the products, FAQs and orders.
 
 **Users** needs:
-- Easy and intuitive way to hire hens, coops and equipment.
+- Easy and intuitive way to hire or buy hens, coops and equipment and also buy consumables.
 - Easy to find more information about the rental process and how to take care of a hen.
 - Easy to buy hens and accessories.
 
@@ -50,7 +50,7 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 - US_004: As a user, I want to be able to look at the site anonymously, without logging in.
 
-- US_005: As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer and add to cart.
+- US_005: As a user, I want to build my own rental package for a specific number of months, having the possibility to add hens, coop and/or other equipment.
 
 - US_006: As a user, I want to add products that I want to buy to the cart.
 
@@ -64,7 +64,7 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 - US_011: As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
 
-- US_012: As a user, I want to be able to buy things even if I am not logged in. And if I am logged in I want my personal information for delivery, to be shown at checkout time.
+- US_012: As a user that is logged in I want to be able to save my delivery and contact information to be shown in checkout form every time I checkout.
 
 - US_013: As a user, I want to be able to see my profile information with my order history. 
 
@@ -78,29 +78,33 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
 
+- US_018: As an administrator I want to be able to mark an order that has no delivery date as delivered.
+
+- US_019: As an administrator I want to be able to mark a rental item that has a due date as returned.
+
 ### Structure Plane
 - A "homepage" with a picture of hens.
 - Navbar with:
     - Brand-image that leads to homepage.
-    - Link to page where user can rent product. Easily guided through a flow building a package of rental products to hire for same amount of time.
-    - Link to page where user can buy eg. food and bedding
+    - Link to page where user can rent products.
+    - Link to page where user can buy products.
     - Link to page with FAQ
     - Link to cart
-    - Sign up and Login In, or Log Out
-    - Profile page
+    - Link to register and login in, or log out
+    - Link to profile page
     - For administrators only an link to administer:
-        - Products
-        - Orders
+        - products
+        - orders
         - FAQs
 - Rental-page
     - One page for each category(Hens, Coops and Equipment) of products.
     - One page for each product with more detailed information and possibility to add to cart. This page is reached from the category of products page.
 - Buy-page:
     - One page for each category( Hens, Coops, Equipment and Consumables) of products.
-   - One page for each product with more detailed information and possibility to add product to cart. This page is reached from the category of products page.
+    - One page for each product with more detailed information and possibility to add product to cart. This page is reached from the category of products page.
 - FAQ-page:
-    - Questions and answeres to frequently asked questions.
-- Cart page:
+    - Questions and answers to frequently asked questions.
+- Cart-page:
     - Information what the cart consists of and possibility to change its content. Cart consists of a rental part and a part with items to buy.
     - Link to checkout page.
 - Checkout page:
@@ -125,10 +129,10 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
     - then coop to add to cart
     - and then equipment as feeder and waterer to add to cart.
     - Through the process the number of months to rent, last choosen, is given as a suggestion for next item to rent. (High probability user wants to rent items the same amount of time.) 
-    - after equipment user can either go to cart to checkout or go to buy consumables as bedding and food.
+    - after hire equipment user can either go to cart to checkout or go to buy consumables as bedding and food.
 - To buy products user choose one item at a time to add to the cart.
 - User can always go to cart and see its content and then continue to shop.
-- Only User with special authority reaches administrator pages for managing Products, Orders and FAQs.
+- Only User with special authority reaches administrator pages for managing products, orders and FAQs.
 - Interactive design that works on Mobile, Tablet as well as Desktop.
 
 #### Wireframes
@@ -141,7 +145,7 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 #### Information Architecture
 ##### Database Choice
 - Development phase: SQLight which is installed with Django
-- Production phase (deployed): PostgreSQL, provided as an add-on by Heroku
+- Production phase (deployed): Postgres, provided as an add-on by Heroku
 
 ##### Data modell
 The data modell was visualised with [DrawSQL](https://drawsql.app/):
@@ -150,16 +154,19 @@ The data modell was visualised with [DrawSQL](https://drawsql.app/):
 #### Design Choices
 ##### Fonts
 For this project, **IBM Plex Serif** is chosen to give a rural experience. The font is picked from [Google Fonts](https://fonts.google.com/). It is a friendly style which fits both web and mobile interfaces, and even in print.
-As the fallback font in case IBM Plex Serif isn't being imported into the site correctly, **Roboto** and **Open Sans** are chosen.
+As the fallback font, in case IBM Plex Serif isn't being imported into the site correctly, **Roboto** and **Open Sans** are chosen.
 
 ##### Colours
 ![Colours](wireframes/hire_hens_colours.png)
+- Lightgreen, Ivory: #EBF2E4.
+- Green, Olivine: #A3C284
 - Black: #000000
 - White: #FFFFFF
-- Different shades of blue: #AFC1D5, #D7E0DA, #F2F5F8
-- Green: #A3C284
-Black and white are used to get a modern apperance and to get a good contrast. 
-Blue and green was choosen as the hens are able to be outside under the blue sky and on the green grass. 
+Green as the main color was choosen for a rural feeling and as the thought is that hens should be outside on the green grass.
+Buttons, navbar and footer have black background and white text to get a modern apperance and to get a good contrast.
+Text in pages is mainly black and the background is lightgreen or white to get good contrast.
+For error messages or delete/remove buttons a red color is sometimes used to get attention.
+
 
 
 ## Features
