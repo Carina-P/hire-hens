@@ -1,19 +1,19 @@
 <!-- Inspired from Bootstrap -->
-<nav class="navbar navbar-expand-md bg-black">
+<nav class="navbar navbar-expand-lg bg-black">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
         aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars fa-2x bg-black"></i>
     </button>
     {% include 'includes/navbar/mobile-header.html' %}
     <div class="collapse navbar-collapse" id="navigation">
-        <div class="col-12 col-md-4 d-none d-md-block my-auto py-1 py-md-0 text-center">
+        <div class="col-12 col-lg-4 d-none d-lg-block my-auto py-1 py-md-0 text-center">
             <a href="{% url 'home' %}" class="navbar-brand home-link">
                 <img src="{{ MEDIA_URL }}egg.png" alt="logo" width="25"> HENS for HIRE
             </a>
         </div>
-        <div class="col-6 col-md-4 center-nav-items">
+        <div class="col-6 col-lg-4 center-nav-items">
             <div class="navbar-nav">
-                <a href=" {% url 'home' %}" class="nav-link px-3 d-block d-md-none">HOME</a>
+                <a href=" {% url 'home' %}" class="nav-link px-3 d-block d-lg-none">HOME</a>
                 <a href="{% url 'get_products_by_category' 'Hens' 'rent' %}" class="nav-link px-3">HIRE</a>
                 {% include 'includes/navbar/buy_dropdown.html' %}
                 <a href="{% url 'faq' %}" class="nav-link px-3">FAQ</a>
