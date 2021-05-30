@@ -22,6 +22,7 @@ Functionality tests and tests of responsiveness are done by following test cases
 Test cases are described below and linked to use cases. Each test case have a name beginning with TC and then a number, e.g. TC_001.
 
 * Testing use case **UC_001**. As a user I want to be able to register to the site. By doing this I have the possibility to add my personal information and thus paying process will be faster.:
+
     **TC_001** Register to the site:
     * How to test:
         * In the navbar choose My Account and then Register.
@@ -33,6 +34,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * If you give email without @ or two different passwords you will be informed that they are wrong and not have possibility to register.
 
 * Testing use case **UC_002**. As a user, I want to be able to login to the site:
+
     **TC_002** Log in to the site:
     * How to test:
         * In navbar choose My Account and Log in.
@@ -41,9 +43,10 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Also test to give wrong password.
     * Expected outcome:
         * You are logged in to site and guided to homepage.
-        * If you gie wrong user name or password you get an error message and are not logged in.
+        * If you give wrong user name or password you get an error message and are not logged in.
 
 * Testing use case **UC_003**. As a user, I want to be able to log out.
+
     **TC_003** Log out:
     * How to test:
         * Go to navbar, choose My Account and Log out.
@@ -52,6 +55,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * If you click yes you get a message that you are logged out and are guided to home page.
 
 * Testing use case **UC_004**. As a user, I want to be able to look at the site anonymously, without logging in.
+
     **TC_004** Go through all the steps to add an order to the system without logging in.
     * How to test:
         * Be sure you are not logged in.
@@ -66,6 +70,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * You should be able to go through all the steps and add an order without problem.
 
 * Testing use case **UC_005**. As a user, I want to build my own rental package, consisting of hens of my choice and having the possibility to add coop and/or feeder and waterer.
+
     **TC_005** Add hens, coop and waterer, with same amount of months for rental, in cart.
     * How to test:
         * Choose Hire in navbar.
@@ -81,6 +86,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Carefully check all the prices, subtotals and grand total.
 
 * Testing use case **UC_006**. As a user, I want to add products that I want to buy to the cart.
+
   **TC_006** Add hens, coop, waterer, feeder, food and bedding to buy in shopping cart.
     * How to test:
         * In navbar choose buy and Hens
@@ -105,6 +111,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Carefully check all the prices, subtotals and grand total
 
 * Testing use case **UC_007**. As a user, I want to look at my cart and then continue shopping.
+
     **TC_007** Add items to cart, go to the cart and look and then continue adding items to the cart.
     * How to test:
         * Fill a cart as in TC_005.
@@ -128,6 +135,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Also check prices, subtotals and Grand total.
 
 * Testing use case **UC_008**. As a user, I want to change quantity or remove items in cart.
+
     **TC_008** Add items to cart according to TC_007 and do adjustments to the cart
     * How to test:
         * Follow the steps in how to test TC_007.
@@ -137,40 +145,43 @@ Test cases are described below and linked to use cases. Each test case have a na
         * You shoud now have 3 pieces of food in your cart
         * And you should not have any hens.
         * Carefully check subtotals and grand totals.
-
+    
 * Testing use case **UC_009**. As a user, I want to checkout my cart.
+
     **TC_009** Checkout cart from TC_007
         * How to test:
             * Log in to the site.
             * Complete the steps in how to test from TC_007
             * Go to checkout page and fill out the form.
             * Save the delivery information in the form.
-        * What to expect:
-            * You should have a filled out form in checkout page 
-            * You should also have an order summary that consists of:
-                * rent: 12 Lohman hens for 5 months
-                * rent: 1 coop for 10 hens for 5 months
-                * rent: 1 coop for 10 hens for 2 months
-                * rent: 2 waterers for 5 months
-                * buy: 2 pieces of food
-            * Please carefully check subtotals and grand totals.
+    * What to expect:
+        * You should have a filled out form in checkout page 
+        * You should also have an order summary that consists of:
+            * rent: 12 Lohman hens for 5 months
+            * rent: 1 coop for 10 hens for 5 months
+            * rent: 1 coop for 10 hens for 2 months
+            * rent: 2 waterers for 5 months
+            * buy: 2 pieces of food
+        * Please carefully check subtotals and grand totals.
+    
     **TC_010** Give wrong credit card number.
-        * How to test
-            * Complete all steps according to TC_009
-            * Fill out form in checkout page but give wrong credit card number.
-        * Expected outcome:
-            * You should get an error message telling you that credit card number is wrong. And you cannot choose complete order.
+    * How to test
+        * Complete all steps according to TC_009
+        * Fill out form in checkout page but give wrong credit card number.
+    * Expected outcome:
+        * You should get an error message telling you that credit card number is wrong. And you cannot choose complete order.
 
-*Testing use case **UC_010**. As a user, I want to return from the checkout page to my cart and do some adjustments.
-    **TC_011** 
-        * How to test:
-            * Log in to the site, with same credentials as in TC_009.
-            * Complete the steps in how to test from TC_007
-            * Go to checkout page.
-            * Information in form should be given - same as you filled out in TC_009.
-            * Choose adjust cart.
-            * Remove 1 coop for 10 hens for 2 months.
-            * Return to checkout page.
+* Testing use case **UC_010**. As a user, I want to return from the checkout page to my cart and do some adjustments
+    
+    **TC_011 Return** from checkout page to cart and change items in cart.
+    * How to Test
+        * Log in to the site, with same credentials as in TC_009.
+        * Complete the steps in how to test from TC_007
+        * Go to checkout page.
+        * Information in form should be given - same as you filled out in TC_009.
+        * Choose adjust cart.
+        * Remove 1 coop for 10 hens for 2 months.
+        * Return to checkout page.
         * What to expect:
             * You should not have to fill in checkout form.
             * In your order summary you should have:
@@ -178,7 +189,7 @@ Test cases are described below and linked to use cases. Each test case have a na
                 * rent: 1 coop for 10 hens for 5 months
                 * rent: 2 waterers for 5 months
                 * buy: 2 pieces of food
-            * Check subtotals and grand totals!
+            * Check subtotals and grand totals
     
 * Testing use case **UC_011** As a user, I want to pay, for the contents in my cart, in a secure way, with a credit card.
     **TC_0012** Complete order for TC_011
@@ -355,7 +366,7 @@ The outcome of testing according to above test cases is documented in [Test prot
 
 ## UX testing
 UX testing is conducted by watching and interviewing users when the move around in the site. Examples of issues/discussions:
-    * I had red text in black buttons for delete items. User thought it was bas contrast.
+    * I had red text in black buttons for delete items. User thought it was bad contrast. Instead I used red background on button when user hover.
     * In product detail page Add to Cart was below page before. Users thought it was better to put the button after the choose quantity form. It is easier to reach and to see.
     * Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart.
     Users thought this hard to understand and non-intuitive.
@@ -363,7 +374,20 @@ UX testing is conducted by watching and interviewing users when the move around 
 
 ## Code Validation
 
-OBS!!!!!!!!!!!!!!!!!!!
+### Validation with W3S
+- **HTML**: Validated with **no errors** or warnings. 
+- **CSS**: Validated with **no errors** or warnings.
+
+### Validation with JSHint
+**JavaScript** validated with **no errors**. 
+- There are **one undefined variables**: 
+    - $ (JQuery)
+- There are **seven unused variables**:
+    - moveTo, cancelAddBook, addBook, searchBooks, addOpinion, changeOpinion and buyBook:
+    These are all functions called from HTML.
+
+### Validation with PEP8
+**python** validated with ...
 
 ## Different browsers
 The code is mainly tested with Chrome.
@@ -381,7 +405,7 @@ That are because following features from **ECMAScriptS6** is used:
 
 ## Some of the bugs
 - It was a little hard to add the dimension months to cart. And I had several bugs before it got it right (I hope). For example when I added an item with some amount of rental months that already existed in the cart, instead of increasing quantity, the old value was overwritten.
-- To get all my includes to work I needed to add app in TEMPLATES_DIRS.
+- To get all my includes to work I needed to add all apps in TEMPLATES_DIRS.
 - Forgot to add include static in some templates.
 
 ## Remaining bugs

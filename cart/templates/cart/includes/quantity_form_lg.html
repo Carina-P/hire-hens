@@ -1,0 +1,67 @@
+{% if rent_or_buy == 'buy' %}
+<form class="form update-form_lg" method="POST" action="{% url 'adjust_cart' item.item_id  %}">
+    {% csrf_token %}
+    <div class=" form-group w-100">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <button class="decrement-qty btn btn-sm btn-black" data-item_id="{{ item.item_id }}"
+                    id="decrement-qty_lg_{{ item.item_id }}">
+                    <span>
+                        <i class="fas fa-minus fa-sm"></i>
+                    </span>
+                </button>
+            </div>
+            <input class="form-control form-control-sm qty_input_lg text-center" type="number" name="quantity"
+                value="{{ item.quantity }}" min="1" max="40" data-item_id="{{ item.item_id }}"
+                id="id_qty_lg_{{ item.item_id }}">
+            <div class="input-group-append">
+                <button class="increment-qty btn btn-sm btn-black" data-item_id="{{ item.item_id }}"
+                    id="increment-qty_lg_{{ item.item_id }}">
+                    <span>
+                        <i class="fas fa-plus fa-sm"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<a class="update-link_lg btn btn-black btn-sm py-0 mt-1"><small>Update</small></a>
+<button type="submit" class="btn btn-black-red btn-sm py-0 mt-1"
+    onclick="openRemoveModal('{{ item.item_id }}', '{{ item.product.name }}')">
+    <small>Remove</small>
+</button>
+
+{% else %}
+<form class="form update-rental-form_lg" method="POST"
+    action="{% url 'adjust_cart_rental' item.item_id item.months  %}">
+    {% csrf_token %}
+    <div class=" form-group w-100">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <button class="decrement-qty_rental btn btn-sm btn-black" data-id="{{ item.item_id }}_{{ item.months }}"
+                    id="decrement-qty_lg_{{ item.item_id }}_{{ item.months }}">
+                    <span>
+                        <i class="fas fa-minus fa-sm"></i>
+                    </span>
+                </button>
+            </div>
+            <input class="form-control form-control-sm qty_input_rental_lg text-center" type="number" name="quantity"
+                value="{{ item.quantity }}" min="1" max="40" data-id="{{ item.item_id }}_{{ item.months }}"
+                id="id_qty_lg_{{ item.item_id }}_{{ item.months }}">
+            <div class="input-group-append">
+                <button class="increment-qty_rental btn btn-sm btn-black" data-id="{{ item.item_id }}_{{ item.months }}"
+                    id="increment-qty_lg_{{ item.item_id }}_{{ item.months }}">
+                    <span>
+                        <i class="fas fa-plus fa-sm"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<a class="update-link_rental_lg btn btn-black btn-sm mt-1 py-0"><small>Update</small></a>
+<button type="submit" class="btn btn-black-red btn-sm mt-1 py-0"
+    onclick="openRemoveModalRent('{{ item.item_id }}', '{{ item.product.name }}', '{{ item.months }}')">
+    <small>Remove</small>
+</button>
+{% endif %}

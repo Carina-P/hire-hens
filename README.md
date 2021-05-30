@@ -186,7 +186,7 @@ For error messages or delete/remove buttons a red color is sometimes used to get
 
 ## Features
 ### Existing Features
-This project is highly inspired of the Boutique Ado example from Code Institute. Especially the checkout, checkout success, profile and stripe management appearance and functionality are very close to Boutique Ado. This application uses the allauth applications from Django to administrate user authentication.
+This project is highly inspired by the Boutique Ado example from Code Institute. Especially the checkout, checkout success, profile and stripe management appearance and functionality are very close to Boutique Ado. This application uses the allauth applications from Django to administrate user authentication.
 The application differs from Boutique Ado in:
 - The product and cart parts since user can both rent and buy items. The rental possibility adds the time dimension. 
 - FAQ is offered which is not present in Boutique Ado.
@@ -472,7 +472,7 @@ else:
 
 
 ### Amazon web services (aws)
-The static and media files for the deployed site are hosten in the AWS S3 bucket.
+The static and media files for the deployed site are hosted in the AWS S3 bucket.
 1. You need an account in aws and a S3 bucket. Guidelines [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html).
 2. Under permissions I turned of "block all public access" and used the following CORS configuration:
 `[

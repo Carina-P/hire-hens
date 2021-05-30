@@ -91,7 +91,7 @@ Shopping cart
                         <p class="my-0">{{ item.product.rental_price|intcomma }} SEK</p>
                     </td>
                     <td class="py-3">
-                        {% include 'includes/quantity_form.html' with rent_or_buy='rent'%}
+                        {% include 'includes/quantity_form_lg.html' with rent_or_buy='rent'%}
                     </td>
                     <td class="py-3">
                         <p class="my-0">
@@ -174,7 +174,7 @@ Shopping cart
                         <p class="my-0">{{ item.product.buying_price|intcomma }} SEK</p>
                     </td>
                     <td class="py-3">
-                        {% include 'includes/quantity_form.html' with rent_or_buy='buy'%}
+                        {% include 'includes/quantity_form_lg.html' with rent_or_buy='buy'%}
                     </td>
                     <td class="py-3">
                         <p class="my-0">{{ item.product.buying_price | calc_subtotal:item.quantity|intcomma }} SEK</p>
