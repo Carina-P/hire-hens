@@ -15,6 +15,46 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 |IE10|
 |iOS 9|
 |Android 4.4|
+
+## Contents
+  * [UX](#ux)
+    + [Strategy Plane](#strategy-plane)
+      - [Site owner's goal](#site-owner-s-goal)
+      - [External user's goal](#external-user-s-goal)
+    + [Scope Plane](#scope-plane)
+      - [User stories](#user-stories)
+    + [Structure Plane](#structure-plane)
+    + [Skeleton Plane](#skeleton-plane)
+      - [Wireframes](#wireframes)
+        * [Major changes compared to wireframes](#major-changes-compared-to-wireframes)
+      - [Information Architecture](#information-architecture)
+        * [Database Choice](#database-choice)
+        * [Data modell](#data-modell)
+      - [Design Choices](#design-choices)
+        * [Fonts](#fonts)
+        * [Colours](#colours)
+  * [Features](#features)
+    + [Existing Features](#existing-features)
+    + [Responsive](#responsive)
+    + [Features Left to Implement](#features-left-to-implement)
+  * [Technologies Used](#technologies-used)
+    + [Languages](#languages)
+    + [Frameworks, Libraries and other tools](#frameworks--libraries-and-other-tools)
+  * [Testing](#testing)
+  * [Deployment](#deployment)
+    + [Heroku Deployment (using GitHub) with AWS and Postgres](#heroku-deployment--using-github--with-aws-and-postgres)
+    + [Amazon web services (aws)](#amazon-web-services--aws-)
+- [Cache control](#cache-control)
+- [Bucket config](#bucket-config)
+- [Static and media files](#static-and-media-files)
+- [Override static and media URLs in production](#override-static-and-media-urls-in-production)
+    + [Local Deployment](#local-deployment)
+  * [Credits](#credits)
+    + [Media](#media)
+    + [Acknowledgements](#acknowledgements)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
  
 ## UX
 ### Strategy Plane
@@ -343,10 +383,9 @@ The site is designed to fit devices with screen widths from 320px and larger.
 
 ![implementation of arrow on small viewports](readme_materials/arrow.jpg)
 
-* Almost all of the pages differ between smaller and larger viewport.
+* Almost all of the pages differ between smaller and larger viewport. This i think is best illustrated by the wireframes: [Wireframes](#wireframes)
 
 ### Features Left to Implement
-- Sending an email when order is completed.
 - Possibility to change full name in Profile page.
 - It is prepared to connect social media but it is not completed.
 

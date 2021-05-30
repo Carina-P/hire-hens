@@ -1,6 +1,21 @@
 # Test plan
 Back to [README](https://github.com/Carina-P/hire-hens/blob/master/README.md)
 ## Contents
+  * [Test of functionality and responsiveness](#test-of-functionality-and-responsiveness)
+    + [Test cases](#test-cases)
+    + [Test protocol](#test-protocol)
+    + [Other tests](#other-tests)
+  * [UX testing](#ux-testing)
+  * [Code Validation](#code-validation)
+    + [Validation with W3S](#validation-with-w3s)
+    + [Validation with JSHint](#validation-with-jshint)
+    + [Validation with PEP8](#validation-with-pep8)
+  * [Different browsers](#different-browsers)
+  * [Some of the bugs](#some-of-the-bugs)
+  * [Remaining bugs](#remaining-bugs)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 The below plan for testing was followed during development of the site: The TDD, TestDriven Development, process is followed as much as possible. Test cases are developed/thought of, before the code is implemented. The test process is conducted in an iterative manner and implementation cycles are short with small parts of code constructed every time. In some cases, prototyping is used and the thorough test is done when I was satisfied with the prototype.
 
