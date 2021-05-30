@@ -356,7 +356,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * In Order Details page: you should see the date 2021-05-15(+ a time) in red text and all the other rental due dates should be another date in green.
 
 ### Test protocol
-The outcome of testing according to above test cases is documented in [Test protocol]()
+The outcome of testing according to above test cases is documented in [Test Protocol](https://github.com/Carina-P/hire-hens/blob/master/test/protocol_test_cases.pdf).
 
 ### Other tests
 - The navbar functionality was test by clicking on all possibilities and checking that user end up at right page.
@@ -369,12 +369,6 @@ UX testing is conducted by watching and interviewing users when the move around 
 - I had red text in black buttons for delete items. User thought it was bad contrast. Instead I used red background on button when user hover.
 - In product detail page Add to Cart was below page before. Users thought it was better to put the button after the choose quantity form. It is easier to reach and to see.
 - Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart. Users thought this hard to understand and non-intuitive. So this was changed and rental items are added one by one to the shopping cart. I did put months in context so user did not have to remember how many months he/she had choosen.
--  In Cart-page there is several "num steppers".
-
-![The "num stepper"](../readme_materials/num_stepper.jpg)
-
-I had some problem implementing the js-code to update the stepper.
-There is one "num stepper" for each item in rental part and also in buy part. Since the layout is different on smaller compared to larger viewports, the "num steppers" occure in different places in the template for the different layout-solutions. I am using id´s in the html-code to refer to the "num steppers". Since they occur on severel places and id shoud be unique I have different id-names for rental "num.stepper" and buying "num.stepper" and then also different on large and small viewports. This gives four different "id-names" and that is way I have a lot of js-code - four implementations of the same "problem". **This is not ideal** and in the future I would like to **refactor** this part of the js-code (/cart/static/cart/js/cart.js).
 
 ## Code Validation
 
@@ -412,7 +406,12 @@ That are because following features from **ECMAScriptS6** is used:
 - It was a little hard to add the dimension months to cart. And I had several bugs before it got it right (I hope). For example when I added an item with some amount of rental months that already existed in the cart, instead of increasing quantity, the old value was overwritten.
 - To get all my includes to work I needed to add all apps in TEMPLATES_DIRS.
 - Forgot to add include static in some templates.
+-  In Cart-page there is several "num steppers".
+
+![The "num stepper"](../readme_materials/num_stepper.jpg)
+
+I had some problem implementing the js-code to update the stepper.
+There is one "num stepper" for each item in rental part and also in buy part. Since the layout is different on smaller compared to larger viewports, the "num steppers" occure in different places in the template for the different layout-solutions. I am using id´s in the html-code to refer to the "num steppers". Since they occur on severel places and id shoud be unique I have different id-names for rental "num.stepper" and buying "num.stepper" and then also different on large and small viewports. This gives four different "id-names" and that is way I have a lot of js-code - four implementations of the same "problem". **This is not ideal** and in the future I would like to **refactor** this part of the js-code (/cart/static/cart/js/cart.js).
 
 ## Remaining bugs
-- On larger viewports in cart you can change quantity to below 0 and above 40, which is not the case on smaller viewports. The limits is tested on backend side so the wrong numbers is not added to the database.
-- Upon checkout succes order information is not emailed as informed in the checkout success page.
+Hopefully none.
