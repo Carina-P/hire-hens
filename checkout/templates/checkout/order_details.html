@@ -23,8 +23,8 @@ Order Information
                     <li>Delivered date: <strong> {{ order.delivery_date }}</strong> </li>
                     {% else %}
                     <li><strong class="text-notdone">Not delivered:</strong>
-                        <a href="{% url 'deliver_order' order.id %}"
-                            class="ms-3 btn btn-sm btn-black"><small>Deliver</small></a>
+                        <a href="{% url 'deliver_order' order.id %}" class="ms-3 btn btn-sm btn-black"><small>Deliver <i
+                                    class="fas fa-truck"></i></small></a>
                     </li>
                     {% endif %}
                     <li class="mt-4">Grand Total: <strong>{{ order.grand_total|intcomma }} SEK</strong></li>
@@ -86,7 +86,7 @@ Order Information
                 <td class="py-3">
                     <p class="my-0">
                         <a href="{% url 'finish_rental' order.id item.id %}" class="btn btn-sm btn-black"><small>Items
-                                returned</small>
+                                returned <i class="fas fa-undo"></i></small>
                         </a>
                     </p>
                 </td>
@@ -132,7 +132,8 @@ Order Information
     </div>
 </div>
 <div class="text-center mb-5">
-    <a href="{% url 'adm_orders' 'all' %}" class="btn btn-lg btn-black mt-5">Back</a>
+    <a href="{% url 'adm_orders' 'all' %}" class="btn btn-lg btn-black mt-5"><i class="fas fa-chevron-left"></i>
+        Back</a>
 </div>
 
 {% endblock checkout_content %}

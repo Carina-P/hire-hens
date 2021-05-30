@@ -19,7 +19,7 @@ Product Management
 {% block products_content %}
 {% if this_category == 'all' and request.user.is_superuser %}
 <div class="text-center">
-    <a class="btn btn-lg btn-black" href="{% url 'add_product' %}">Add product</a>
+    <a class="btn btn-lg btn-black" href="{% url 'add_product' %}">Add product <i class="fas fa-plus-circle"></i></a>
 </div>
 {% endif %}
 
@@ -43,11 +43,11 @@ Product Management
 <div class="container mb-5">
     <div class="text-center">
         {% if this_category != "all" %}
-        <a class="btn btn-lg btn-black" href="{% url 'cart' %}">Go to Cart</a>
+        <a class="btn btn-lg btn-black" href="{% url 'cart' %}">Go to Cart ></a>
         {% endif %}
         {% if rent and this_category == "Equipment"%}
         <a class="btn btn-lg btn-black" href="{% url 'get_products_by_category' 'Consumables' 'buy' %}">Go to Buy
-            Consumables</a>
+            Consumables ></a>
         {% endif %}
     </div>
 </div>
@@ -70,7 +70,7 @@ Product Management
         }
 
         $('#name').html(name);
-        $('#hidden_product').html(`<input type="hidden" name="product_id" value="${productId}">`)
+        $('#hidden_product').html(`<input type="hidden" name="product_id" value="${productId}">`);
         $('#modal_remove_product').modal('show');
     }
 </script>

@@ -33,9 +33,11 @@
                 {% endif %}
                 {% endfor %}
                 <div class="text-center mb-4">
-                    <a class="btn btn-black" href="{% url 'get_products_by_category' 'all' 'buy' %}">Back</a>
-                    <button class="btn btn-black" type="submit">{% if add %}Add Product{% else %}Update
-                        Product{% endif %}</button>
+                    <a class="btn btn-black" href="{% url 'get_products_by_category' 'all' 'buy' %}"><i
+                            class="fas fa-chevron-left"></i> Back</a>
+                    <button class="btn btn-black" type="submit">{% if add %}Add Product <i
+                            class="fas fa-plus-circle"></i>{% else %}Update
+                        Product <i class="fas fa-pen-square"></i>{% endif %}</button>
                 </div>
             </form>
     </div>

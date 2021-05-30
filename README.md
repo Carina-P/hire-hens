@@ -425,6 +425,8 @@ The site is designed to fit devices with screen widths from 320px and larger.
     - to check CSS
 - [Balsamiq Wireframes](https://balsamiq.com/)
     - For designing the wireframes
+- [Font-Awesome](https://fontawesome.com/icons?d=gallery)
+    - From this library the icons are fetched 
 - [Coolors](https://coolors.co/):
     - To generate color-schemes
 - [DrawSQL](https://drawsql.app/)

@@ -24,14 +24,17 @@
                 {% endif %}
                 {% if request.user.is_superuser and this_category == 'all' %}
                 <small class="ml-3">
-                    <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-black">Edit</a>
+                    <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-black">Edit <i
+                            class="fas fa-pen-square"></i></a>
                     <button type="submit" class="btn btn-black-red btn-sm"
                         onclick="openRemoveProduct('{{ product.id }}', '{{ product.name }}')">
-                        Delete
+                        Delete <i class="fas fa-trash"></i>
                     </button>
                 </small>
                 {% else %}
-                <a class="btn btn-black btn-sm" href="{% url 'product_detail' product.id rent_or_buy %}">Details</a>
+                <a class="btn btn-black btn-sm" href="{% url 'product_detail' product.id rent_or_buy %}">
+                    Details <i class="fas fa-info-circle"></i>
+                </a>
                 {% endif %}
             </div>
         </div>

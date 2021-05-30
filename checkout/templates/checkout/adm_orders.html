@@ -60,7 +60,8 @@ Orders Administration
                     </p>
                 </div>
                 <div class="col-12 mt-1">
-                    <a href="{% url 'order_details' order.id %}" class="btn btn-black">Details</a>
+                    <a href="{% url 'order_details' order.id %}" class="btn btn-black">Details <i
+                            class="fas fa-info-circle"></i></a>
                 </div>
             </div>
             <div class="row">
@@ -125,7 +126,8 @@ Orders Administration
                         </p>
                     </td>
                     <td>
-                        <a href="{% url 'order_details' order.id %}" class="btn btn-black">Details</a>
+                        <a href="{% url 'order_details' order.id %}" class="btn btn-black">Details <i
+                                class="fas fa-info-circle"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
