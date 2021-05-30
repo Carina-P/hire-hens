@@ -136,8 +136,15 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 - Interactive design that works on Mobile, Tablet as well as Desktop.
 
 #### Wireframes
-- [Mobile](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile.png)
-- [Tablet](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet.png)
+Wireframes for mobile:
+- [mobile_part1](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile_part1.png)
+- [mobile_part2](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_mobile_part2.png)
+
+Wireframes for tablet:
+- [tablet_part1](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet_part1.png)
+- [tablet_part2](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_tablet_part2.png)
+
+Wireframes for desktop:
 - [Desktop](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_desktop.png)
 
 ##### Major changes compared to wireframes
@@ -330,8 +337,11 @@ The application differs from Boutique Ado in:
 The site is designed to fit devices with screen widths from 320px and larger.
 * Navbar collapses into "hamburger" menu on smaller viewports.
 * Footer looks different in different viewport sizes.
-* Almost all of the pages differ between smaller and larger viewport:
-    - 
+* In orders administration and cart there is a little arrow in smaller viewports. If user clicks on arrow the user is guided to top of page.
+
+![implementation of arrow on small viewports](readme_materials/arrow.jpg)
+
+* Almost all of the pages differ between smaller and larger viewport.
 
 ### Features Left to Implement
 - Sending an email when order is completed.
