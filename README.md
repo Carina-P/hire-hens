@@ -391,7 +391,7 @@ The site is designed to fit devices with screen widths from 320px and larger.
 
 
 ## Testing
-The tests conducted are detailed in [TESTS.md]()
+The tests conducted are detailed in [TESTS.md](https://github.com/Carina-P/hire-hens/blob/master/test/TESTS.md)
 
 ## Deployment
 ### Heroku Deployment (using GitHub) with AWS and Postgres
