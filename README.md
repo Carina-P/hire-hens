@@ -148,7 +148,8 @@ Wireframes for desktop:
 - [Desktop](https://github.com/Carina-P/hire-hens/blob/master/wireframes/wireframes_desktop.png)
 
 ##### Major changes compared to wireframes
-Cart: The **Qty column** in the table, on tablets and desktop, in reality contains a "number stepper" and the buttons Update and Delete are also part of the column.
+- Cart: The **Qty column** in the table, on tablets and desktop, in reality contains a "number stepper" and the buttons Update and Delete are also part of the column.
+- Calling it Log In, Log Out and Sign Up (not Sign In, Sign Out or Register).
 
 #### Information Architecture
 ##### Database Choice
