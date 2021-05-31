@@ -43,7 +43,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * In the navbar choose My Account and then Register.
         * Fill out email, user name and password.
         * Also test to fill in email without an @.
-        * Also test to give to different passwords.
+        * Also test to give two different passwords.
     * Expected outcome:
         * A message that a mail is sent with link for verification. When you get the mail and follow the verification your should get the possibility to login.
         * If you give email without @ or two different passwords you will be informed that they are wrong and not have possibility to register.
@@ -111,7 +111,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Choose coop for 2 hens
         * Add 2 coops to cart
         * In navbar choose buy and equipment
-        * Choose feederS
+        * Choose feeder
         * Add 2 feeders to cart
         * Choose waterer
         * Add 1 waterer to cart
@@ -139,7 +139,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Choose Buy and Consumables in navbar
         * Choose food
         * Add 2 pieces to cart
-        * Go to cart
+        * In navbar click on cart
     * Expected outcome:
         * Check carefully that you have:
             * rent: 12 Lohman hens for 5 months
@@ -219,6 +219,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Go to admin and check the Order table in the **database** and check that everything is OK.
 
 * Testing use case **UC_012**. As a user that is logged in I want to be able to save my delivery and contact information to be shown in checkout form every time I checkout.
+
     **TC_0013** This test is part of TC_011
     * How to test:
         * This is actually tested in TC_011
@@ -276,6 +277,7 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome:
         * In the Product Management page you should see that the price is 1100 SEK.
         * Also go to admin and check that the price is changed in **database** table Products.
+    
     **TC_018** Delete a product
     * How to test:
         * Log in as an administrator.
@@ -286,6 +288,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Also go to admin and check in **database** that coop is not in Product table.
 
 * Testing use case **UC_016**. As the administrator of the site I want to be able to login and manage FAQs (frequently asked questions) - add, change and/or delete.
+
      **TC_0019** Add a FAQ
     * How to test:
         * Log in as an administrator.
@@ -299,6 +302,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * You should end up in Frequently Asked Questions page.
         * There should be a new faq with question and answer as above.
         * Also go to admin and check in **database** that faq is added to table Faq.
+    
     **TC_020** Change a FAQ
     *   How to test:
         * Log in as an administrator.
@@ -309,6 +313,7 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome:
         * In the Frequently asked questions page you should see that cose is changed to close in the answer to "How does hens sleep?".
         * Also go to admin and check that the answer is changed in **database** table Faq.
+    
     **TC_021** Delete a FAQ
     * How to test:
         * Log in as an administrator.
@@ -321,7 +326,8 @@ Test cases are described below and linked to use cases. Each test case have a na
 * Testing use case **UC_017**. As an administrator I want to be able to look at the orders and filter them to see:
     - which orders have not been delivered yet
     - which orders includes rentals that is not returned and be able to see if they are overdue.
-    **TC_022: Filter orders.
+
+    **TC_022**: Filter orders.
     * How to test:
         * Carry ut test case TC_023 and TC_024 before this test case.
         * Log in as an administrator.
@@ -333,6 +339,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * When you choose Orders with rental due all orders that show up should have a rental due date (red or green depending on if rental was due before today or not)
 
 * Testing use case **UC_018**. As an administrator I want to be able to mark an order that has no delivery date as delivered.
+
     **TC_023** Mark an order as delivered.
     * How to test:
         * Log in as administrator.
@@ -347,6 +354,7 @@ Test cases are described below and linked to use cases. Each test case have a na
         * Go to database and check that everything is correct.
 
 * Testing use case **UC_019**. As an administrator I want to be able to mark a rental item that has a due date as returned.
+
     **TC_024** Mark rental item with due date as returned.
     * How to test:
         * Log in as administrator.
@@ -358,8 +366,10 @@ Test cases are described below and linked to use cases. Each test case have a na
     * Expected outcome:
         * In the Order Information in column of Rental Due the date should have disappeared replaced with the green text no.
         * Go to database and check that everything is as expected in table Orders.
+
     **TC_025** If different rental due dates for items in an order check that earliest date is shown in Orders Administrators page.
-     **TC_026** Check that rental that where due before todays date have red due dates.
+
+     **TC_026** Check that rental that where due before todays date have red due dates. (TC_025 and TC_026 are tested at the same time)
     * How to test:
         * Find an order with more than one rental items with delivery due dates.
         * Go to database and change one of the due dates to 2021-05-15.
@@ -383,7 +393,7 @@ The outcome of testing according to above test cases is documented in [Test Prot
 UX testing is conducted by watching and interviewing users when the move around in the site. Examples of issues/discussions:
 - I had red text in black buttons for delete items. User thought it was bad contrast. Instead I used red background on button when user hover.
 - In product detail page Add to Cart was below page before. Users thought it was better to put the button after the choose quantity form. It is easier to reach and to see.
-- Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart. Users thought this hard to understand and non-intuitive. So this was changed and rental items are added one by one to the shopping cart. I did put months in context so user did not have to remember how many months he/she had choosen.
+- Earlier all the rental items was put in a special "cart" shown in Details page. User had added all rental items to the special cart: he/she chosed number of months and added the whole "package" of rental items to the shopping cart. Users thought this was hard to understand and non-intuitive. So this was changed and rental items are added one by one to the shopping cart. I did put months in context so user did not have to remember how many months he/she had choosen before.
 
 ## Code Validation
 
@@ -418,7 +428,7 @@ That are because following features from **ECMAScriptS6** is used:
 
 
 ## Some of the bugs
-- It was a little hard to add the dimension months to cart. And I had several bugs before it got it right (I hope). For example when I added an item with some amount of rental months that already existed in the cart, instead of increasing quantity, the old value was overwritten.
+- It was a little hard to add the dimension months to cart. And I had several bugs before it got it right. For example when I added an item with some amount of rental months that already existed in the cart, instead of increasing quantity, the old value was overwritten.
 - To get all my includes to work I needed to add all apps in TEMPLATES_DIRS.
 - Forgot to add include static in some templates.
 -  In Cart-page there is several "num steppers".
