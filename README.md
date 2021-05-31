@@ -18,42 +18,39 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 
 ## Contents
   * [UX](#ux)
-    + [Strategy Plane](#strategy-plane)
-      - [Site owner's goal](#site-owner-s-goal)
-      - [External user's goal](#external-user-s-goal)
-    + [Scope Plane](#scope-plane)
-      - [User stories](#user-stories)
-    + [Structure Plane](#structure-plane)
-    + [Skeleton Plane](#skeleton-plane)
-      - [Wireframes](#wireframes)
-        * [Major changes compared to wireframes](#major-changes-compared-to-wireframes)
-      - [Information Architecture](#information-architecture)
-        * [Database Choice](#database-choice)
-        * [Data modell](#data-modell)
-      - [Design Choices](#design-choices)
-        * [Fonts](#fonts)
-        * [Colours](#colours)
-  * [Features](#features)
-    + [Existing Features](#existing-features)
-    + [Responsive](#responsive)
-    + [Features Left to Implement](#features-left-to-implement)
-  * [Technologies Used](#technologies-used)
-    + [Languages](#languages)
-    + [Frameworks, Libraries and other tools](#frameworks--libraries-and-other-tools)
-  * [Testing](#testing)
-  * [Deployment](#deployment)
-    + [Heroku Deployment (using GitHub) with AWS and Postgres](#heroku-deployment--using-github--with-aws-and-postgres)
-    + [Amazon web services (aws)](#amazon-web-services--aws-)
-- [Cache control](#cache-control)
-- [Bucket config](#bucket-config)
-- [Static and media files](#static-and-media-files)
-- [Override static and media URLs in production](#override-static-and-media-urls-in-production)
-    + [Local Deployment](#local-deployment)
-  * [Credits](#credits)
-    + [Media](#media)
-    + [Acknowledgements](#acknowledgements)
+  * [Strategy Plane](#strategy-plane)
+    + [Site owner's goal](#site-owner-s-goal)
+    + [External user's goal](#external-user-s-goal)
+  * [Scope Plane](#scope-plane)
+    + [User stories](#user-stories)
+  * [Structure Plane](#structure-plane)
+  * [Skeleton Plane](#skeleton-plane)
+    + [Wireframes](#wireframes)
+      - [Major changes compared to wireframes](#major-changes-compared-to-wireframes)
+    + [Information Architecture](#information-architecture)
+      - [Database Choice](#database-choice)
+      - [Data modell](#data-modell)
+    + [Design Choices](#design-choices)
+      - [Fonts](#fonts)
+      - [Colours](#colours)
+- [Features](#features)
+  * [Existing Features](#existing-features)
+  * [Responsive](#responsive)
+  * [Features Left to Implement](#features-left-to-implement)
+- [Technologies Used](#technologies-used)
+  * [Languages](#languages)
+  * [Frameworks, Libraries and other tools](#frameworks--libraries-and-other-tools)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  * [Heroku Deployment (using GitHub) with AWS and Postgres](#heroku-deployment--using-github--with-aws-and-postgres)
+  * [Amazon web services (aws)](#amazon-web-services--aws-)
+  * [Local Deployment](#local-deployment)
+- [Credits](#credits)
+  * [Media](#media)
+  * [Acknowledgements](#acknowledgements)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
  
 ## UX
@@ -150,7 +147,7 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
 - Checkout page:
     - Possibility to pay with card.
     - If user is logged in,  personal information is given.
-    - If anonymous user, user has to fill in information necessary to pay.
+    - If anonymous user, user has to fill out necessary information to pay.
 - Order confirmation page:
     - A confirmation that the order is added to database and information what the order consists of.
 - Profile page:
@@ -168,7 +165,7 @@ The live project can be found here: [https://hire-hens.herokuapp.com/](https://h
     - choose hens to add to the cart
     - then coop to add to cart
     - and then equipment as feeder and waterer to add to cart.
-    - Through the process the number of months to rent, last choosen, is given as a suggestion for next item to rent. (High probability user wants to rent items the same amount of time.) 
+    - through the process the number of months to rent, last choosen, is given as a suggestion for next item to rent. (High probability user wants to rent items the same amount of time.) 
     - after hire equipment user can either go to cart to checkout or go to buy consumables as bedding and food.
 - To buy products user choose one item at a time to add to the cart.
 - User can always go to cart and see its content and then continue to shop.
@@ -200,7 +197,7 @@ Wireframes for desktop:
 The data modell was visualised with [DrawSQL](https://drawsql.app/):
 ![Data Model](wireframes/data_model.png)
 In the visualisation the modells Group, Email_address, User and Site is not shown. It is the modells that django provide.
-The column types shown in visualization differs in some case from reality. Here is the differenses:
+The column types shown in visualization differs in some case from reality. Here are the differences:
 - In Order and Profile, column country have the django fieldtype: CountryField.
 - In Order, column order_date and delivery_date are DatetimeFields.
 - In Product, column image is an ImageField.
@@ -217,6 +214,7 @@ As the fallback font, in case IBM Plex Serif isn't being imported into the site 
 - Green, Olivine: #A3C284
 - Black: #000000
 - White: #FFFFFF
+
 Green as the main color was choosen for a rural feeling and as the thought is that hens should be outside on the green grass.
 Buttons, navbar and footer have black background and white text to get a modern apperance and to get a good contrast.
 Text in pages is mainly black and the background is lightgreen or white to get good contrast.
@@ -245,11 +243,11 @@ The application differs from Boutique Ado in:
 
 ![implementation of navbar small viewports](readme_materials/navbar_sm.jpg)
 
-    * Toasts with messages are shown in top of page. They disappear when user closes them or if user interact in other ways in the page or got to other page.
+* Toasts with messages are shown in top of page. They disappear when user closes them or if user interact in other ways in the page or got to other page.
 
 ![implementation of toast](readme_materials/toast.jpg)
  
-    * Footer: With contact information.
+* Footer: With contact information.
 
 ![implementation of footer large viewports](readme_materials/footer_lg.jpg)
 
@@ -344,11 +342,11 @@ The application differs from Boutique Ado in:
 
 ![implementation of the faq accordion](readme_materials/faq.jpg)
 
-    * If user is an administrator, user can choose to add, change or delete FAQ.
+* If user is an administrator, user can choose to add, change or delete FAQ.
 
 ![implementation of faq administration](readme_materials/faq_adm.jpg)
 
-    * If user wants to delete a faq a modal is shown with the question if user is sure.
+* If user wants to delete a faq a modal is shown with the question if user is sure he/she wants to delete faq.
 
 * FAQ input page:
     * If user is administrator:
@@ -356,7 +354,7 @@ The application differs from Boutique Ado in:
 
 ![implementation of add faq](readme_materials/add_faq.jpg)
 
-        * Change FAQ: Information for a specific FAQ is presented in a form and user can change the information and then submit.
+* Change FAQ: Information for a specific FAQ is presented in a form and user can change the information and then submit.
 
 ![implementation of change faq](readme_materials/edit_faq.jpg)
 
@@ -383,7 +381,7 @@ The site is designed to fit devices with screen widths from 320px and larger.
 
 ![implementation of arrow on small viewports](readme_materials/arrow.jpg)
 
-* Almost all of the pages differ between smaller and larger viewport. This i think is best illustrated by the wireframes: [Wireframes](#wireframes)
+* Almost all of the pages differ between smaller and larger viewport. This can be seen in the wireframes: [Wireframes](#wireframes)
 
 ### Features Left to Implement
 - Possibility to change full name in Profile page.
@@ -476,10 +474,10 @@ Since I have put all required libraries in requirements.txt, you just have to ru
 10. Makemigrations in heroku database with following command in terminal: `heroku run python3 manage.py makemigrations -a "name of the app in heroku`
 11. Push this to heroku with: `git add .`, `git commit` and `git push`
 12. Migrate the database: `heroku run pythons3 migrate -a "name of the app in heroku`
-13. Create a new superuser in database using the folowing command in terminal: `heroku run python3 manage.py createsuperuser -a "name of the app in heroku` and enter email, username and password.
+13. Create a new superuser in database using the folowing command in terminal: `heroku run python3 manage.py createsuperuser -a "name of the app in heroku"` and enter email, username and password.
 14. The following settings i settings.py connects to the right database:
 
-`if 'DATABASE_URI' in os.environ:
+```if 'DATABASE_URI' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(
             os.environ.get('DATABASE_URI')
@@ -492,12 +490,13 @@ else:
             'NAME': (os.path.join(BASE_DIR, 'db.sqlite3')),
         }
     }
-`
-15. Check in settings ALLOWED_HOSTS that the right heroku host is given. In my case the setting is: `ALLOWED_HOSTS = ['hire-hens.herokuapp.com', 'localhost']`
+```
+15. Check in settings ALLOWED_HOSTS that the right heroku host is given. In my case the setting is: ```ALLOWED_HOSTS = ['hire-hens.herokuapp.com', 'localhost']```
 16. In Stripe at tab Developers and then webhooks, register the URL endpoint for checkout webhooks. In my case: `https://hire-hens.herokuapp.com/checkout/wh/`
 17. To make email work in production environment you have to have the following settings in settings.py. In your local environment you se "emails" in your terminal:
 
-`if 'DEVELOPMENT' in os.environ:
+```
+if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'hire.hens@gmail.com'
 else:
@@ -507,7 +506,9 @@ else:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')`
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+```
+
 18. Make sure all settings are commited to GitHub and Heroku.
 19. The categories must exist in the database for the app to work. Open your application and go to admin (/admin) and add the following values to the Category table:
 
@@ -524,7 +525,8 @@ else:
 The static and media files for the deployed site are hosted in the AWS S3 bucket.
 1. You need an account in aws and a S3 bucket. Guidelines [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html).
 2. Under permissions I turned of "block all public access" and used the following CORS configuration:
-`[
+```
+[
     {
         "AllowedHeaders": [
             "Authorization"
@@ -537,13 +539,14 @@ The static and media files for the deployed site are hosted in the AWS S3 bucket
         ],
         "ExposeHeaders": []
     }
-]`
+```
 3. Create a folder media/ and a folder static/. 
 4. Copy all media files to the S3 bucket media/ folder. The static files are taking care of when code is pushed to GitHub and Heroku. 
 5. In order to connect to the S3 bucket (back at the terminal) the boto3 and django-storages must be installed. I used `pip3 install` and them added to requirements.txt with `pip3 freeze > requirements.txt`. All required packeges is allready in requirements.txt so you can run `pip3 install -r requirements.txt` in your terminal.
 6. Make sure 'storages is in the list of INSTALLED_APPS in settings.py.
 7. In settings.py the following settings must be present:
-`if 'USE_AWS' in os.environ:
+```
+if 'USE_AWS' in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
@@ -566,7 +569,7 @@ The static and media files for the deployed site are hosted in the AWS S3 bucket
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-`
+```
 8. Delete the DISABLE_COLLECTSTATIC from Heroku Settings, Config Var.
 10. Push all changes to GitHub and Heroku.
 
@@ -574,14 +577,15 @@ The static and media files for the deployed site are hosted in the AWS S3 bucket
 For local deployment follow these steps:
 1. In the terminal write: `git clone https://github.com/Carina-P/hire-hens.git` or use [this guide](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository).
 2. Create an env.py-file in the root directory. Add the following to the file:
-`import os
+```
+import os
 
 os.environ["DEVELOPMENT"] = "True"
 os.environ["SECRET_KEY"] = "<Your secret key>"
 os.environ["STRIPE_PUBLIC_KEY"] = "<Your stripe public key>"
 os.environ["STRIPE_SECRET_KEY"] = "<Your stripe secret key>" 
 os.environ["STRIPE_WH_SECRET"] = "<Your Stripe webhook secret key">
-`
+```
 3. Add env.py to the .gitignore file and the secrets will not be stored in GitHub and Heroku.
 4. Migrate the models to database with:
     - `python3 manage.py makemigrations`
@@ -589,6 +593,7 @@ os.environ["STRIPE_WH_SECRET"] = "<Your Stripe webhook secret key">
 5. Create a superuser: `python3 manage.py createsuperuser`
 6. You can access the app using the command `python3 manage.py runserver`
 7. Run the application and login to the admin (/admin) to fill Category table with information. The following values must be in the table for the app to work:
+
 |Category|Buyable|Rentable|
 |---|---|---|
 |Hens|True|True|
