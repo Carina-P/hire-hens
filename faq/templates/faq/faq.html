@@ -8,7 +8,7 @@ Frequently Asked Questions
 {% block faq_content %}
 {% if request.user.is_superuser %}
 <div class="text-center mb-3 mt-3">
-    {% include 'includes/black_button_lg.html' with url_to='add_faq' button_text='Add FAQ' %}
+    <a href="{% url 'add_faq' %}" class="btn btn-lg btn-black">Add <i class="fas fa-plus-circle"></i></a>
 </div>
 {% endif %}
 <div class="container mt-4">
@@ -22,8 +22,9 @@ Frequently Asked Questions
         </div>
         {% if request.user.is_superuser %}
         <div class="col-8 col-md-3 col-lg-3 col-xl-2 text-center mt-2 mb-4">
-            {% include 'includes/black_button.html' with url_to='edit_faq' param=faq.id button_text='Edit' %}
-            <button type="submit" class="btn btn-black-red" onclick="openRemoveModalFaq('{{ faq.id }}')">Delete</button>
+            <a href="{% url 'edit_faq' faq.id %}" class="btn btn-black">Edit <i class="fas fa-edit"></i></a>
+            <button type="submit" class="btn btn-black-red" onclick="openRemoveModalFaq('{{ faq.id }}')">Delete <i
+                    class="fas fa-trash"></i></button>
         </div>
         {% endif %}
         {% endfor %}
